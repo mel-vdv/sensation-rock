@@ -9,6 +9,7 @@ import { store } from './lib/redux/store';
 import Home from './comp/Home/index'
 import Event from './comp/Event';
 import Quizz from './comp/Quizz';
+import Admin from './comp/Admin';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route exact path= '/' element={<Home/>}/>
             <Route path='/events' element={<Event/>}/>
             <Route path='/quiz' element={<Quizz/>}/>
+            <Route path='/admin' element={<Admin/>}/>
           </Routes>
       </BrowserRouter>
     </div>

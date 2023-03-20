@@ -1,0 +1,114 @@
+export const data = [{
+    "id": 1,
+    "question": "En quelle année est décédé David Bowie",
+    "propositions": [
+        "1995",
+        "2016",
+        "1989",
+        "2009"
+    ],
+    "reponse": 1,
+    'valeur': 2,
+    "categorie": "rock"
+}, {
+    "id": 2,
+    "question": "Qui est la première épouse de Eminem",
+    "propositions": [
+        "Erika",
+        "Carol",
+        "Mary",
+        "Kimberly"
+    ],
+    "reponse": 3,
+    'valeur': 4,
+    "categorie": "rap"
+}, {
+    "id": 3,
+    "question": "Quel est le premier album de AC/DC",
+    "propositions": [
+        "Black Ice",
+        "Iron Man 2",
+        "High Voltage",
+        "Rock or bust"
+    ],
+    "reponse": 2,
+    'valeur': 1,
+    "categorie": "rock"
+}, {
+    "id": 4,
+    "question": "Quel est le nombre d'albums studio de Johnny Halliday",
+    "propositions": [
+        "82",
+        "25",
+        "51",
+        "39"
+    ],
+    "reponse": 2,
+    'valeur': 5,
+    "categorie": "rock"
+}, {
+    "id": 5,
+    "question": "qu rap val 3",
+    "propositions": [
+        "a",
+        "b",
+        "c",
+        "d"
+    ],
+    "reponse": 0,
+    'valeur': 3,
+    "categorie": "rap"
+},
+{
+    "id": 6,
+    "question": "qu electro val 4",
+    "propositions": [
+        "a",
+        "b",
+        "c",
+        "d"
+    ],
+    "reponse": 0,
+    'valeur': 4,
+    "categorie": "electro"
+},
+{
+    "id": 6,
+    "question": "qu rock val 1",
+    "propositions": [
+        "a",
+        "b",
+        "c",
+        "d"
+    ],
+    "reponse": 0,
+    'valeur': 1,
+    "categorie": "rock"
+},
+{
+    "id": 7,
+    "question": "qu rap val 5",
+    "propositions": [
+        "a",
+        "b",
+        "c",
+        "d"
+    ],
+    "reponse": 0,
+    'valeur': 5,
+    "categorie": "rap"
+},
+{
+    "id": 8,
+    "question": "qu rap val 3",
+    "propositions": [
+        "a",
+        "b",
+        "c",
+        "d"
+    ],
+    "reponse": 1,
+    'valeur': 3,
+    "categorie": "rap"
+},
+];
