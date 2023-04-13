@@ -22,6 +22,7 @@ export const questionsReducer=(state=initialState, action)=>{
             isLoading: false,
             error: action.payload.error
         }
+        
         default: return state
     }
 }
