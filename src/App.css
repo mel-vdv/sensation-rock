@@ -13,3 +13,23 @@
 .green{
   background-color: green; color: white;
 }
+.addQ, .modifQ, .addEv,.modifEv{
+  position: fixed; top:0; left:0; width: 100vw; height: 100vh;
+  background-color: pink;
+  display: flex; flex-direction: column;
+  width: 50vw;margin: auto;
+}
+form{
+  display: flex; flex-direction: column;
+}
+td{
+  border: 1px black solid;
+}
+.select{
+  color: white; font-weight: bold;
+  background-color: green;
+}
+.no-select{
+  color: white; font-weight: bold;
+  background-color: gray;
+}

@@ -17,9 +17,18 @@ export const GET_ALL_USERS_SUCCESS = "GET_ALL_USERS_SUCCESS";
 export const GET_ALL_USERS_ERROR = "GET_ALL_USERS_ERROR";
 
 //-----------------------------------------------------------------
-//export const POST_QUESTION = "POST_QUESTION";
+export const GET_USER_PENDING = "GET_USER_PENDING";
+export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
+export const GET_USER_ERROR = "GET_USER_ERROR";
+export const GET_NEW_USER = "GET_NEW_USER";
 //-----------------------------------------------------------------
-
+export const VIS_ADDQ= "VIS_ADDQ";
+export const VIS_MODIFQ= "VIS_MODIFQ";
+export const VIS_ADDEV= "VIS_ADDEV";
+export const VIS_MODIFEV= "VIS_MODIFEV";
+export const VIS_GETUSERS= "VIS_GETUSERS";
+export const VIS_GETQ= "VIS_GETQ";
+export const VIS_GETEV= "VIS_GETEV";
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 

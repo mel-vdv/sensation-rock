@@ -6,8 +6,8 @@ import Question from './Question';
 const Quizz = () => {
 
   const dispatch = useDispatch();
-  const state = useSelector(state => ({ ...state.questionsRed }));
-  const { isLoading, items } = state;
+  const stateQuest = useSelector(state => ({ ...state.questionsRed }));
+  const { isLoading, items } = stateQuest;
   const [num, setNum]= useState(0);
   //---------------------------------------------
   useEffect(() => {

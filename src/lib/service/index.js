@@ -10,6 +10,28 @@ export const getConcours = ()=>{
 }
 */
 import axios from "axios";
+//----------------------------- user ID (après connexion);
+export const getUserId = (emailU)=>{
+    console.log('3', emailU);
+    return new Promise((resolve,reject)=>{
+        axios.get('http://localhost:5000/api/user/'+emailU)
+        .then((resp,er)=>{
+            if(er||!resp){
+                return reject(er);
+            }
+            else{
+                resolve(resp.data);
+            }
+        })
+        .catch(err=>console.error(err.message));
+    })
+}
+export const postUser = (data) => {
+    console.log(data);
+    axios.post('http://localhost:5000/api/users/add', data)
+        .then(() => console.log('ok, new user ajouté'))
+        .catch(err => console.error(err.message));
+}
 //-----------------------   users
 export const getAllUsers = () => {
     return new Promise((resolve, reject) => {
@@ -48,6 +70,19 @@ export const postConcours = (data) => {
         .then(() => console.log('ok, new concours ajouté'))
         .catch(err => console.error(err.message));
 }
+export const updateConcours = (evMod)=>{
+    console.log('3', evMod['_id']);
+    axios.put('http://localhost:5000/api/concours/modif', evMod)
+        .then(() => console.log('ok, event modifié'))
+        .catch(err => console.error(err.message)); 
+}
+// PUT !!! pas de promise, si on met put ici, il faut aussi put dans la route du server
+export const deleteConcours= (idEv) => {
+    axios.put('http://localhost:5000/api/concours/suppr', {id : idEv}) // PUT ET NON UPDATE // et dans req.body = un objet toujours
+        .then((resp) => console.log(resp))
+        .catch(err => console.error(err.message));
+
+}
 
 //----------------------    questions
 //GET
@@ -71,6 +106,11 @@ export const postQuestion = (data) => {
     axios.post('http://localhost:5000/api/questions/add', data)
         .then(() => console.log('ok, questions ajoutée'))
         .catch(err => console.error(err.message));
+}
+export const updateQuestion = (qMod)=>{
+    axios.put('http://localhost:5000/api/questions/modif', qMod)
+        .then(() => console.log('ok, questions modifiée'))
+        .catch(err => console.error(err.message)); 
 }
 // PUT !!! pas de promise
 export const deleteQuest= (idQ) => {

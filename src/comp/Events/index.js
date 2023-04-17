@@ -4,11 +4,12 @@ import { fetchConcours } from '../../lib/redux/actions';
 
 
 
-const Home= () => {
+const Events= () => {
 
     const dispatch = useDispatch();
-    const state = useSelector( state=> ({...state.concoursRed}));
-    const {isLoading,items}= state;
+    const stateConcours = useSelector( state=> ({...state.concoursRed}));
+    const stateUser = useSelector( state=> ({...state.userRed}));
+    const {isLoading,items}= stateConcours;
     //-------------------------------------------
     useEffect(()=>{
         dispatch(fetchConcours());
@@ -17,6 +18,7 @@ const Home= () => {
   return (
     <div>
         <h1>SENSATION ROCK</h1>
+        {!!stateUser.item &&<p>Bienvenue {stateUser.item.nom}</p>}
         <h2> liste des évenements : </h2>
         {isLoading && <div>CHARGEMENT EN COURS...</div>}
         {(!isLoading && !!items) && <>
@@ -31,4 +33,4 @@ const Home= () => {
   )
 }
 
-export default Home
+export default Events
