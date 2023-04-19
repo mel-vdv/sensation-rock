@@ -24,7 +24,7 @@ function App() {
             <Route path= '/inscr' element={<Inscription/>}/>
             <Route path='/events' element={<Events/>}/>
             <Route path='/event' element={<Event/>}/>
-            <Route path='/quiz' element={<Quizz/>}/>
+            <Route path='/quizz' element={<Quizz/>}/>
             <Route path='/admin' element={<Admin/>}/>
           </Routes>
       </BrowserRouter>

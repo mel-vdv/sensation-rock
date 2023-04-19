@@ -7,6 +7,7 @@ const AddEv = () => {
     const initialEv = {
         intitulé: "",
         lieu: '',
+        description:"",
         prix: undefined,
         taille: undefined,
         nbSessMax: undefined,
@@ -39,6 +40,8 @@ const ajouterEvent=()=>{
                 
                 Lieu : 
                 <input type='text' value={newEv.lieu} onChange={(e)=> setNewEv({...newEv, lieu: e.target.value})} />
+                Description : 
+                <textarea value={newEv.description} onChange={(e)=>setNewEv({...newEv,description:e.target.value})}></textarea>
                 Prix : 
                 <input type='number' value={newEv.prix} onChange={(e)=> setNewEv({...newEv, prix: e.target.value})} />
                 Taille : 

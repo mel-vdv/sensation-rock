@@ -23,6 +23,8 @@ const ModifEv = ({concours}) => {
     Les informations de l'évènement <br/>
     Intitulé : 
     <input type='text' value={evMod.intitulé} onChange={(e)=>setEvMod({...evMod, intitulé : e.target.value})}/>
+    Description : 
+    <textarea value={evMod.description} onChange={(e)=>setEvMod({...ModifEv, description:e.target.value})}></textarea>
     Quand :  (sous la forme dd-mm-yyyy)
     <input type='date' value={evMod.quand}  onChange={(e)=>setEvMod({...evMod, quand : e.target.value})}/>
     Lieu : 

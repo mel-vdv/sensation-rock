@@ -1,17 +1,32 @@
 export const GET_CONCOURS_PENDING= "GET_CONCOURS_PENDING";
 export const GET_CONCOURS_SUCCESS= "GET_CONCOURS_SUCCESS";
 export const GET_CONCOURS_FAILURE= "GET_CONCOURS_FAILURE";
-
+//-----------------------------------------------------------------
 export const QUEL_CONCOURS = "QUEL_CONCOURS";
+//-----------------------------------------------------------------
+export const GET_SCORE = "GET_SCORE";
+//-----------------------------------------------------------------
+export const GET_EVENT_PENDING= "GET_EVENT_PENDING";
+export const GET_EVENT_SUCCESS= "GET_EVENT_SUCCESS";
+export const GET_EVENT_ERROR= "GET_EVENT_ERROR";
 
+//-----------------------------------------------------------------
+export const GET_LISTEQ_PENDING= "GET_LISTEQ_PENDING";
+export const GET_LISTEQ_SUCCESS= "GET_LISTEQ_SUCCESS";
+export const GET_LISTEQ_ERROR = "GET_LISTEQ_ERROR";
+//-----------------------------------------------------------------
+export const GET_LISTEQ_PERSO_PENDING= "GET_LISTEQ_PERSO_PENDING";
+export const GET_LISTEQ_PERSO_SUCCESS= "GET_LISTEQ_PERSO_SUCCESS";
+export const GET_LISTEQ_PERSO_ERROR = "GET_LISTEQ_PERSO_ERROR";
+//-----------------------------------------------------------------
+export const GET_LISTEQ_SPE_PENDING= "GET_LISTEQ_SPE_PENDING";
+export const GET_LISTEQ_SPE_SUCCESS= "GET_LISTEQ_SPE_UCCESS";
+export const GET_LISTEQ_SPE_ERROR = "GET_LISTEQ_SPE_ERROR";
+//---------------------------------------------------------------
 export const GET_QUESTIONS_PENDING = "GET_QUESTIONS_PENDING";
 export const GET_QUESTIONS_SUCCESS = "GET_QUESTIONS_SUCCESS";
 export const GET_QUESTIONS_FAILURE = "GET_QUESTIONS_FAILURE";
-
-export const GET_REGLAGES_PENDING = "GET_REGLAGES_PENDING";
-export const GET_REGLAGES_SUCCESS = "GET_REGLAGES_SUCCESS";
-export const GET_REGLAGES_FAILURE = "GET_REGLAGES_FAILURE";
-
+//-----------------------------------------------------------------
 export const GET_ALL_USERS_PENDING = "GET_ALL_USERS_PENDING";
 export const GET_ALL_USERS_SUCCESS = "GET_ALL_USERS_SUCCESS";
 export const GET_ALL_USERS_ERROR = "GET_ALL_USERS_ERROR";
@@ -21,6 +36,10 @@ export const GET_USER_PENDING = "GET_USER_PENDING";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
 export const GET_USER_ERROR = "GET_USER_ERROR";
 export const GET_NEW_USER = "GET_NEW_USER";
+//-----------------------------------------------------------------
+export const GET_SCORE_PENDING= "GET_SCORE_PENDING";
+export const GET_SCORE_SUCCESS = "GET_SCORE_SUCCESS";
+export const GET_SCORE_ERROR = "GET_SCORE_ERROR";
 //-----------------------------------------------------------------
 export const VIS_ADDQ= "VIS_ADDQ";
 export const VIS_MODIFQ= "VIS_MODIFQ";

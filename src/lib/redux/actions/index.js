@@ -1,9 +1,8 @@
-import { getConcours, getReglages, getQuestions, postQuestion, updateReglages,  getAllUsers, postConcours, deleteQuest, updateQuestion, updateConcours, deleteConcours, getUserId, postUser } from "../../service";
+import { getConcours,getQuestions, postQuestion,   getAllUsers, postConcours, deleteQuest, updateQuestion, updateConcours, deleteConcours, getUserId, postUser, getEventId, getListeQ, getListeQPerso, getListeQSpe, updateScore, getScore } from "../../service";
 import { GET_CONCOURS_FAILURE, GET_CONCOURS_PENDING, GET_CONCOURS_SUCCESS,
-    GET_REGLAGES_FAILURE, GET_REGLAGES_PENDING, GET_REGLAGES_SUCCESS, 
     GET_QUESTIONS_FAILURE, GET_QUESTIONS_PENDING, GET_QUESTIONS_SUCCESS,
     QUEL_CONCOURS,
-    GET_ALL_USERS_PENDING,GET_ALL_USERS_SUCCESS, GET_ALL_USERS_ERROR, VIS_ADDQ, VIS_MODIFQ, VIS_ADDEV, VIS_MODIFEV, GET_USER_PENDING, GET_USER_SUCCESS, GET_USER_ERROR, VIS_GETEV, VIS_GETQ, VIS_GETUSERS, GET_NEW_USER,
+    GET_ALL_USERS_PENDING,GET_ALL_USERS_SUCCESS, GET_ALL_USERS_ERROR, VIS_ADDQ, VIS_MODIFQ, VIS_ADDEV, VIS_MODIFEV, GET_USER_PENDING, GET_USER_SUCCESS, GET_USER_ERROR, VIS_GETEV, VIS_GETQ, VIS_GETUSERS, GET_NEW_USER, GET_EVENT_PENDING, GET_EVENT_SUCCESS, GET_EVENT_ERROR, GET_LISTEQ_PENDING, GET_LISTEQ_SUCCESS, GET_LISTEQ_ERROR, GET_LISTEQ_PERSO_PENDING, GET_LISTEQ_PERSO_SUCCESS, GET_LISTEQ_PERSO_ERROR, GET_LISTEQ_SPE_PENDING, GET_LISTEQ_SPE_SUCCESS, GET_LISTEQ_SPE_ERROR, GET_SCORE, GET_SCORE_PENDING, GET_SCORE_SUCCESS, GET_SCORE_ERROR,
    } from "./types";
 
 //////////////////////////////////////////////////////////////////////////////// USER commence un quizz : 
@@ -98,6 +97,55 @@ export const fetchConcours = ()=>{
         .catch((err)=>dispatch(getConcoursFailure(err)))
     }
 }
+//----------------------------------------- le score en cours
+export function getScorePending(){
+    return{ type: GET_SCORE_PENDING}
+}
+export function getScoreSuccess(data){
+    return {type:GET_SCORE_SUCCESS, payload: {data}}
+}
+export function getScoreError(error){ 
+    return {type : GET_SCORE_ERROR, payload: {error}}}
+
+export const fetchScore=(idu,idev)=>{
+    return async function(dispatch){
+        dispatch(getScorePending);
+        getScore(idu,idev)
+        .then((data)=>dispatch(getScoreSuccess(data)))
+        .catch((err)=>dispatch(getScoreError(err)));
+    }
+}
+export function modifScore(idu,obj){
+    return async function(){
+        updateScore(idu,obj)
+        .then(()=>console.log('modif score success'))
+        .catch(err=>console.error(err.message));
+}
+}
+//----------------------------------------- UN EVENT
+export function getEventPending (){
+    return{
+        type: GET_EVENT_PENDING
+    }
+}
+export function getEventSuccess (data){
+    return{
+        type: GET_EVENT_SUCCESS, payload: {data}
+    }
+}
+export function getEventError (error){
+    return{
+        type: GET_EVENT_ERROR, payload: {error}
+    }
+}
+export const fetchEventId = (idEv)=>{
+    return async function(dispatch){
+        dispatch(getEventPending);
+        getEventId(idEv)
+        .then((data)=>dispatch(getEventSuccess(data)))
+        .catch((err)=>dispatch(getEventError(err)))
+    }
+}
 //-----------------------------------------
 export function quelConcours(data){
     return{
@@ -176,6 +224,78 @@ export function supprQuestion(idQ){
         .catch(err=>console.error(err.message));
 }
 }
+//----------------------------------------- get liste questions GENERALES
+export function getListeQPending (){
+    return{
+        type: GET_LISTEQ_PENDING
+    }
+}
+export function getListeQSuccess(data){
+    return{
+        type: GET_LISTEQ_SUCCESS, payload: {data}
+    }
+}
+export function getListeQError (error){
+    return{
+        type: GET_LISTEQ_ERROR, payload: {error}
+    }
+}
+export const fetchListeQ = (limit)=>{
+    return async function(dispatch){
+        dispatch(getListeQPending);
+        getListeQ(limit)
+        .then((data)=>dispatch(getListeQSuccess(data)))
+        .catch((err)=>dispatch(getListeQError(err)))
+    }
+}
+//----------------------------------------- get liste questions PERSO
+export function getListeQPersoPending (){
+    return{
+        type: GET_LISTEQ_PERSO_PENDING
+    }
+}
+export function getListeQPersoSuccess(data){
+    return{
+        type: GET_LISTEQ_PERSO_SUCCESS, payload: {data}
+    }
+}
+export function getListeQPersoError (error){
+    return{
+        type: GET_LISTEQ_PERSO_ERROR, payload: {error}
+    }
+}
+export const fetchListeQPerso = (limit, gouts)=>{
+    return async function(dispatch){
+        dispatch(getListeQPersoPending);
+        getListeQPerso(limit,gouts)
+        .then((data)=>dispatch(getListeQPersoSuccess(data)))
+        .catch((err)=>dispatch(getListeQPersoError(err)))
+    }
+}
+//----------------------------------------- get liste questions SPE
+export function getListeQSpePending (){
+    return{
+        type: GET_LISTEQ_SPE_PENDING
+    }
+}
+export function getListeQSpeSuccess(data){
+    return{
+        type: GET_LISTEQ_SPE_SUCCESS, payload: {data}
+    }
+}
+export function getListeQSpeError (error){
+    return{
+        type: GET_LISTEQ_SPE_ERROR, payload: {error}
+    }
+}
+export const fetchListeQSpe = (idEv, limit)=>{
+    return async function(dispatch){
+        dispatch(getListeQSpePending);
+        getListeQSpe(idEv,limit)
+        .then((data)=>dispatch(getListeQSpeSuccess(data)))
+        .catch((err)=>dispatch(getListeQSpeError(err)))
+    }
+}
 //////////////////////////////////////////////////////////////////// VISIBILITE DES COMPOSANTS
 export function visibleAddQ(ouinon){
     return {
@@ -222,39 +342,4 @@ export function visibleGetUsers(ouinon){
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////PARAMETRES
-//-----------------------------------------------------------------------------------------------
-export function getReglagesPending(){
-    return{
-        type: GET_REGLAGES_PENDING
-    }
-}
-export function getReglagesSuccess(data){
-    return{
-        type: GET_REGLAGES_SUCCESS,
-        payload:{data}
-    }
-}
-export function getReglagesFailure(error){
-    return{
-        type: GET_REGLAGES_FAILURE,
-        payload:{error}
-    }
-}
-export const fetchReglages = ()=>{
-    return async function(dispatch){
-        dispatch(getReglagesPending);
-        getReglages()
-        .then((data)=>dispatch(getReglagesSuccess(data)))
-        .catch((err)=>dispatch(getReglagesFailure(err)))
-    }
-}
-export function modifRegl(reglModif){
-    console.log('actions : modif regl');
-    return async function(){
-        updateReglages(reglModif)
-        .then(()=>console.log('modif regl ok'))
-        .catch(err=>console.error(err.message));
-}
-}
 

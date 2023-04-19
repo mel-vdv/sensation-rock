@@ -47,10 +47,33 @@ export const getAllUsers = () => {
     })
 
 }
+//-----------------------   score 
+//GET : TOUJOURS PROMISE !!!!!!
+export const getScore=(idU, idEv)=>{
+    return new Promise((resolve, reject)=>{
+    axios.get('http://localhost:5000/api/score/'+idU+'/'+idEv)
+    .then((response, erreur) => {
+        if (erreur || !response) {
+            return reject(erreur);
+        }
+        else {
+            resolve(response.data); ///////////////////////////// IMPORTANT .DATA
+        }
+    })
+    .catch(err => console.error(err.message));
+    })
+}
+//UPDATE
+export const updateScore = (idU,obj)=>{
+    axios.put('http://localhost:5000/api/score/modif/'+idU,obj) 
+    .then(() => console.log('ok,score modifié'))
+    .catch(err => console.error(err.message)); 
+
+}
 //-----------------------   concours
 
 export const getConcours = () => {
-
+// GET multi
     return new Promise((resolve, reject) => {
         axios.get('http://localhost:5000/api/concours') ///////////////////////////IMPORTANT DE NOTER https localhost...
             .then((response, erreur) => {
@@ -63,6 +86,21 @@ export const getConcours = () => {
             })
             .catch(err => console.error(err.message));
     });
+};
+//--- GET ONE
+export const getEventId= (idEv)=>{
+return new Promise((resolve, reject) => {
+    axios.get('http://localhost:5000/api/event/'+idEv) ///////////////////////////IMPORTANT DE NOTER https localhost...
+        .then((response, erreur) => {
+            if (erreur || !response) {
+                return reject(erreur);
+            }
+            else {
+                resolve(response.data); ///////////////////////////// IMPORTANT .DATA
+            }
+        })
+        .catch(err => console.error(err.message));
+});
 };
 //-------POST
 export const postConcours = (data) => {
@@ -101,6 +139,57 @@ export const getQuestions = () => {
             .catch(err => console.error(err.message));
     });
 };
+//----------------------   liste de questions générales / parametre = limit
+//GET
+export const getListeQ= (limit) => {
+
+    return new Promise((resolve, reject) => {
+        axios.get('http://localhost:5000/api/liste-generale/'+limit)
+            .then((response, erreur) => {
+                if (erreur || !response) {
+                    return reject(erreur);
+                }
+                else {
+                    resolve(response.data);
+                }
+            })
+            .catch(err => console.error(err.message));
+    });
+};
+//----------------------   liste de questions perso / parametre = limit et gouts
+//GET
+export const getListeQPerso= (limit,gouts) => {
+let goutsUser= {gouts: gouts};
+    return new Promise((resolve, reject) => {
+        axios.put('http://localhost:5000/api/liste-perso/'+limit, goutsUser)
+            .then((response, erreur) => {
+                if (erreur || !response) {
+                    return reject(erreur);
+                }
+                else {
+                    resolve(response.data);
+                }
+            })
+            .catch(err => console.error(err.message));
+    });
+};
+//----------------------   liste de questions perso / parametre = limit et gouts
+//GET
+export const getListeQSpe= (idEv,limit) => {
+    console.log(idEv,limit);
+        return new Promise((resolve, reject) => {
+            axios.get('http://localhost:5000/api/liste-spe/'+idEv+'/'+limit)
+                .then((response, erreur) => {
+                    if (erreur || !response) {
+                        return reject(erreur);
+                    }
+                    else {
+                        resolve(response.data);
+                    }
+                })
+                .catch(err => console.error(err.message));
+        });
+    };
 //POST !! pas de promise
 export const postQuestion = (data) => {
     axios.post('http://localhost:5000/api/questions/add', data)

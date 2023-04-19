@@ -5,7 +5,7 @@ import { fetchUserId } from '../../lib/redux/actions';
 
 const Connexion = () => {
 
-    const [email, setEmail]= useState('');
+    const [email, setEmail]= useState('melvdv@yahoo.fr');
     const dispatch= useDispatch();
     const stateUser = useSelector(state=>({...state.userRed }));
  const nav = useNavigate()
