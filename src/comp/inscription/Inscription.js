@@ -52,13 +52,17 @@ const Inscription = () => {
                 <input id='age' placeholder='age' type='number' value={newUser.age} onChange={(e) => setNewUser({ ...newUser, age: e.target.value })} />
                 <input id='cp' placeholder='Code postal' type='text' value={newUser.cp} onChange={(e) => setNewUser({ ...newUser, cp: e.target.value })} />
                 Mon top 3 de catégories musicales :
-                <button type='button' className={newUser.réponse1.includes('rock') ? 'select' : 'no-select'} onClick={() => select('rock')}>ROCK</button>
-                <button type='button' className={newUser.réponse1.includes('rap') ? 'select' : 'no-select'} onClick={() => select('rap')}>RAP</button>
-                <button type='button' className={newUser.réponse1.includes('electro') ? 'select' : 'no-select'} onClick={() => select('electro')}>ELECTRO</button>
-                <button type='button' className={newUser.réponse1.includes('jazz') ? 'select' : 'no-select'} onClick={() => select('jazz')}>JAZZ</button>
-                <button type='button' className={newUser.réponse1.includes('varietes') ? 'select' : 'no-select'} onClick={() => select('varietes')}>VARIETE</button>
-                <button type='button' className={newUser.réponse1.includes('randb') ? 'select' : 'no-select'} onClick={() => select('randb')}>R and B</button>
-                <button type='button' className={newUser.réponse1.includes('classique') ? 'select' : 'no-select'} onClick={() => select('classique')}>MUSIQUE CLASSIQUE</button>
+                <button type='button' className={newUser.réponse1.includes('Rock') ? 'select' : 'no-select'} onClick={() => select('Rock')}>ROCK</button>
+                <button type='button' className={newUser.réponse1.includes('Pop Rock') ? 'select' : 'no-select'} onClick={() => select('Pop Rock')}>POP ROCK</button>
+                <button type='button' className={newUser.réponse1.includes('Pop') ? 'select' : 'no-select'} onClick={() => select('Pop')}>POP</button>
+                <button type='button' className={newUser.réponse1.includes('Rap') ? 'select' : 'no-select'} onClick={() => select('Rap')}>RAP</button>
+                <button type='button' className={newUser.réponse1.includes('Folk') ? 'select' : 'no-select'} onClick={() => select('Folk')}>FOLK</button>
+                <button type='button' className={newUser.réponse1.includes('Reggae') ? 'select' : 'no-select'} onClick={() => select('Reggae')}>REGGAE</button>
+                <button type='button' className={newUser.réponse1.includes('electro') ? 'select' : 'no-select'} onClick={() => select('Electro')}>ELECTRO</button>
+                <button type='button' className={newUser.réponse1.includes('Jazz') ? 'select' : 'no-select'} onClick={() => select('Jazz')}>JAZZ</button>
+                <button type='button' className={newUser.réponse1.includes('Variété') ? 'select' : 'no-select'} onClick={() => select('Variété')}>VARIETE</button>
+                <button type='button' className={newUser.réponse1.includes('RNB') ? 'select' : 'no-select'} onClick={() => select('RNB')}>RnB</button>
+                <button type='button' className={newUser.réponse1.includes('Musique Classique') ? 'select' : 'no-select'} onClick={() => select('Musique Classique')}>MUSIQUE CLASSIQUE</button>
 
                 <button type='submit'>ENREGISTRER</button>
             </form>

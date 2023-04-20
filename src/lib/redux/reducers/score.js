@@ -1,4 +1,4 @@
-import { GET_SCORE_ERROR, GET_SCORE_PENDING, GET_SCORE_SUCCESS } from "../actions/types"
+import { GET_SCORE_ERROR, GET_SCORE_PENDING, GET_SCORE_SUCCESS, MODIF_SCORE_IMMEDIAT } from "../actions/types"
 
 
 const initialState= {
@@ -16,6 +16,9 @@ export const scoreReducer = (state= initialState, action)=>{
   }
   case GET_SCORE_ERROR: return{
     ...state, isLoading:false, error: action.payload.error
+  }
+  case MODIF_SCORE_IMMEDIAT : return {
+    ...state, isLoading:false, item: action.payload.data
   }
   default: return state;
  }

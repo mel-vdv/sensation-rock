@@ -2,7 +2,7 @@ import { getConcours,getQuestions, postQuestion,   getAllUsers, postConcours, de
 import { GET_CONCOURS_FAILURE, GET_CONCOURS_PENDING, GET_CONCOURS_SUCCESS,
     GET_QUESTIONS_FAILURE, GET_QUESTIONS_PENDING, GET_QUESTIONS_SUCCESS,
     QUEL_CONCOURS,
-    GET_ALL_USERS_PENDING,GET_ALL_USERS_SUCCESS, GET_ALL_USERS_ERROR, VIS_ADDQ, VIS_MODIFQ, VIS_ADDEV, VIS_MODIFEV, GET_USER_PENDING, GET_USER_SUCCESS, GET_USER_ERROR, VIS_GETEV, VIS_GETQ, VIS_GETUSERS, GET_NEW_USER, GET_EVENT_PENDING, GET_EVENT_SUCCESS, GET_EVENT_ERROR, GET_LISTEQ_PENDING, GET_LISTEQ_SUCCESS, GET_LISTEQ_ERROR, GET_LISTEQ_PERSO_PENDING, GET_LISTEQ_PERSO_SUCCESS, GET_LISTEQ_PERSO_ERROR, GET_LISTEQ_SPE_PENDING, GET_LISTEQ_SPE_SUCCESS, GET_LISTEQ_SPE_ERROR, GET_SCORE, GET_SCORE_PENDING, GET_SCORE_SUCCESS, GET_SCORE_ERROR,
+    GET_ALL_USERS_PENDING,GET_ALL_USERS_SUCCESS, GET_ALL_USERS_ERROR, VIS_ADDQ, VIS_MODIFQ, VIS_ADDEV, VIS_MODIFEV, GET_USER_PENDING, GET_USER_SUCCESS, GET_USER_ERROR, VIS_GETEV, VIS_GETQ, VIS_GETUSERS, GET_NEW_USER, GET_EVENT_PENDING, GET_EVENT_SUCCESS, GET_EVENT_ERROR, GET_LISTEQ_PENDING, GET_LISTEQ_SUCCESS, GET_LISTEQ_ERROR, GET_LISTEQ_PERSO_PENDING, GET_LISTEQ_PERSO_SUCCESS, GET_LISTEQ_PERSO_ERROR, GET_LISTEQ_SPE_PENDING, GET_LISTEQ_SPE_SUCCESS, GET_LISTEQ_SPE_ERROR, GET_SCORE_PENDING, GET_SCORE_SUCCESS, GET_SCORE_ERROR, MODIF_SCORE_IMMEDIAT, MODIF_TIMER, STOP_TIMER, VIS_PUB,
    } from "./types";
 
 //////////////////////////////////////////////////////////////////////////////// USER commence un quizz : 
@@ -106,7 +106,9 @@ export function getScoreSuccess(data){
 }
 export function getScoreError(error){ 
     return {type : GET_SCORE_ERROR, payload: {error}}}
-
+export function modifScoreImmediat(data){
+    return {type: MODIF_SCORE_IMMEDIAT, payload: {data}}
+}
 export const fetchScore=(idu,idev)=>{
     return async function(dispatch){
         dispatch(getScorePending);
@@ -121,6 +123,13 @@ export function modifScore(idu,obj){
         .then(()=>console.log('modif score success'))
         .catch(err=>console.error(err.message));
 }
+}
+//----------------------------------------- TIMER
+export function modifTimer(){
+    return {type:MODIF_TIMER}
+}
+export function stopTimer(){
+    return {type:STOP_TIMER}
 }
 //----------------------------------------- UN EVENT
 export function getEventPending (){
@@ -161,7 +170,6 @@ export function addConcours(newEv){
 }
 }
 export function modifConcours(evMod){
-    console.log('2');
     return async function(){
         updateConcours(evMod)
         .then(()=>console.log('modif event success'))
@@ -337,6 +345,11 @@ export function visibleGetUsers(ouinon){
     return {
         type : VIS_GETUSERS,
         payload:{ouinon}
+    }
+}
+export function visiblePub(ouinon){
+    return{
+        type: VIS_PUB,payload:{ouinon}
     }
 }
 

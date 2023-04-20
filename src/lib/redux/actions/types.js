@@ -40,6 +40,7 @@ export const GET_NEW_USER = "GET_NEW_USER";
 export const GET_SCORE_PENDING= "GET_SCORE_PENDING";
 export const GET_SCORE_SUCCESS = "GET_SCORE_SUCCESS";
 export const GET_SCORE_ERROR = "GET_SCORE_ERROR";
+export const MODIF_SCORE_IMMEDIAT = "MODIF_SCORE_IMMEDIAT";
 //-----------------------------------------------------------------
 export const VIS_ADDQ= "VIS_ADDQ";
 export const VIS_MODIFQ= "VIS_MODIFQ";
@@ -48,8 +49,11 @@ export const VIS_MODIFEV= "VIS_MODIFEV";
 export const VIS_GETUSERS= "VIS_GETUSERS";
 export const VIS_GETQ= "VIS_GETQ";
 export const VIS_GETEV= "VIS_GETEV";
+export const VIS_PUB= "VIS_PUB";
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
+export const MODIF_TIMER = "MODIF_TIMER";
+export const STOP_TIMER = "STOP_TIMER";
 
 
 

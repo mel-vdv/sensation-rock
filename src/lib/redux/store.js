@@ -1,7 +1,6 @@
 import {legacy_createStore, combineReducers, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import { concoursReducer } from './reducers/concours'
-import { questionsReducer } from './reducers/questions';
 import { usersReducer } from './reducers/users';
 import { visibleReducer } from './reducers/visible';
 import { userReducer } from './reducers/user';
@@ -10,18 +9,19 @@ import { listeQReducer } from './reducers/listeQ';
 import { listeQpersoReducer } from './reducers/listeQperso';
 import { listeQspeReducer } from './reducers/listeQspe';
 import { scoreReducer } from './reducers/score';
+import { timerReducer } from './reducers/timer';
 ///--------------------------------------
 const rootReducer = combineReducers({
     concoursRed : concoursReducer,
     eventRed : eventReducer,
-    questionsRed : questionsReducer,
     listeQRed : listeQReducer,
     listeQpersoRed : listeQpersoReducer,
     listeQspeRed: listeQspeReducer,
     usersRed : usersReducer,
     userRed : userReducer,
     visibleRed : visibleReducer,
-    scoreRed : scoreReducer
+    scoreRed : scoreReducer,
+    timerRed: timerReducer
 })
 ///--------------------------------------
 export const store =  legacy_createStore(rootReducer, applyMiddleware(thunk));

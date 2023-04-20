@@ -33,3 +33,7 @@ td{
   color: white; font-weight: bold;
   background-color: gray;
 }
+.pub{
+  background-color: red;
+  height: 200px;width: 200px;
+}
