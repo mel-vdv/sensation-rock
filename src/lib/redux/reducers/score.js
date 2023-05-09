@@ -12,7 +12,7 @@ export const scoreReducer = (state= initialState, action)=>{
     ...state, isLoading:true
   }
   case GET_SCORE_SUCCESS: return{
-    ...state, isLoading:false, item: action.payload.data[0].concours[0]
+    ...state, isLoading:false, item: action.payload.data
   }
   case GET_SCORE_ERROR: return{
     ...state, isLoading:false, error: action.payload.error

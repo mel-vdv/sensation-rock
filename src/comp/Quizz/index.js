@@ -1,24 +1,34 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ScoreUser from './scoreUser';
 import Question from './Question';
 import Timer from './Timer';
 import Pub from './Pub';
-import { visiblePub } from '../../lib/redux/actions';
+import { fetchPodium, visiblePodium } from '../../lib/redux/actions';
+import Podium from './Podium';
 
 const Quizz = () => {
 
   const stateEvent = useSelector(state => ({ ...state.eventRed }));
+  const stateUser = useSelector(state => ({ ...state.userRed }));
   const stateListeQ = useSelector(state => ({ ...state.listeQRed }));
   const stateListeQperso = useSelector(state => ({ ...state.listeQpersoRed }));
   const stateListeQspe = useSelector(state => ({ ...state.listeQspeRed }));
   const stateScore = useSelector(state => ({ ...state.scoreRed }));
-  const stateTimer = useSelector(state => ({ ...state.timerRed }));
   const stateVis = useSelector(state => ({ ...state.visibleRed }));
+  const statePodium= useSelector(state=> ({...state.podiumRed}));
 
 
 
-
+  const dispatch = useDispatch();
+  //---------------------------------------------
+  const openPodium =()=>{
+    dispatch(fetchPodium(stateUser.item['_id'], stateEvent.item['_id']));
+    dispatch(visiblePodium(true));
+  }
+  const closePodium =()=>{
+    dispatch(visiblePodium(false));
+  }
   //---------------------------------------------
   return (
     <div className='quizz'>
@@ -64,19 +74,19 @@ const Quizz = () => {
 
           <Timer />
 
-          {
-            !stateVis.pub &&
+          {!stateVis.pub &&
             <Question liste={stateListeQ.items.concat(stateListeQspe.items, stateListeQperso.items)} />
-
-
           }
 
-          {stateVis.pub
-            &&
-            <Pub />}
-
+          {stateVis.pub &&
+            <Pub />
+          }
 
           <ScoreUser />
+
+          {!stateVis.podium &&<button onClick={()=>openPodium()}>VOIR LE PODIUM</button>}
+          {stateVis.podium &&<button onClick={()=>closePodium()}>FERMER</button>}
+          {(stateVis.podium && !statePodium.isLoading && !!statePodium.items) && <Podium/>}
         </>}
 
 

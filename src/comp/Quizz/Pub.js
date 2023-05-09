@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { modifTimer, stopTimer } from '../../lib/redux/actions';
 import { visiblePub } from '../../lib/redux/actions';
@@ -38,6 +38,8 @@ const Pub = () => {
         <div className='pub'>
 
             PUBLICITE va s'afficher pendant {stateEvent.item.nbSecPub} sec
+
+            <img src={`https://firebasestorage.googleapis.com/v0/b/igra-835e2.appspot.com/o/publicites%2F${stateEvent.item['_id']}?alt=media`} alt='publicite'/>
 
             <p>timer : {stateTimer.timer} secondes....</p>
         </div>

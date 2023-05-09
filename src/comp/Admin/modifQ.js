@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { modifQuestion, visibleModifQ } from '../../lib/redux/actions';
+import { majQuestions, modifQuestion, visibleModifQ } from '../../lib/redux/actions';
 
 const ModifQ = ({question}) => {
 
@@ -11,10 +11,13 @@ const[qMod, setqMod]= useState(question);
 //-------------------------
 const modifierQuestion= ()=>{
     dispatch(modifQuestion(qMod));
+    dispatch(majQuestions(qMod));
+    alert(`question ${qMod.Question} modifiée avec succès`);
+    visMod(false);
 }
 //-------------------------
 const visMod = (ouinon)=>{
-    dispatch(visibleModifQ(ouinon))
+    dispatch(visibleModifQ(ouinon));
 }
 //-------------------------
 
@@ -24,17 +27,31 @@ const visMod = (ouinon)=>{
 <h2>MODIFIER LA QUESTION</h2>
    <form onSubmit={()=>modifierQuestion()}>
 
-            <input type='text' onChange={(e)=>setqMod({...qMod, Question : e.target.value})} value={qMod.Question}/>
-            <input type='text' onChange={(e)=>setqMod({...qMod, 'Proposition A' : e.target.value})} value={qMod['Proposition A']}/>
-            <input type='text' onChange={(e)=>setqMod({...qMod, 'Proposition B' : e.target.value})} value={qMod['Proposition B']}/>
-            <input type='text' onChange={(e)=>setqMod({...qMod, 'Proposition C' : e.target.value})} value={qMod['Proposition C']}/>
-            <input type='text' onChange={(e)=>setqMod({...qMod, Valeur : e.target.value})} value={qMod.Valeur}/>
-            <input type='text' onChange={(e)=>setqMod({...qMod, Réponse : e.target.value})} value={qMod.Réponse}/>
-            <input type='text' onChange={(e)=>setqMod({...qMod, Catégorie : e.target.value})} value={qMod.Catégorie}/>
-            <input type='submit' value="valider les modifications"/>
+
+            <label htmlFor='quest'>Intitulé de la question</label>
+            <input id='quest' type='text' onChange={(e)=>setqMod({...qMod, Question : e.target.value})} value={qMod.Question}/>
+
+            <label htmlFor='prop-a'>Proposition 1</label>
+            <input id='prop-a' type='text' onChange={(e)=>setqMod({...qMod, 'Proposition A' : e.target.value})} value={qMod['Proposition A']}/>
+
+            <label htmlFor='prop-b'>Proposition 2</label>
+            <input id='prop-b' type='text' onChange={(e)=>setqMod({...qMod, 'Proposition B' : e.target.value})} value={qMod['Proposition B']}/>
+
+            <label htmlFor='prop-c'>Proposition 3</label>
+            <input id='prop-c' type='text' onChange={(e)=>setqMod({...qMod, 'Proposition C' : e.target.value})} value={qMod['Proposition C']}/>
+
+            <label htmlFor='valeur'>Valeur de la question :</label>
+            <input id='valeur' type='text' onChange={(e)=>setqMod({...qMod, Valeur : e.target.value})} value={qMod.Valeur}/>
+
+            <label htmlFor='rep'>Numéro de la réponse</label>
+            <input id='rep' type='text' onChange={(e)=>setqMod({...qMod, Réponse : e.target.value})} value={qMod.Réponse}/>
+
+            <label htmlFor='categ'>Catégorie</label>
+            <input id='categ' type='text' onChange={(e)=>setqMod({...qMod, Catégorie : e.target.value})} value={qMod.Catégorie}/>
+            <button type='submit'>Valider les modifications</button>
         </form>
 
-        <button onClick={()=>visMod(false)}>retour à la liste de questions</button>
+        <button onClick={()=>visMod(false)}>Retour à la liste de questions</button>
     </div>
   )
 }

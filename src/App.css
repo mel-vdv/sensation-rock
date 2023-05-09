@@ -37,3 +37,7 @@ td{
   background-color: red;
   height: 200px;width: 200px;
 }
+
+button:focus{
+  background-color: red;
+}

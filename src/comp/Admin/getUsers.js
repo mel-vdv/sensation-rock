@@ -15,7 +15,6 @@ const GetUsers = () => {
     <div className='getUsers'>
            <h2>LES UTILISATEURS INSCRITS</h2>
 
-           <button onClick={()=>dispatch(visibleGetUsers(false))}>retour</button>
       
       {(!stateUsers.isLoading && !!stateUsers.items) &&
         <>

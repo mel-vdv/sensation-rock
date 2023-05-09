@@ -5,16 +5,14 @@ import { fetchUserId } from '../../lib/redux/actions';
 
 const Connexion = () => {
 
-    const [email, setEmail]= useState('melvdv@yahoo.fr');
+    const [email, setEmail]= useState('');
     const dispatch= useDispatch();
     const stateUser = useSelector(state=>({...state.userRed }));
- const nav = useNavigate()
+    const nav = useNavigate();
     //----------------------------------
     const connectUser = ()=>{
-      console.log('1');
       dispatch(fetchUserId(email));
       nav('/events');
-
     }
     //----------------------------------
 
@@ -27,7 +25,7 @@ const Connexion = () => {
 
         DEJA UN COMPTE ?
         <form onSubmit={()=>connectUser()}>
-            <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+            <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)} required/>
             <button type='submit'>Je me connecte</button>
         </form>
         NOUVEAU ?

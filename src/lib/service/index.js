@@ -12,7 +12,6 @@ export const getConcours = ()=>{
 import axios from "axios";
 //----------------------------- user ID (après connexion);
 export const getUserId = (emailU)=>{
-    console.log('3', emailU);
     return new Promise((resolve,reject)=>{
         axios.get('http://localhost:5000/api/user/'+emailU)
         .then((resp,er)=>{
@@ -47,6 +46,25 @@ export const getAllUsers = () => {
     })
 
 }
+//-----------------------   podium
+export const getPodium = (idU,idEv)=>{
+    console.log('pod serv');
+    return new Promise ((resolve, reject)=>{
+        axios.get('http://localhost:5000/api/podium/'+idU+'/'+idEv)
+        .then((response, erreur) => {
+            if (erreur || !response) {
+                return reject(erreur);
+            }
+            else {
+               let bibi =response.data[0].participants
+               .sort((a,b)=> {return b.nbPt-a.nbPt;})
+               .slice(0,2);
+                resolve(bibi); ///////////////////////////// IMPORTANT .DATA
+            }
+        })
+        .catch(err => console.error(err.message));
+        })
+}
 //-----------------------   score 
 //GET : TOUJOURS PROMISE !!!!!!
 export const getScore=(idU, idEv)=>{
@@ -57,13 +75,20 @@ export const getScore=(idU, idEv)=>{
             return reject(erreur);
         }
         else {
-            resolve(response.data); ///////////////////////////// IMPORTANT .DATA
+            let bibi = response.data[0].concours.filter(e=>e.idEv=== idEv)[0];
+            resolve(bibi); ///////////////////////////// IMPORTANT .DATA
         }
     })
     .catch(err => console.error(err.message));
     })
 }
-//UPDATE
+// update (on crée)
+export const initScore = (idU,obj)=>{
+    axios.put('http://localhost:5000/api/score/add/'+idU, obj)
+    .then(() => console.log('ok,score init'))
+    .catch(err => console.error(err.message)); 
+}
+//UPDATE 
 export const updateScore = (idU,obj)=>{
     axios.put('http://localhost:5000/api/score/modif/'+idU,obj) 
     .then(() => console.log('ok,score modifié'))
@@ -133,6 +158,7 @@ export const getQuestions = () => {
                     return reject(erreur);
                 }
                 else {
+                    console.log(response.data[0]);
                     resolve(response.data);
                 }
             })

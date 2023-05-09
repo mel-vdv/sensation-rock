@@ -9,7 +9,7 @@ const Inscription = () => {
         console.log('useeffect');
     }, [])
     const initialstate = {
-        nom: '', prénom: '', pseudo: '', email: '', sexe: 'homme', cp: '', tel: '', age: 0, réponse1: ['rock']
+        nom: '', prénom: '', pseudo: '', email: '', sexe: 'homme', cp: '', tel: '', age: 0, réponse1: ['rock'], concours:[]
     }
     const dispatch = useDispatch();
     const [newUser, setNewUser] = useState(initialstate);

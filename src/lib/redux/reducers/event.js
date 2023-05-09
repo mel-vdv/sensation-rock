@@ -1,4 +1,4 @@
-import { GET_EVENT_ERROR, GET_EVENT_PENDING, GET_EVENT_SUCCESS } from "../actions/types"
+import { GET_EVENT_ERROR, GET_EVENT_PENDING, GET_EVENT_SUCCESS, MAJ_CONCOURS } from "../actions/types"
 
 const initialState={
     isLoading : false,
@@ -16,6 +16,7 @@ export const eventReducer = (state= initialState, action)=>{
         case GET_EVENT_ERROR : return{
             ...state, isLoading:false, error: action.payload.error
         }
+      
         default: return state;
     }
 }

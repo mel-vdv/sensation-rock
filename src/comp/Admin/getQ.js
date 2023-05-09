@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { fetchQuestions, supprQuestion, visibleAddQ, visibleGetQ, visibleModifQ } from '../../lib/redux/actions';
+import { fetchListeQ, majStateListeQ, supprQuestion, visibleAddQ, visibleModifQ } from '../../lib/redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import ModifQ from './modifQ';
 import AddQ from './addQ';
@@ -7,13 +7,13 @@ import AddQ from './addQ';
 const GetQ = () => {
   
   const dispatch = useDispatch();
-  const stateQuest = useSelector(state => ({ ...state.questionsRed }));
+  const stateQuest = useSelector(state => ({ ...state.listeQRed }));
   const stateVis = useSelector(state => ({ ...state.visibleRed }));
 //---------------------------------------------------------
 const [questModif, setQuestModif] = useState(null);
 //---------------------------------------------------------
   useEffect(()=>{
-    dispatch(fetchQuestions());
+    dispatch(fetchListeQ());
   },[]);
     
   const visAddQu = () => {
@@ -23,16 +23,20 @@ const [questModif, setQuestModif] = useState(null);
     setQuestModif(q);
     dispatch(visibleModifQ(true));
   }
-  const supprQuest = (idQ) => {
-    dispatch(supprQuestion(idQ));
+  const supprQuest = (idQ,quest) => {
+    dispatch(supprQuestion(idQ)).then(()=>dispatch(majStateListeQ(idQ)));
+    alert(`question ${quest} supprimée avec succès.`);
   }
 //---------------------------------------------------------
   return (
     <div className='getQ'>
     <h2>LES QUESTIONS</h2>
-    <button onClick={() => dispatch(visibleGetQ(false))}>retour admin</button>
     <button onClick={() => visAddQu()}>Ajouter une nouvelle question</button>
-    {!stateQuest.isLoading && !!stateQuest.items && <>
+    {stateQuest.isLoading&& <div> is loading....</div>}
+    {(!stateQuest.isLoading && !stateQuest.items) &&
+    <div>is loading non : pas de items...</div>
+    }
+    {(!stateQuest.isLoading && !!stateQuest.items && !stateVis.addQ && !stateVis.modifQ) && <>
         <table>
           <thead>
             <tr>
@@ -57,8 +61,8 @@ const [questModif, setQuestModif] = useState(null);
                 <td>{x.Catégorie}</td>
                 <td>{x.Valeur}</td>
                 <td>
-                  <button onClick={() => supprQuest(x['_id'])}>Supprimer la question</button>
-                  <button onClick={() => visModifQu(x)}>Modifier la question</button>
+                  <button onClick={() => supprQuest(x['_id'], x.Question)}>Supprimer la question {x.Question}</button>
+                  <button onClick={() => visModifQu(x)}>Modifier la question {x.Question} </button>
                 </td>
               </tr>
             ))}
@@ -67,7 +71,7 @@ const [questModif, setQuestModif] = useState(null);
       </>}
       
       {stateVis.addQ && <AddQ/>}
-      {(stateVis.modifQ&& !!questModif) && <ModifQ question={questModif} />}
+      {(stateVis.modifQ && !!questModif) && <ModifQ question={questModif} />}
     </div>
   )
 }

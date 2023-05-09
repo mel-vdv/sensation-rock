@@ -4,16 +4,24 @@ export const GET_CONCOURS_FAILURE= "GET_CONCOURS_FAILURE";
 //-----------------------------------------------------------------
 export const QUEL_CONCOURS = "QUEL_CONCOURS";
 //-----------------------------------------------------------------
+export const MAJ_CONCOURS = "MAJ_CONCOURS";
+//-----------------------------------------------------------------
 export const GET_SCORE = "GET_SCORE";
+//-----------------------------------------------------------------
+export const GET_PODIUM_PENDING= "GET_PODIUM_PENDING";
+export const GET_PODIUM_SUCCESS= "GET_PODIUM_SUCCESS";
+export const GET_PODIUM_ERROR= "GET_PODIUM_ERROR";
 //-----------------------------------------------------------------
 export const GET_EVENT_PENDING= "GET_EVENT_PENDING";
 export const GET_EVENT_SUCCESS= "GET_EVENT_SUCCESS";
 export const GET_EVENT_ERROR= "GET_EVENT_ERROR";
-
 //-----------------------------------------------------------------
 export const GET_LISTEQ_PENDING= "GET_LISTEQ_PENDING";
 export const GET_LISTEQ_SUCCESS= "GET_LISTEQ_SUCCESS";
 export const GET_LISTEQ_ERROR = "GET_LISTEQ_ERROR";
+//-----------------------------------------------------------------
+export const DELETE_Q = "DELETE_Q";
+export const MAJ_Q = "MAJ_Q";
 //-----------------------------------------------------------------
 export const GET_LISTEQ_PERSO_PENDING= "GET_LISTEQ_PERSO_PENDING";
 export const GET_LISTEQ_PERSO_SUCCESS= "GET_LISTEQ_PERSO_SUCCESS";
@@ -30,7 +38,6 @@ export const GET_QUESTIONS_FAILURE = "GET_QUESTIONS_FAILURE";
 export const GET_ALL_USERS_PENDING = "GET_ALL_USERS_PENDING";
 export const GET_ALL_USERS_SUCCESS = "GET_ALL_USERS_SUCCESS";
 export const GET_ALL_USERS_ERROR = "GET_ALL_USERS_ERROR";
-
 //-----------------------------------------------------------------
 export const GET_USER_PENDING = "GET_USER_PENDING";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
@@ -50,6 +57,8 @@ export const VIS_GETUSERS= "VIS_GETUSERS";
 export const VIS_GETQ= "VIS_GETQ";
 export const VIS_GETEV= "VIS_GETEV";
 export const VIS_PUB= "VIS_PUB";
+export const VIS_PODIUM= "VIS_PODIUM";
+export const VIS_IMAGE_PUB = "VIS_IMAGE_PUB";
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 export const MODIF_TIMER = "MODIF_TIMER";
