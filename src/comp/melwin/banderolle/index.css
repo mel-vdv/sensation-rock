@@ -1,0 +1,33 @@
+.container-banderolle{
+    height: 500px;width: min(90vw,1300px);margin: auto;
+    color: white; text-transform: uppercase;
+    display: flex; align-items:center; justify-content: space-between;
+    background-size: cover;
+}
+.fleche{
+    height: 50px; width: 50px;
+    margin: 30px;
+}
+.titre{
+    display: flex;
+    flex-direction: column;
+    align-items: center; justify-content: center;
+}
+.fleche img{
+    width: 50%;
+    padding: 10px;
+    border-radius: 100%;
+    border: rgba(255, 255, 255, 0.899) 2px solid;
+}
+.container-banderolle.titre{
+    text-shadow: 0 0 10px black;
+}
+.grand{
+    font-size: 55px;font-weight: bolder;
+}
+.moyen{
+font-size: 40px;
+}
+.petit{
+    font-size: 30px;
+}

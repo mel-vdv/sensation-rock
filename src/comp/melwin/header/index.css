@@ -1,0 +1,65 @@
+.container{
+    margin: auto;
+    width: min(90vw, 1300px);
+}
+.haut{
+    display: flex;
+    height: 40px;
+    width: 100%;
+}
+.haut div{ 
+height: 100%; width: 33.33%;
+border: 1px gray solid; box-sizing: border-box;
+display: flex; align-items: center; justify-content: center;
+text-transform: uppercase;
+}
+.bas{
+    
+    height: 100px; width: 80%;margin: auto;
+    display: flex;justify-content: space-between;align-items: center;
+}
+.bas div{
+    display: flex; align-items: center; justify-content: center;
+}
+.melwin{
+    color: red; font-size: 40px; font-weight: bolder;
+}
+.rech{
+    width: 50%; height: 50%;
+    border: 1px gray solid;
+}
+.rech div{
+    align-items: center;
+}
+.rech div:first-child{
+ width: 50%;height: 50%; border-right: 1px grey solid;
+}
+.rech div:nth-child(2){
+    width: 40%;
+}
+.rech div:last-child{
+    width: 10%; height: 100%;
+    background-color: red;
+}
+.reseaux div{
+    display: flex; align-items: center; justify-content: center;
+    margin-left: 15px;
+    border:gray solid 1px;
+    border-radius: 100%;
+    height: 40px; width: 40px;
+}
+.reseaux div img{
+    height: 50%;margin: auto;
+}
+.rech div.defilement{
+    background-color: white;
+    width: 100%;
+    display: flex; flex-direction: column;
+}
+
+button.invis{
+    background-color:rgba(0,0,0,0);
+    border: none;
+    text-transform: uppercase;
+    display: flex; align-items: center; justify-content: center;
+}

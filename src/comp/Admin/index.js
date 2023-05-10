@@ -5,6 +5,8 @@ import GetUsers from './getUsers';
 import GetQ from './getQ';
 import GetEv from './getEv';
 
+import './../../css/Admin/index.css';
+
 
 
 const Admin = () => {

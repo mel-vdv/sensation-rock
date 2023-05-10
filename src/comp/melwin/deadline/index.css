@@ -1,0 +1,63 @@
+.container-deadline{
+   padding-top: 40px;
+    text-transform: uppercase;
+    width: min(90vw, 1100px); margin: auto;
+}
+.container-deadline div.dessus{
+    height: 70px;font-size: 25px; color: rgb(100, 100, 100);
+    display: flex; align-items: center; justify-content: space-between;
+}
+.container-deadline div.dessus div.titre{
+    height: 100%;
+    text-align: start;align-items: flex-start;
+    width: 30%; border-bottom: 4px rgb(100,100,100) solid ;
+}
+.container-deadline div.dessus div.navig{justify-content: center;
+    display: flex;
+}
+    .container-deadline div.fleche{
+        margin: 10px;
+    width: 30px; height: 30px;
+}
+.container-deadline div.fleche img{
+border-color: rgb(100,100,100);
+
+}
+.affiches{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%; overflow: hidden;
+}
+.ev-grand{
+    margin: 15px;background-size: contain;
+height: 380px;
+width: 500px;
+display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.intitule{
+    color:white; font-weight: bold; text-shadow: 0 0 5px black, 0 0 2px black, 0 0 1px black, 0 0 8px black; font-size: 33px;margin-bottom: 30px;
+}
+.ev-petit{
+    margin: 15px;height: 380px;
+    display: flex; flex-direction: column;justify-content: space-between;
+
+}
+.ev-petit div.ht{
+    background-color: orange;
+    height: 300px; width: 260px;
+}
+.ev-petit div.legende{
+    border-top: 2px grey solid;
+    height: 70px;width: 100%;font-weight: bold;
+    display: flex;align-items:center; justify-content: space-between;
+}
+.container-deadline button{
+        background-color:rgb(245, 58, 58);
+        color: white;
+        text-transform: uppercase;
+        border: none;
+        font-size: 15px;
+        padding: 10px 20px;
+        margin-top:0;
+        font-weight: bold; 
+    }

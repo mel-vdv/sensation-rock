@@ -100,7 +100,9 @@ const GetEv = () => {
                 <td>
                   <button onClick={() => supprimerEvent(x['_id'],x.intitulé)}>Supprimer l'évènement {x.intitulé}</button>
                   <button onClick={() => modifierEvent(x)}>Modifier l'évènement {x.intitulé}</button>
-                  <button onClick={()=> openImagePub(x['_id'],x.intitulé,'affiches')}>Modifier l'image de l'affiche de l'évènement {x.intitulé}</button>
+                  <button onClick={()=> openImagePub(x['_id'],x.intitulé,'affiches/grand')}>Modifier l'image de l'affiche grand format de l'évènement {x.intitulé} largeur 1300 hauteur 540</button>
+                  <button onClick={()=> openImagePub(x['_id'],x.intitulé,'affiches/moyen')}>Modifier l'image de l'affiche moyen format de l'évènement {x.intitulé} largeur 500 hauteur 380</button>
+                  <button onClick={()=> openImagePub(x['_id'],x.intitulé,'affiches/petit')}>Modifier l'image de l'affiche petit format de l'évènement {x.intitulé} largeur 260 hauteur 300</button>
                   <button onClick={()=> openImagePub(x['_id'],x.intitulé,'publicites')}>Modifier l'image de la publicité du quizz {x.intitulé}</button>
                 </td>
               </tr>

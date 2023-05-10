@@ -1,0 +1,8 @@
+.container-footer{
+    height: 60px;
+    width: min(1000px, 70vw);margin: auto;
+    border-top: 1px rgb(222, 222, 222) solid;
+    color:rgb(100,100,100);
+    font-size: 12px;
+    display: flex;align-items: center; justify-content: center;
+}

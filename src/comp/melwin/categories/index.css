@@ -1,0 +1,30 @@
+.container-categ{ width: min(90vw,1100px);
+    margin: auto;
+}
+.liste{
+    height: 80px; width: 100%;
+    display: flex;align-items: center;justify-content: space-around;
+    font-size: 15px;
+}
+.cases{
+    text-transform: uppercase;font-size: 25px;
+    color: white;text-shadow:0 0 20px black, 0 0 10px black,0 0 5px black, 0 0 2px black;
+    display: flex; flex-direction: row; flex-wrap: wrap;justify-content: center;
+    width: 100%;
+}
+.cases>div{
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgb(30,30,30);
+    height: 240px; width: 320px;
+    margin: 15px;
+    display: flex; align-items: center; justify-content: center;flex-direction: column;
+}
+.container-categ button{
+    background-color:rgb(245, 58, 58);
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    font-size: 13px;
+    padding: 10px 20px;
+    margin-top: 50px;
+}

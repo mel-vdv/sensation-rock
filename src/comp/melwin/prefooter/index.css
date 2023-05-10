@@ -1,0 +1,52 @@
+.prefooter{
+    height: 350px; 
+    width: min(90vw,1300px);margin: auto;
+    border-top: rgb(222,222,222) solid 2px;
+    display: flex; justify-content: center;
+}
+.prefooter .g{
+    font-size: 13px;
+    padding:50px;
+    box-sizing: border-box;
+width: 300px;
+}
+.prefooter .d{
+    width: 700px;height: 100%;
+}
+.prefooter .melw{
+    color: red;text-align: center;
+    font-weight: bolder;
+    font-size: 30px;margin-bottom: 20px;
+}
+.prefooter .d .h{
+    display: flex;align-items: center;
+height: 30%;
+border-bottom: 1px rgb(222,222,222)solid;
+}
+.prefooter .d .h div{
+     display: flex; align-items: center;
+    width: 50%;height: 45%;
+}
+.x{font-size: 20px;text-transform: uppercase;}
+.submit{
+    background-color: rgba(222,222,222,.8);
+}
+.prefooter .d .b{
+    height: 70%;
+}
+.submit input{
+    width: 80%;border: none;background-color: rgba(222,222,222,.8);
+    padding-left:20px ;
+}
+.submit button{
+    height: 100%; background-color: rgb(234, 50, 50);color: white;
+    display: flex;align-items: center; justify-content: center; border: none; width: 20%;
+}
+.infos div{
+    margin-top: 20px;
+width: 100%;
+}
+.infos img{
+    max-height: 30px;
+    max-width: 30px;
+}

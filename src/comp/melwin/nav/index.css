@@ -1,0 +1,26 @@
+.container-nav{
+    font-size: 16px;
+    margin: auto;
+    width: min(90vw, 1300px);
+    background-color: rgb(30,30,30);
+    color: white;
+    text-transform: uppercase;
+    display: flex;justify-content: space-between;
+    height: 70px;
+}
+.container-nav div{
+    padding: 0 10px 0 10px ;
+    width: auto;
+    height: 100%;
+    box-sizing: border-box;
+    border-bottom: 7px red solid;
+    margin-left:30px;
+    display: flex; align-items: center; justify-content: center;
+}
+.container-nav div.rouge{
+    background-color: red;
+    padding: 0 10px 0 10px;
+}
+img{
+    height: 50%;margin-right: 10px;
+}
