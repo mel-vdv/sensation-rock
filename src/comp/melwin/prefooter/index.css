@@ -35,7 +35,7 @@ border-bottom: 1px rgb(222,222,222)solid;
     height: 70%;
 }
 .submit input{
-    width: 80%;border: none;background-color: rgba(222,222,222,.8);
+    width: 80%;border: none;background-color: rgba(0,0,0,0);
     padding-left:20px ;
 }
 .submit button{

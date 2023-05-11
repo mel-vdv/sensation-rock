@@ -6,7 +6,7 @@ import tel from './images/tel.png';
 
 const Prefooter = () => {
   return (
-    <div className='prefooter'>
+    <div className='prefooter' id='bibi'>
         <div className='g'>
             <div className='melw'>MELWIN</div>
             <div>

@@ -25,6 +25,9 @@ const ModifEv = ({ concours }) => {
         <label htmlFor='intitule'>Intitulé </label>
         <input id='intitule' type='text' value={evMod.intitulé} onChange={(e) => setEvMod({ ...evMod, intitulé: e.target.value })} />
 
+        <label htmlFor='gain'>Accroche du gain</label>
+        <input id='gain' type='text' value={evMod.gain} onChange={(e) => setEvMod({ ...evMod,gain : e.target.value })} />
+
         <label htmlFor='descr'>Description</label>
         <textarea id='descr' value={evMod.description} onChange={(e) => setEvMod({ ...evMod, description: e.target.value })}></textarea>
 

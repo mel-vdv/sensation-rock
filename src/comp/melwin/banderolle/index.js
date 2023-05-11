@@ -2,41 +2,34 @@ import React, { useState } from 'react';
 import './index.css';
 import gauche from './images/gauche.png';
 import droite from './images/droite.png';
+import { useSelector } from 'react-redux';
 
 const Banderolle = () => {
 
-  const titres = ['eurockéennes', 'framboises frivoles', 'bibi and co'];
-  const cadeaux = ['gagnez des pass 3 jours', 'concert offert', 'cadeautjes'];
-
-  const urlImage = 
-  'https://firebasestorage.googleapis.com/v0/b/igra-835e2.appspot.com/o/affiches%2Fgrand%2F643843c01a6de2dbea0632dd?alt=media'
-
+  const stateConcours = useSelector(state=>({...state.concoursRed}));
+  //---------------------------
   const [indice, setIndice] = useState(0);
 
-  const suivant = (n) => {
-
-    setIndice(indice + n);
-
-  }
-
-
-
+  const suivant = (n) => setIndice(indice + n);
+  
+//----------------------------
   return (
-    <div className='container-banderolle' style={{backgroundImage:`url(${urlImage})`}}>
+    <> {(stateConcours.items.length>0 && !stateConcours.isLoading) &&
+    <div className='container-banderolle' id='accueil' style={{backgroundImage:`url(https://firebasestorage.googleapis.com/v0/b/igra-835e2.appspot.com/o/affiches%2Fgrand%2F${stateConcours.items[indice]['_id']}?alt=media)`}}>
       <div className='fleche'>
        {indice>0 &&<img alt='précédent' src={gauche} onClick={() => suivant(-1)} />} 
       </div>
       <div className='titre'>
-        <div className='grand'>{titres[indice]}</div>
+        <div className='grand'>{stateConcours.items[indice].intitulé}</div>
         <div className='petit'>-----2023-----</div>
-        <div className='moyen'>{cadeaux[indice]}</div>
+        <div className='moyen'>{stateConcours.items[indice].gain}</div>
       </div>
       <div className='fleche'>
-        {indice < titres.length-1 && <img alt='suivant' src={droite} onClick={() => suivant(1)} />}
-       
+        {indice < stateConcours.items.length-1 && <img alt='suivant' src={droite} onClick={() => suivant(1)} />}
       </div>
-
-    </div>
+    </div>}
+    </>
+   
   )
 }
 

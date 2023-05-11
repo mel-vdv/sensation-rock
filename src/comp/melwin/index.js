@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './header'
 import Nav from './nav'
 import Banderolle from './banderolle'
@@ -7,18 +7,35 @@ import Deadline from './deadline'
 import Nouveaux from './nouveaux'
 import Footer from './footer'
 import Prefooter from './prefooter'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchConcours } from '../../lib/redux/actions'
 
 const Home = () => {
+
+  const dispatch = useDispatch();
+  const stateConcours = useSelector(state => ({ ...state.concoursRed }));
+  //----------------------------------------------
+  useEffect(() => {
+    dispatch(fetchConcours());
+  }, []);
+  //----------------------------------------------
   return (
-    <>
-    <Header/>
-    <Nav/>
-    <Banderolle/>
-    <Categories/>
-    <Deadline/>
-    <Nouveaux/>
-    <Prefooter/>
-    <Footer/>
+    <>{
+      stateConcours.isLoading && <div>isLoading...</div>
+    }
+      {
+        (!stateConcours.isLoading && !!stateConcours.items) &&
+        <>    
+          <Header />
+          <Nav />
+          <Banderolle />
+          <Categories />
+          <Nouveaux />
+          <Deadline />
+          <Prefooter />
+          <Footer />
+        </>
+      }
     </>
   )
 }

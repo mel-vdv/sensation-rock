@@ -45,6 +45,7 @@ const GetEv = () => {
           <thead>
             <tr>
               <th>Intitulé</th>
+              <th>Gain</th>
               <th>Description</th>
               <th>Date</th>
               <th>Lieu</th>
@@ -72,6 +73,7 @@ const GetEv = () => {
             {stateEvents.items.map((x, i) => (
               <tr key={i}>
                 <td>{x.intitulé}</td>
+                <td>{x.gain}</td>
                 <td>{x.description}</td>
                 <td>{x.quand}</td>
                 <td>{x.lieu}</td>

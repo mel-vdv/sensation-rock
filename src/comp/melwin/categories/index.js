@@ -9,7 +9,7 @@ import com from'./images/com.png';
 
 const Categories = () => {
   return (
-    <div className='container-categ'>
+    <div className='container-categ' id='categ'>
       <div className='liste'>
         <div>Musique</div>
         <div>Théâtre</div>

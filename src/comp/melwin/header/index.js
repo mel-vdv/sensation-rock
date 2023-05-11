@@ -5,18 +5,20 @@ import twitter from './images/twitter.png';
 import insta from './images/insta.png';
 import loupe from './images/loupe.png';
 import select from './images/loupe.png';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
 
   const [choixCategVis, setChoixCategVis] = useState(false);
   const [choixCateg, setChoixCateg] = useState('tous');
+  const nav = useNavigate();
 
   return (
-    <div className='container'>
+    <div className='container-header'>
       <div className='haut'>
-        <div>Devenir annonceur</div>
+        <div onClick={()=>nav('/annonceur')}>Devenir annonceur</div>
         <div>100% gratuit</div>
-        <div>Nous contacter</div>
+        <div onClick={()=>nav('/contact')}>Nous contacter</div>
       </div>
 
       <div className='bas'>

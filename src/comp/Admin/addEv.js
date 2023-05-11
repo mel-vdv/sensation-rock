@@ -6,6 +6,7 @@ const AddEv = () => {
 
     const initialEv = {
         intitulé: "",
+        gain:"",
         description: "",
         quand: undefined,
         lieu: '',
@@ -55,6 +56,9 @@ const AddEv = () => {
 
                 <label for="intitule">Intitulé de l'évènement</label>
                 <input id='intitule' type='text' onChange={(e) => setNewEv({ ...newEv, intitulé: e.target.value })} value={newEv.intitulé} required/>
+
+                <label for="gain">Accroche sur le gain</label>
+                <input id='gain' type='text' onChange={(e) => setNewEv({ ...newEv, gain: e.target.value })} value={newEv.gain} required/>
 
                 <label for="descr">Description</label>
                 <textarea id='descr' value={newEv.description} onChange={(e) => setNewEv({ ...newEv, description: e.target.value })} required></textarea>

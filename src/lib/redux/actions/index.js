@@ -1,6 +1,8 @@
 import {
     getConcours, getQuestions, postQuestion, getAllUsers, postConcours,
-    deleteQuest, updateQuestion, updateConcours, deleteConcours, getUserId, postUser, getEventId, getListeQ, getListeQPerso, getListeQSpe, updateScore, getScore, initScore, getPodium
+    deleteQuest, updateQuestion, updateConcours, deleteConcours, getUserId, postUser,
+     getEventId, getListeQ, getListeQPerso, getListeQSpe, updateScore, getScore, initScore, getPodium, postEmail,
+      updateUser
 } from "../../service";
 import {
     GET_CONCOURS_FAILURE, GET_CONCOURS_PENDING, GET_CONCOURS_SUCCESS,
@@ -72,6 +74,14 @@ export const fetchAllUsers = () => {
         getAllUsers()
             .then((data) => dispatch(getAllUsersSuccess(data)))
             .catch((err) => dispatch(getAllUsersError(err)))
+    }
+}
+export function modifUser(idu, obj) {
+    console.log('etape2 ,', idu,obj);
+    return async function () {
+        updateUser(idu, obj)
+            .then(() => console.log('modif user success'))
+            .catch(err => console.error(err.message));
     }
 }
 //////////////////////////////////////////////////////////////////////////////// CONCOURS
@@ -413,6 +423,15 @@ export function visiblePodium(ouinon) {
 export function visibleImgPub(ouinon) {
     return {
         type: VIS_IMAGE_PUB, payload: { ouinon }
+    }
+}
+//-------------------------------MESSAGES
+
+export function addEmail(newMail) {
+    return async function () {
+        postEmail(newMail)
+            .then(() => console.log('ajout email success'))
+            .catch(err => console.error(err.message));
     }
 }
 

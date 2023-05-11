@@ -45,10 +45,10 @@ const Event = () => {
   return (
     <div className='event'>
 
-      <button onClick={()=>nav('/events')}>RETOUR A LA LISTE DES EVENEMENTS</button>
+      <button onClick={()=>nav('/')}>RETOUR A LA LISTE DES EVENEMENTS</button>
 
       event :
-      {(!!stateEvent.item && !stateEvent.isLoading) &&
+      {(!!stateEvent.item && !stateEvent.isLoading && !stateUser.isLoading && !!stateUser.item) &&
         <div>
           <ul>
             <img src={`https://firebasestorage.googleapis.com/v0/b/igra-835e2.appspot.com/o/affiches%2F${stateEvent.item['_id']}?alt=media`} alt='affiche'/>

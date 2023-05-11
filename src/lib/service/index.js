@@ -45,6 +45,12 @@ export const getAllUsers = () => {
             .catch(err => console.error(err.message));
     })
 
+}//------------
+export const updateUser = (idU,objet)=>{
+    axios.put('http://localhost:5000/api/user/modif/'+idU,objet) 
+    .then(() => console.log('ok,user modifié'))
+    .catch(err => console.error(err.message)); 
+
 }
 //-----------------------   podium
 export const getPodium = (idU,idEv)=>{
@@ -259,7 +265,12 @@ export const updateReglages = (reglModif) => {
         .catch(err => console.log('pb', err));
 
 }
-
+//---------------------------- envoi messages
+export const postEmail=(email)=>{
+    axios.post('http://localhost:5000/api/msg/add', email)
+    .then(() => console.log('ok, msg ajouté'))
+    .catch(err => console.error(err.message));
+}
 
 
 
