@@ -18,6 +18,7 @@ export function getUserIdPending() {
     }
 }
 export function getUserIdSuccess(data) {
+    localStorage.setItem('username',data.pseudo);
     return {
         type: GET_USER_SUCCESS,
         payload: { data }

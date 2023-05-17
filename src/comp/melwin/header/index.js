@@ -24,7 +24,6 @@ const Header = () => {
       <div className='bas'>
         <div className='melwin'>MELWIN</div>
         <div className='rech'>
-          <div>Rechercher</div>
           <div className='defilement'>
             <button className='invis' onClick={()=>setChoixCateg('tous')}>Toutes les catégories{!choixCategVis && <img onClick={()=>setChoixCategVis(true)} alt='bouton choix catégories' src={select} />}  </button>
             {choixCategVis &&

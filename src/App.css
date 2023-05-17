@@ -1,18 +1,4 @@
-.question{
-  background-color: pink;
-  margin: 2vh;
-}
-.question div{
 
-  margin: 4px;
-  width: 300px;
-}
-.red{
-  background-color: red; color: white;
-}
-.green{
-  background-color: green; color: white;
-}
 .addQ, .modifQ, .addEv,.modifEv{
   position: fixed; top:0; left:0; width: 100vw; height: 100vh;
   background-color: pink;
@@ -33,11 +19,6 @@ td{
   color: white; font-weight: bold;
   background-color: gray;
 }
-.pub{
-  background-color: red;
-  height: 200px;width: 200px;
-}
-
 button:focus{
   background-color: red;
 }

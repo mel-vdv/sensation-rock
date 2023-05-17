@@ -1,5 +1,9 @@
+#mobile{
+display: none;
+}
 .container-banderolle{
-    height: 500px;width: min(90vw,1300px);margin: auto;
+    height: 500px;
+    width: 1301px;margin: auto;
     color: white; text-transform: uppercase;
     display: flex; align-items:center; justify-content: space-between;
     background-size: cover;
@@ -10,7 +14,7 @@
 }
 .titre{
     display: flex;
-    flex-direction: column;
+    flex-direction: column;text-align: center;
     align-items: center; justify-content: center;
 }
 .fleche img{
@@ -23,11 +27,22 @@
     text-shadow: 0 0 10px black;
 }
 .grand{
-    font-size: 55px;font-weight: bolder;
+    font-weight: bolder;
+    font-size: min(55px,8vw);
 }
 .moyen{
-font-size: 40px;
+font-size: min(40px,5vw);
 }
 .petit{
-    font-size: 30px;
+    font-size: min(30px,4vw);
+}
+@media screen and (max-width: 1300px){
+    .container-banderolle{
+        height: 50vw;width: 100vw;
+        background-size: contain;
+        background-repeat: no-repeat;
+        font-size: 10px;
+    }
+    #mobile{display: flex;}
+    #bureau{display: none;}
 }

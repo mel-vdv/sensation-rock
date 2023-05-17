@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
+import './index.css';
 import { useDispatch, useSelector } from 'react-redux'
 import ScoreUser from './scoreUser';
 import Question from './Question';
-import Timer from './Timer';
 import Pub from './Pub';
 import { fetchPodium, visiblePodium } from '../../lib/redux/actions';
 import Podium from './Podium';
@@ -16,24 +16,22 @@ const Quizz = () => {
   const stateListeQspe = useSelector(state => ({ ...state.listeQspeRed }));
   const stateScore = useSelector(state => ({ ...state.scoreRed }));
   const stateVis = useSelector(state => ({ ...state.visibleRed }));
-  const statePodium= useSelector(state=> ({...state.podiumRed}));
+  const statePodium = useSelector(state => ({ ...state.podiumRed }));
 
 
 
   const dispatch = useDispatch();
   //---------------------------------------------
-  const openPodium =()=>{
+  const openPodium = () => {
     dispatch(fetchPodium(stateUser.item['_id'], stateEvent.item['_id']));
     dispatch(visiblePodium(true));
   }
-  const closePodium =()=>{
+  const closePodium = () => {
     dispatch(visiblePodium(false));
   }
   //---------------------------------------------
   return (
     <div className='quizz'>
-
-
       {(stateListeQ.isLoading ||
         stateListeQperso.isLoading ||
         stateListeQspe.isLoading
@@ -51,42 +49,37 @@ const Quizz = () => {
         !!stateEvent.item
       ) &&
         <>
-          <h1>quizz :</h1>
-          <p> {stateListeQ.items.length} questions générales</p>
-          <ul>
-            {stateListeQ.items.map((e, i) => (
-              <li key={i}>{e.Question}</li>
-            ))}
-          </ul>
-          <p>{stateListeQperso.items.length} questions liées aux gouts perso</p>
-          <ul>
-            {stateListeQperso.items.map((e, i) => (
-              <li key={i}>{e.Question}</li>
-            ))}
-          </ul>
+          <div className='titre'>{stateEvent.item.intitulé}</div>
 
-          <p>{stateListeQspe.items.length} questions spécifiques de l'évènement </p>
-          <ul>
-            {stateListeQspe.items.map((e, i) => (
-              <li key={i}>{e.Question}</li>
-            ))}
-          </ul>
+          <div className='infos'>
+            <div className='pseudo'>{stateUser.item.pseudo}</div>
+            <div className='score-user'><ScoreUser /></div>
+          </div>
 
-          <Timer />
-
-          {!stateVis.pub &&
+          <div className='question'> {!stateVis.pub && !stateVis.podium &&
             <Question liste={stateListeQ.items.concat(stateListeQspe.items, stateListeQperso.items)} />
           }
+          </div>
+
 
           {stateVis.pub &&
-            <Pub />
+            <div className='pub'>
+              <Pub />  </div>
           }
 
-          <ScoreUser />
 
-          {!stateVis.podium &&<button onClick={()=>openPodium()}>VOIR LE PODIUM</button>}
-          {stateVis.podium &&<button onClick={()=>closePodium()}>FERMER</button>}
-          {(stateVis.podium && !statePodium.isLoading && !!statePodium.items) && <Podium/>}
+          <div className='bas'>
+            <button>Pause</button>
+
+            {!stateVis.podium && <button onClick={() => openPodium()}>VOIR LE PODIUM</button>}
+
+            {stateVis.podium &&
+              <div className='podium'>
+                <button onClick={() => closePodium()}>FERMER</button>
+                {(stateVis.podium && !statePodium.isLoading && !!statePodium.items) && <Podium />}
+              </div>}
+
+          </div>
         </>}
 
 

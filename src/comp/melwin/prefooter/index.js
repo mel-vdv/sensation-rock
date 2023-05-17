@@ -6,7 +6,7 @@ import tel from './images/tel.png';
 
 const Prefooter = () => {
   return (
-    <div className='prefooter' id='bibi'>
+    <div className='prefooter'>
         <div className='g'>
             <div className='melw'>MELWIN</div>
             <div>
@@ -25,7 +25,7 @@ const Prefooter = () => {
                 <div className='x'>Nous contacter</div>
                 <div className='infos'>
                     <div>
-                        <img src={localisation} alt='logo localisation'/> 43 avenue de dineur <br/> 75015 PARIS
+                        <img src={localisation} alt='logo localisation'/> 43 avenue de dineur 75015 PARIS
                     </div>
                     <div>
                         <img src={msg} alt='logo email'/> igra-sensationrock@gmail.com

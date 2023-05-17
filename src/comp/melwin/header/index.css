@@ -1,4 +1,4 @@
-.container-header{
+.container-header{z-index: 3;
     background-color: white;
     position: sticky; top:0; left:0;
     width: 100vw;
@@ -6,7 +6,7 @@
 .haut{margin: auto;
     display: flex;
     height: 40px;
-    width:min(90vw, 1300px); 
+    width:min(100vw, 1300px); 
 }
 .haut div{ 
 height: 100%; width: 33.33%;
@@ -16,32 +16,40 @@ text-transform: uppercase;
 }
 .bas{
     margin: auto;
-    width:min(70vw, 1040px); 
-    height: 100px; margin: auto;
-    display: flex;justify-content: space-between;align-items: center;
+    width:min(100vw, 1040px); 
+    height:80px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(2,1fr);
 }
-.bas div{
-    display: flex; align-items: center; justify-content: center;
+.bas div{height:80px;width: 100%;
+    display:flex; align-items: center; justify-content: center;text-align: center;
 }
 .melwin{
     color: red; font-size: 40px; font-weight: bolder;
+    grid-row: 1;grid-column: 1;
 }
-.rech{
-    width: 50%; height: 50%;
+.rech{background-color: blue;
+    width: 100%;height: 100px;overflow: hidden;
+    grid-row: 1;grid-column: 2/4;
     border: 1px gray solid;
 }
 .rech div{
     align-items: center;
 }
 .rech div:first-child{
- width: 50%;height: 50%; border-right: 1px grey solid;
+ width: 80%;height: 100%; border-right: 1px grey solid;
 }
-.rech div:nth-child(2){
-    width: 40%;
-}
+
 .rech div:last-child{
-    width: 10%; height: 100%;
+    width: 20%; height: 100%;
     background-color: red;
+}
+img[alt='bouton rechercher catégories']{
+    height: 70%; width: auto;
+}
+.reseaux{
+    grid-row: 1;grid-column: 4;
 }
 .reseaux div{
     display: flex; align-items: center; justify-content: center;
@@ -55,7 +63,6 @@ text-transform: uppercase;
 }
 .rech div.defilement{
     background-color: white;
-    width: 200px;
     display: flex; flex-direction: column;
 }
 
@@ -64,4 +71,18 @@ button.invis{
     border: none;
     text-transform: uppercase;
     display: flex; align-items: center; justify-content: center;
+}
+@media screen and (max-width:700px){
+    .bas{
+        height: 140px;overflow: hidden;
+    }
+    .bas div.melwin{height: 70px;
+        grid-row: 1;grid-column: 1/3;
+    }
+    .bas div.reseaux{height: 70px;
+        grid-row: 1;grid-column: 3/5;
+    }
+    .bas div.rech{height: 40px;width: 90vw;margin: auto;
+        grid-row: 2;grid-column: 1/5;
+    }
 }

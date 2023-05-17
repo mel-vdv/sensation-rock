@@ -1,5 +1,5 @@
 
-.cadre-nav{
+.cadre-nav{z-index: 3;
     width: 100vw; top:140px; left:0; position: sticky;
 }.container-nav{
     margin: auto;

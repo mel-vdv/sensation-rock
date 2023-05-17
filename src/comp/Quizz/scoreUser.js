@@ -7,17 +7,16 @@ const ScoreUser = () => {
   const stateEvent = useSelector(state=>({...state.eventRed}));
 
   return (
-    <div className='score-user'>
-      {( !!stateScore.item && !stateScore.isLoading )&& 
+    <>
+      {( !!stateScore.item && !stateScore.isLoading  && !!stateEvent.item && !stateEvent.isLoading )&& 
       <>
-      <p> évènement= {stateEvent.item['_id']} {stateScore.item.idEv} </p>
-      <p>Nombre de questions = {stateScore.item.nbQ} </p>
-      <p>Nombre de secondes = {stateScore.item.nbSec} </p>
-      <p>Nombre de points = {stateScore.item.nbPt} </p>
+      <div>{stateScore.item.nbPt} pts</div>
+      <div>{stateScore.item.nbSec} sec</div>
+      <div>{stateScore.item.nbQ} / {stateEvent.item.nbQtot}</div>
       </>
        }
        
-    </div>
+    </>
   )
 }
 

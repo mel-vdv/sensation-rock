@@ -1,0 +1,49 @@
+.container-event{
+    width: min(100vw, 1200px);
+    position: absolute; top:0; left:0;overflow: hidden;
+    height:100vh;display: flex; flex-direction: column;align-items: center; justify-content: space-between;
+    margin: auto;font-size: 20px;
+}
+.affiche{
+    width: 100%;height: 30%;background-color: rgb(50,50,50);
+display: flex; justify-content: center;}
+
+img[alt='affiche']{
+    margin: auto;
+   width:auto; height: 100%;
+}
+.intitulé{
+    display: flex; align-items: center; justify-content: center;
+    height: 10%;width: 100%;
+    text-align: center;font-size: 28px; text-transform: uppercase; 
+    background-color:rgb(50,50,50); color: white; 
+}
+
+.descr{
+    height: 15%;width:85%;margin: auto;
+    overflow-y: scroll;
+    font-size: 20px; color: rgb(50,50,50);
+}
+.infos{ text-align: start;
+height: 15%; width: 85%; margin: auto; }
+.infos div{
+    border: 1px gray solid;border-radius: 5px;
+    padding-left: 15px;box-shadow: 0 0 7px rgba(0,0,0,.4);
+}
+.concours{
+    height: 30%;width: 100%;
+}
+.concours .dates{
+    height: 20%; width: 100%; text-align: center;
+}
+.concours .gain{   text-transform: uppercase; font-weight: bold;text-align: center;
+    font-size: 28px; color: rgb(221, 45, 45);height: 40%;width: 100%;display: flex; align-items: center; justify-content: center;
+    text-align: center; }
+.concours .bouton{ height: 40%;width: 100%;display: flex; align-items: center; justify-content: center;
+    text-align: center;}
+.concours .bouton button{border: none; text-transform: uppercase;
+  font-size: 25px;height: 50%;width: 60%;background-color: rgb(221, 45, 45); color: white; border-radius: 20px;
+}
+button.retour{z-index: 5;
+    position: fixed; top:0; left:0;
+}

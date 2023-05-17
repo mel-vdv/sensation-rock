@@ -5,10 +5,10 @@
     display: flex; justify-content: center;
 }
 .prefooter .g{
-    font-size: 13px;
-    padding:50px;
+    font-size: 15px;
+    padding: 5%;
     box-sizing: border-box;
-width: 300px;
+    width:300px;
 }
 .prefooter .d{
     width: 700px;height: 100%;
@@ -40,13 +40,45 @@ border-bottom: 1px rgb(222,222,222)solid;
 }
 .submit button{
     height: 100%; background-color: rgb(234, 50, 50);color: white;
-    display: flex;align-items: center; justify-content: center; border: none; width: 20%;
+    display: flex;align-items: center; 
+    justify-content: center; border: none; width: 20%;
 }
 .infos div{
-    margin-top: 20px;
+    margin-top: 20px;border: none; box-shadow: none;
 width: 100%;
 }
 .infos img{
     max-height: 30px;
     max-width: 30px;
+}
+
+@media screen and (max-width:600px){
+.prefooter .d .b .infos div{
+    width: 100%;display: flex; align-items:center;margin: 10px;
+}
+.prefooter{ 
+    height: 500px;
+    flex-direction: column;
+}
+.prefooter .g{
+    width: 100%; 
+   height: 35%;
+}
+.prefooter .d{
+    width: 100%; 
+   height: 65%;
+}
+.prefooter .d .h{
+    height: 40%;
+    flex-direction: column;
+}
+.prefooter .d .h div{
+
+    width: 100%;
+    
+}
+.prefooter .d .b{
+    width: 100%;height:60%;
+}
+
 }

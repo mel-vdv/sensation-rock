@@ -25,9 +25,9 @@ const Home = () => {
     }
       {
         (!stateConcours.isLoading && !!stateConcours.items) &&
-        <>    
+         <>{/** <Nav />*/}
           <Header />
-          <Nav />
+          
           <Banderolle />
           <Categories />
           <Nouveaux />

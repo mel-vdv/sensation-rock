@@ -1,0 +1,65 @@
+.quizz{
+    position:absolute; top:0; left:0;
+    height: 100vh;width: 100vw;
+}
+.quizz .titre{
+    height: 15%;width: 100%;  
+    background-color: rgb(50,50,50);color:white;font-size: 30px; font-weight: bolder;text-transform: uppercase;
+}
+.quizz .infos{    font-weight: bold; font-size: 22px;
+    height: 10vh;background-color: white;
+    width: 100%; display: flex; flex-direction: row;align-items: center;justify-content: center;
+}
+.quizz .infos .pseudo{
+
+color: rgb(50,50,50);
+    width: 20%;height: 100%;display: flex; align-items: center; justify-content: center;
+}
+.quizz .infos .score-user{
+width: 80%;
+height:100%;
+display: flex;align-items: center; justify-content: space-around;
+}
+.quizz .infos .score-user div{
+    height:100%;
+    display: flex; align-items: center; justify-content: center;background-color: red;
+}
+.quizz .question{
+    display: flex; flex-direction: column; align-items: center; 
+    height: 65%; width: 100%;
+}
+.quizz .pub, .quizz .podium{z-index: 5;
+   background-color:white; position: absolute; top:0; left:0; width: 100vw;height: 100vh;
+   display: flex; flex-direction: column;align-items: center; justify-content: center;
+}
+.question .time{
+    height: 20%;width: 100%; color:rgb(176, 44, 44); font-weight: bolder; font-size: 25px;display: flex; align-items: center; justify-content: center;
+}
+.question .quest{
+    margin: 20px;
+    padding: 20px;
+    width: 80%;height: auto;  border-radius: 15px; 
+    background-color: rgb(176, 44, 44); color: white; font-size: 22px; text-align: center;display: flex;  align-items: center; justify-content: center;
+    text-transform: uppercase; box-shadow: 0 0 10px rgba(0,0,0,.6);
+}
+button.prop:hover{z-index: 10;
+background-color:rgb(0,0,0,0.1);
+}
+button.prop{
+    margin: 10px;
+    z-index: 10;
+    width: 80%; padding : 20px;
+    color: rgb(30,30,30);background-color: white; box-shadow:  0 0 10px black;border-radius: 15px;
+   font-size: 20px; text-align: center;
+    border: none; 
+}
+.quizz div.bas{
+    display: flex;align-items: center; justify-content: space-around;
+    height: 10%; background-color:rgb(30,30,30); width: 100%;
+}
+.quizz div.bas button{
+    padding: 5px;border:none; background-color: white; border-radius: 10px;display: flex; align-items: center; justify-content: center;
+}
+img[alt='bonne réponse'], img[alt='mauvaise réponse']{
+    height: 60px; width: auto;
+}
