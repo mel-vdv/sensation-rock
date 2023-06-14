@@ -36,12 +36,22 @@ const Pub = () => {
     //-----------------------------------------------
     return (
         <>
+        
+        <img
+             onError = {e => e.target.style.display = 'none'}
+             id='pub' 
+            autoPlay 
+            src={`https://firebasestorage.googleapis.com/v0/b/igra-835e2.appspot.com/o/publicites%2F${stateEvent.item['_id']}?alt=media`} 
+            alt='publicite'/>
+            
+            <video
+             onError = {e => e.target.style.display = 'none'}
+             id='pub' 
+            autoPlay 
+            src={`https://firebasestorage.googleapis.com/v0/b/igra-835e2.appspot.com/o/publicites%2F${stateEvent.item['_id']}?alt=media`} 
+            alt='publicite'/>
 
-            PUBLICITE va s'afficher pendant {stateEvent.item.nbSecPub} sec
-
-            <img src={`https://firebasestorage.googleapis.com/v0/b/igra-835e2.appspot.com/o/publicites%2F${stateEvent.item['_id']}?alt=media`} alt='publicite'/>
-
-            <p>timer : {stateTimer.timer} secondes....</p>
+            <div className='time'>{stateEvent.item.nbSecPub - stateTimer.timer}</div>
         </>
     )
 }

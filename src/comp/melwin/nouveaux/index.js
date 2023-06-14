@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './index.css';
 import gauche from './../categories/images/gauche2.png';
 import droite from './../categories/images/droite2.png';
@@ -9,12 +9,16 @@ import { useNavigate } from 'react-router-dom';
 const Nouveaux = () => {
 
   const stateConcours = useSelector(state => ({ ...state.concoursRed }));
+
+  const lesNouveaux = stateConcours.items.filter(e=>((Date.parse(e.début)> Date.now()-2592000000) && (Date.parse(e.début)< Date.now())));
+
   //-----------------------------------
   const dispatch = useDispatch();
   const nav = useNavigate();
   const jouer = idEv => {
+
     dispatch(fetchEventId(idEv));
-    nav('/event');
+  nav('/event');
   }
   //-----------------------------------
  const ref = useRef();
@@ -38,8 +42,8 @@ const Nouveaux = () => {
       </div>
       <div className='cadre-affiches' ref={ref}>
         <div className='affiches' style={{ left: posX+'px' }}>
-          {stateConcours.items.map(e => (
-            <div className={e.taille<2? 'ev-petit':'ev-grand'} 
+          {lesNouveaux.map((e,i) => (
+            <div key={i} className={e.taille<2? 'ev-petit':'ev-grand'} 
             style={e.taille<2? {}:
             {backgroundImage:`url(https://firebasestorage.googleapis.com/v0/b/igra-835e2.appspot.com/o/affiches%2Fmoyen%2F${e['_id']}?alt=media)`}}>
               {e.taille < 2 && <img

@@ -1,4 +1,4 @@
-import { GET_NEW_USER, GET_USER_ERROR, GET_USER_PENDING, GET_USER_SUCCESS } from "../actions/types"
+import { DECO_USER, GET_NEW_USER, GET_USER_ERROR, GET_USER_PENDING, GET_USER_SUCCESS } from "../actions/types"
 
 const initialState={
     isLoading : false,
@@ -18,6 +18,9 @@ export const userReducer = (state= initialState, action)=>{
         }
         case GET_NEW_USER: return{
             ...state, isLoading:false, item: action.payload.user
+        }
+        case DECO_USER : return {
+            ...state, isLoading:false, item: null
         }
         default: return state;
     }

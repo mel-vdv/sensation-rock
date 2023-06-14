@@ -11,6 +11,7 @@ import { listeQspeReducer } from './reducers/listeQspe';
 import { scoreReducer } from './reducers/score';
 import { timerReducer } from './reducers/timer';
 import { podiumReducer } from './reducers/podium';
+import { themeReducer } from './reducers/theme';
 ///--------------------------------------
 const rootReducer = combineReducers({
     concoursRed : concoursReducer,
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
     visibleRed : visibleReducer,
     scoreRed : scoreReducer,
     timerRed: timerReducer,
-    podiumRed : podiumReducer
+    podiumRed : podiumReducer,
+    themeRed : themeReducer
 })
 ///--------------------------------------
 export const store =  legacy_createStore(rootReducer, applyMiddleware(thunk));

@@ -9,9 +9,10 @@
     width:min(100vw, 1300px); 
 }
 .haut div{ 
+    font-size: min(3.5vw,20px);
 height: 100%; width: 33.33%;
 border: 1px gray solid; box-sizing: border-box;
-display: flex; align-items: center; justify-content: center;
+display: flex; align-items: center; justify-content: center;text-align: center;
 text-transform: uppercase;
 }
 .bas{
@@ -29,24 +30,36 @@ text-transform: uppercase;
     color: red; font-size: 40px; font-weight: bolder;
     grid-row: 1;grid-column: 1;
 }
-.rech{background-color: blue;
-    width: 100%;height: 100px;overflow: hidden;
+.rech{
+    width: 100%;height: 100px;overflow: visible;
     grid-row: 1;grid-column: 2/4;
+    display: flex; align-items: flex-start;justify-content: flex-start;
     border: 1px gray solid;
 }
-.rech div{
-    align-items: center;
+.rech div.defilement { 
+    width: 80%;height:100%;overflow-y: scroll;
+    display: flex; flex-direction: column;align-items: flex-start; justify-content: flex-start;   
 }
-.rech div:first-child{
- width: 80%;height: 100%; border-right: 1px grey solid;
+button.invis{
+    background-color:rgba(0,0,0,0);
+    border: none;
+    text-transform: uppercase;
+}
+.rech div.defilement button{
+    z-index: 10;
+    font-size: 20px; font-weight: 500;
+    width: 100%;text-transform: none;
+}
+.rech div.defilement button.invis:hover{
+   background-color: rgba(0,0,0,.15);
 }
 
-.rech div:last-child{
+.rech div.loupe{
     width: 20%; height: 100%;
     background-color: red;
 }
-img[alt='bouton rechercher catégories']{
-    height: 70%; width: auto;
+img[alt="bouton rechercher catégories"]{
+    height: 60%;
 }
 .reseaux{
     grid-row: 1;grid-column: 4;
@@ -61,16 +74,10 @@ img[alt='bouton rechercher catégories']{
 .reseaux div img{
     height: 50%;margin: auto;
 }
-.rech div.defilement{
-    background-color: white;
-    display: flex; flex-direction: column;
-}
 
-button.invis{
-    background-color:rgba(0,0,0,0);
-    border: none;
-    text-transform: uppercase;
-    display: flex; align-items: center; justify-content: center;
+
+img[alt='bouton choix catégories']{
+    height: 50%;
 }
 @media screen and (max-width:700px){
     .bas{

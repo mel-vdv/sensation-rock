@@ -8,7 +8,7 @@ import Nouveaux from './nouveaux'
 import Footer from './footer'
 import Prefooter from './prefooter'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchConcours } from '../../lib/redux/actions'
+import { fetchConcours} from '../../lib/redux/actions'
 
 const Home = () => {
 
@@ -17,17 +17,19 @@ const Home = () => {
   //----------------------------------------------
   useEffect(() => {
     dispatch(fetchConcours());
-  }, []);
+  }, [dispatch]);
   //----------------------------------------------
   return (
-    <>{
-      stateConcours.isLoading && <div>isLoading...</div>
+    <>
+
+    {
+      (stateConcours.isLoading ) && <div>isLoading...</div>
     }
       {
         (!stateConcours.isLoading && !!stateConcours.items) &&
-         <>{/** <Nav />*/}
+         <>
           <Header />
-          
+          <Nav />
           <Banderolle />
           <Categories />
           <Nouveaux />

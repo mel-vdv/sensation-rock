@@ -2,13 +2,14 @@ import {
     getConcours, getQuestions, postQuestion, getAllUsers, postConcours,
     deleteQuest, updateQuestion, updateConcours, deleteConcours, getUserId, postUser,
      getEventId, getListeQ, getListeQPerso, getListeQSpe, updateScore, getScore, initScore, getPodium, postEmail,
-      updateUser
+      updateUser,
+      postAdresseNL
 } from "../../service";
 import {
     GET_CONCOURS_FAILURE, GET_CONCOURS_PENDING, GET_CONCOURS_SUCCESS,
     GET_QUESTIONS_FAILURE, GET_QUESTIONS_PENDING, GET_QUESTIONS_SUCCESS,
     QUEL_CONCOURS,
-    GET_ALL_USERS_PENDING, GET_ALL_USERS_SUCCESS, GET_ALL_USERS_ERROR, VIS_ADDQ, VIS_MODIFQ, VIS_ADDEV, VIS_MODIFEV, GET_USER_PENDING, GET_USER_SUCCESS, GET_USER_ERROR, VIS_GETEV, VIS_GETQ, VIS_GETUSERS, GET_NEW_USER, GET_EVENT_PENDING, GET_EVENT_SUCCESS, GET_EVENT_ERROR, GET_LISTEQ_PENDING, GET_LISTEQ_SUCCESS, GET_LISTEQ_ERROR, GET_LISTEQ_PERSO_PENDING, GET_LISTEQ_PERSO_SUCCESS, GET_LISTEQ_PERSO_ERROR, GET_LISTEQ_SPE_PENDING, GET_LISTEQ_SPE_SUCCESS, GET_LISTEQ_SPE_ERROR, GET_SCORE_PENDING, GET_SCORE_SUCCESS, GET_SCORE_ERROR, MODIF_SCORE_IMMEDIAT, MODIF_TIMER, STOP_TIMER, VIS_PUB, VIS_PODIUM, GET_PODIUM_PENDING, GET_PODIUM_SUCCESS, GET_PODIUM_ERROR, DELETE_Q, MAJ_CONCOURS, MAJ_Q, VIS_IMAGE_PUB,
+    GET_ALL_USERS_PENDING, GET_ALL_USERS_SUCCESS, GET_ALL_USERS_ERROR, VIS_ADDQ, VIS_MODIFQ, VIS_ADDEV, VIS_MODIFEV, GET_USER_PENDING, GET_USER_SUCCESS, GET_USER_ERROR, VIS_GETEV, VIS_GETQ, VIS_GETUSERS, GET_NEW_USER, GET_EVENT_PENDING, GET_EVENT_SUCCESS, GET_EVENT_ERROR, GET_LISTEQ_PENDING, GET_LISTEQ_SUCCESS, GET_LISTEQ_ERROR, GET_LISTEQ_PERSO_PENDING, GET_LISTEQ_PERSO_SUCCESS, GET_LISTEQ_PERSO_ERROR, GET_LISTEQ_SPE_PENDING, GET_LISTEQ_SPE_SUCCESS, GET_LISTEQ_SPE_ERROR, GET_SCORE_PENDING, GET_SCORE_SUCCESS, GET_SCORE_ERROR, MODIF_SCORE_IMMEDIAT, MODIF_TIMER, STOP_TIMER, VIS_PUB, VIS_PODIUM, GET_PODIUM_PENDING, GET_PODIUM_SUCCESS, GET_PODIUM_ERROR, DELETE_Q, MAJ_CONCOURS, MAJ_Q, VIS_IMAGE_PUB, CHOISIR_THEME, DECO_USER,
 } from "./types";
 
 //////////////////////////////////////////////////////////////////////////////// USER commence un quizz : 
@@ -36,6 +37,11 @@ export function getNewUser(user) {
         payload: { user }
     }
 }
+export function deconnex(){
+    return{
+        type : DECO_USER    
+    }
+}
 export const fetchUserId = (emailUser) => {
     return async function (dispatch) {
         dispatch(getUserIdPending);
@@ -50,6 +56,16 @@ export function addNewUser(newUser) {
     return async function () {
         postUser(newUser)
             .then(() => console.log('ajout user success'))
+            .catch(err => console.error(err.message));
+    }
+}
+//////////////////////////////////////////////////////////////////////////////// abonnetment newsletter :
+
+export function modifListingNL(email) {
+    console.log('ici',email);
+    return async function () {
+        postAdresseNL(email)
+            .then(() => console.log('ajout adresse NL success'))
             .catch(err => console.error(err.message));
     }
 }
@@ -148,6 +164,10 @@ export function modifScore(idu, obj) {
             .then(() => console.log('modif score success'))
             .catch(err => console.error(err.message));
     }
+}
+//----------------------------------------- Thème
+export function choisirTheme(them) {
+    return { type: CHOISIR_THEME, payload: { them } }
 }
 //----------------------------------------- TIMER
 export function modifTimer() {

@@ -3,11 +3,14 @@ import Header from '../melwin/header';
 import Nav from '../melwin/nav';
 import { useDispatch} from 'react-redux';
 import { addEmail } from '../../lib/redux/actions';
+import { useNavigate } from 'react-router-dom';
 
 const Contact = () => {
 
     const [etatEnvoi, setEtatEnvoi] = useState(false);
         const dispatch = useDispatch();
+    //--------------------
+    const nav = useNavigate();
     //--------------------
     const envoiEmail = (ev)=>{
         ev.preventDefault();
@@ -28,6 +31,7 @@ const Contact = () => {
         <>
             <Header/>
             <Nav/>
+            <button onClick={()=>nav('/')}>Retour MElwin</button>
             {!etatEnvoi && 
             <div className='contact'>
                 <form onSubmit={envoiEmail}>

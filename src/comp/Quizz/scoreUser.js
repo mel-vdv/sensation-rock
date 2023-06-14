@@ -12,7 +12,9 @@ const ScoreUser = () => {
       <>
       <div>{stateScore.item.nbPt} pts</div>
       <div>{stateScore.item.nbSec} sec</div>
-      <div>{stateScore.item.nbQ} / {stateEvent.item.nbQtot}</div>
+      {stateScore.item.nbQ <= stateEvent.item.nbQtot &&
+        <div>{stateScore.item.nbQ} / {stateEvent.item.nbQtot}</div>}
+    
       </>
        }
        

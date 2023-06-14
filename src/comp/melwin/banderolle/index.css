@@ -26,14 +26,14 @@ display: none;
 .container-banderolle.titre{
     text-shadow: 0 0 10px black;
 }
-.grand{
+.container-banderolle .grand{
     font-weight: bolder;
     font-size: min(55px,8vw);
 }
-.moyen{
+.container-banderolle .moyen{
 font-size: min(40px,5vw);
 }
-.petit{
+.container-banderolle .petit{
     font-size: min(30px,4vw);
 }
 @media screen and (max-width: 1300px){

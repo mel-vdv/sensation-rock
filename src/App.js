@@ -16,6 +16,7 @@ import Home from './comp/melwin';
 import Annonceur from './comp/annonceur';
 import Compte from './comp/compte/index';
 import Contact from './comp/contact';
+import Theme from './comp/theme';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route  path='/co' element={<Connexion/>}/>
             <Route path= '/inscr' element={<Inscription/>}/>
             <Route path='/events' element={<Events/>}/>
+            <Route path='/theme' element={<Theme/>}/>
             <Route path='/event' element={<Event/>}/>
             <Route path='/quizz' element={<Quizz/>}/>
             <Route path='/admin' element={<Admin/>}/>

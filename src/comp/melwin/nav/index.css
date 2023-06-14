@@ -1,29 +1,66 @@
 
-.cadre-nav{z-index: 3;
-    width: 100vw; top:140px; left:0; position: sticky;
-}.container-nav{
-    margin: auto;
-    width: min(90vw, 1300px);
-    background-color: rgb(30,30,30);                        
-    display: flex;justify-content: space-between;
-    height: 70px;
+.cadre-nav{z-index: 3;height: 70px;
+    width: 100vw;  top:120px; left:0; position: sticky;display: flex;justify-content: center;
 }
-.container-nav button{
-    padding: 0 10px 0 10px ;   font-size: 16px;
-    color: white;
+
+.boite-nav{height: 100%;
+margin: auto; width: 1300px; display: flex;
+}
+.container-nav{ 
+    width:1100px;height: 100%;
+    background-color: rgb(30,30,30);                        
+    display: flex;justify-content: space-around;align-items: center;
+}
+.container-nav button{box-sizing: border-box;
+    padding: 0 10px 0 10px ;   
+    font-size: 16px;
+    color: white;background-color: rgba(0,0,0,0);
     text-transform: uppercase;
     width: auto;
     height: 100%;
-    box-sizing: border-box;
+    margin: 0 10px;
     border:none;
-    border-bottom: 7px red solid;background-color: rgba(0,0,0,0);
-    margin-left:30px;
+    border-bottom: 7px red solid;
+    
     display: flex; align-items: center; justify-content: center;
 }
-.container-nav button.rouge{
-    background-color: red;
+.compte-profil{
+width: 200px;background-color:red;height: 100%;
+} 
+.compte-profil button{display: flex;align-items: center;justify-content: center;
+    height: 100%;width: 100%;
+    font-size: 17px; color:white;
+    background-color: rgba(0,0,0,0);
+    border: none;
     padding: 0 10px 0 10px;
+    box-sizing: border-box;
 }
-img{
-    height: 50%;margin-right: 10px;
+img[alt="profil"]{margin-right: 20px;
+height: 50%; width: auto;
+}
+.hamburger{
+    height: 100%; width: 100%;
+    display: none;
+}
+img[alt='hamburger']{
+height: 60%;
+}
+@media screen and (max-width: 1300px){
+  
+    .boite-nav{
+        height: 65px;
+        width: 100vw;
+    }
+    .container-nav{
+        width: 50%;height: 100%;
+    }
+    .hamburger{
+        display: flex; align-items: center; justify-content: center;
+    }
+    .container-nav button{
+        display: none;
+    }
+    .compte-profil{
+        width: 50%;
+    }
 }

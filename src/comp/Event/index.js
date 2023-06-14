@@ -25,6 +25,10 @@ const Event = () => {
     nav('/quizz');
   }
   //-----------------------------------------------------------
+  const voirResultats = ()=>{
+    alert('finiii');
+  }
+  //-----------------------------------------------------------
   const commencer = () => {
     // On récupère...
     //1. les questions
@@ -78,7 +82,13 @@ const Event = () => {
             <div className='gain'>{stateEvent.item.gain} </div>
             <div className='dates'>En tentant votre chance <br/> du {stateEvent.item.début} au {stateEvent.item.fin}</div>
             <div className='bouton'>
-              {stateUser.item.concours.filter(e => e.idEv === stateEvent.item['_id']).length > 0 && <button onClick={() => reprendre()}> POURSUIVRE </button>}
+              {(stateUser.item.concours.filter(e => e.idEv === stateEvent.item['_id']).length > 0 
+               && (stateUser.item.concours.filter(e=>e.idEv===stateEvent.item['_id'])[0].nbQ < stateEvent.item.nbQtot)
+              )
+              && <button onClick={() => reprendre()}> POURSUIVRE </button>}
+              {((stateUser.item.concours.filter(e => (e.idEv === stateEvent.item['_id'])).length > 0) 
+              && (stateUser.item.concours.filter(e=>e.idEv===stateEvent.item['_id'])[0].nbQ=== stateEvent.item.nbQtot)) 
+              && <button onClick={() => voirResultats()}>Quizz terminé </button>}
               {stateUser.item.concours.filter(e => e.idEv === stateEvent.item['_id']).length === 0 && <button onClick={() => commencer()}> COMMENCER </button>}</div>
           </div>
         </div>

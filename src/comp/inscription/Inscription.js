@@ -19,7 +19,7 @@ const Inscription = () => {
     const inscrire = () => {
         dispatch(addNewUser(newUser));
         dispatch(getNewUser(newUser));
-        nav('/events');
+        nav('/');
     }
     //----------------------------
     const select = (genre) => {

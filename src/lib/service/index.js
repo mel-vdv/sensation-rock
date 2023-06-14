@@ -31,6 +31,12 @@ export const postUser = (data) => {
         .then(() => console.log('ok, new user ajouté'))
         .catch(err => console.error(err.message));
 }
+//----------------------     emails
+export const postAdresseNL = (email) =>{
+    axios.post("http://localhost:5000/api/newsletters/add", {email : email} )
+    .then(() => console.log('ok, new email ajouté'))
+    .catch(err => console.error(err.message));
+}
 //-----------------------   users
 export const getAllUsers = () => {
     return new Promise((resolve, reject) => {
@@ -63,9 +69,15 @@ export const getPodium = (idU,idEv)=>{
             }
             else {
                let bibi =response.data[0].participants
-               .sort((a,b)=> {return b.nbPt-a.nbPt;})
-               .slice(0,2);
-                resolve(bibi); ///////////////////////////// IMPORTANT .DATA
+               .sort((a,b)=> {return b.nbPt-a.nbPt;});
+
+               if(bibi.length>10){
+                console.log('cut');
+               let jojo = bibi.slice(0,10);
+                resolve (jojo);
+               }
+               else{resolve(bibi); }
+            ///////////////////////////// IMPORTANT .DATA
             }
         })
         .catch(err => console.error(err.message));

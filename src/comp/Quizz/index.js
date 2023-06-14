@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import ScoreUser from './scoreUser';
 import Question from './Question';
 import Pub from './Pub';
@@ -18,11 +19,12 @@ const Quizz = () => {
   const stateVis = useSelector(state => ({ ...state.visibleRed }));
   const statePodium = useSelector(state => ({ ...state.podiumRed }));
 
-
+  const nav = useNavigate();
 
   const dispatch = useDispatch();
   //---------------------------------------------
   const openPodium = () => {
+    console.log(stateUser.item['_id'], stateEvent.item['_id']);
     dispatch(fetchPodium(stateUser.item['_id'], stateEvent.item['_id']));
     dispatch(visiblePodium(true));
   }
@@ -50,36 +52,59 @@ const Quizz = () => {
       ) &&
         <>
           <div className='titre'>{stateEvent.item.intitulé}</div>
+          {stateScore.item.nbQ <= stateEvent.item.nbQtot
+            &&
+            <>
 
-          <div className='infos'>
-            <div className='pseudo'>{stateUser.item.pseudo}</div>
-            <div className='score-user'><ScoreUser /></div>
-          </div>
+              <div className='infos'>
+                <div className='pseudo'>{stateUser.item.pseudo}</div>
+                <div className='score-user'><ScoreUser /></div>
+              </div>
 
-          <div className='question'> {!stateVis.pub && !stateVis.podium &&
-            <Question liste={stateListeQ.items.concat(stateListeQspe.items, stateListeQperso.items)} />
+              <div className='question'> {!stateVis.pub && !stateVis.podium &&
+                <Question liste={stateListeQ.items.concat(stateListeQspe.items, stateListeQperso.items)} />
+              }
+              </div>
+
+
+              {stateVis.pub &&
+                <div className='pub'>
+                  <Pub />  </div>
+              }
+
+
+              <div className='bas'>
+                <button onClick={() => nav('/')}>Pause</button>
+
+                {!stateVis.podium && <button onClick={() => openPodium()}>VOIR LE PODIUM</button>}
+
+                {stateVis.podium &&
+                  <div className='podium'>
+                    <button onClick={() => closePodium()}>FERMER</button>
+                    {(stateVis.podium && !statePodium.isLoading && !!statePodium.items) && <Podium />}
+                  </div>}
+
+              </div>
+            </>
           }
-          </div>
+          {
+            stateScore.item.nbQ > stateEvent.item.nbQtot
+            &&
+            <>
+              <div className='infos'>
+                <div className='score-user'><ScoreUser /></div></div>
+              <div>QUIZZ TERMINE</div>
+              {!stateVis.podium && <button onClick={() => openPodium()}>VOIR LE PODIUM</button>}
 
+              {stateVis.podium &&
+                <div className='podium'>
+                  <button onClick={() => closePodium()}>FERMER</button>
+                  {(stateVis.podium && !statePodium.isLoading && !!statePodium.items) && <Podium />}
+                </div>}
 
-          {stateVis.pub &&
-            <div className='pub'>
-              <Pub />  </div>
+            </>
+
           }
-
-
-          <div className='bas'>
-            <button>Pause</button>
-
-            {!stateVis.podium && <button onClick={() => openPodium()}>VOIR LE PODIUM</button>}
-
-            {stateVis.podium &&
-              <div className='podium'>
-                <button onClick={() => closePodium()}>FERMER</button>
-                {(stateVis.podium && !statePodium.isLoading && !!statePodium.items) && <Podium />}
-              </div>}
-
-          </div>
         </>}
 
 

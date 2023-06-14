@@ -73,10 +73,10 @@ const AddEv = () => {
                 <input id='categ' type='text' value={newEv.catégorie} onChange={(e) => setNewEv({ ...newEv, catégorie: e.target.value })}required/>
 
                 <label for="prix"> Prix </label>
-                <input id='prix' type='number' value={newEv.prix} onChange={(e) => setNewEv({ ...newEv, prix: e.target.value })} required/>
+                <input id='prix' type='number' value={newEv.prix} onChange={(e) => setNewEv({ ...newEv, prix: +e.target.value })} required/>
 
                 <label for='taille'>Taille</label>
-                <input id='taille' type='number' value={newEv.taille} onChange={(e) => setNewEv({ ...newEv, taille: e.target.value })} required/>
+                <input id='taille' type='number' value={newEv.taille} onChange={(e) => setNewEv({ ...newEv, taille: +e.target.value })} required/>
 
                 <label for="debut">Date du début du concours </label>
                 <input id="debut" type='date' value={newEv.début} onChange={(e) => setNewEv({ ...newEv, début: e.target.value })} required/>
@@ -85,39 +85,39 @@ const AddEv = () => {
                 <input id="fin" type='date' value={newEv.fin} onChange={(e) => setNewEv({ ...newEv, fin: e.target.value })} required/>
 
                 <label for="nbSessMax">Nombre de sessions maximales</label>
-                <input id='nbSessMax' type='number' value={newEv.nbSessMax} onChange={(e) => setNewEv({ ...newEv, nbSessMax: e.target.value })} required />
+                <input id='nbSessMax' type='number' value={newEv.nbSessMax} onChange={(e) => setNewEv({ ...newEv, nbSessMax: +e.target.value })} required />
 
                 <label for="nbMinParSess" >Nombre de minutes maximum par session </label>
-                <input id="nbMinParSess" type='number' value={newEv.nbMinParSess} onChange={(e) => setNewEv({ ...newEv, nbMinParSess: e.target.value })} required/>
+                <input id="nbMinParSess" type='number' value={newEv.nbMinParSess} onChange={(e) => setNewEv({ ...newEv, nbMinParSess: +e.target.value })} required/>
                 
                 <label for="nbQtot">Nombre total de question </label>
-                <input id="nbQtot" type='number' value={newEv.nbQtot} onChange={(e) => setNewEv({ ...newEv, nbQtot: e.target.value })} required/>
+                <input id="nbQtot" type='number' value={newEv.nbQtot} onChange={(e) => setNewEv({ ...newEv, nbQtot: +e.target.value })} required/>
 
                 <label for="nbQspe">Nombre de questions spécifiques</label> 
-                <input id='nbQspe' type='number' value={newEv.nbQspe} onChange={(e) => setNewEv({ ...newEv, nbQspe: e.target.value })} required/>
+                <input id='nbQspe' type='number' value={newEv.nbQspe} onChange={(e) => setNewEv({ ...newEv, nbQspe:+e.target.value })} required/>
                 
                 <label for="nbQperso" >Nombre de Questions liées aux goûts personnels du joueur </label>
-                <input id='nbQperso' type='number' value={newEv.nbQperso} onChange={(e) => setNewEv({ ...newEv, nbQperso: e.target.value })} required/>
+                <input id='nbQperso' type='number' value={newEv.nbQperso} onChange={(e) => setNewEv({ ...newEv, nbQperso: +e.target.value })} required/>
                 
                 <label for="nbQgen">Nombre de questions générales </label>
-                <input id='nbQgen' type='number' value={newEv.nbQgen} onChange={(e) => setNewEv({ ...newEv, nbQgen: e.target.value })} required/>
+                <input id='nbQgen' type='number' value={newEv.nbQgen} onChange={(e) => setNewEv({ ...newEv, nbQgen: +e.target.value })} required/>
 
                 <label for="nbSecRep1">Nombre de secondes pour répondre à une question de valeur 1</label>
-                <input id='nbSecRep1' type='number' value={newEv.nbSecRep1} onChange={(e) => setNewEv({ ...newEv, nbSecRep1: e.target.value })} required/>
+                <input id='nbSecRep1' type='number' value={newEv.nbSecRep1} onChange={(e) => setNewEv({ ...newEv, nbSecRep1: +e.target.value })} required/>
                 <label for="nbSecRep2">Nombre de secondes pour répondre à une question de valeur 2</label>
-                <input id='nbSecRep2' type='number' value={newEv.nbSecRep1} onChange={(e) => setNewEv({ ...newEv, nbSecRep2: e.target.value })} required/>
+                <input id='nbSecRep2' type='number' value={newEv.nbSecRep1} onChange={(e) => setNewEv({ ...newEv, nbSecRep2: +e.target.value })} required/>
                 <label for="nbSecRep3">Nombre de secondes pour répondre à une question de valeur 3</label>
-                <input id='nbSecRep3' type='number' value={newEv.nbSecRep1} onChange={(e) => setNewEv({ ...newEv, nbSecRep3: e.target.value })} required />
+                <input id='nbSecRep3' type='number' value={newEv.nbSecRep1} onChange={(e) => setNewEv({ ...newEv, nbSecRep3: +e.target.value })} required />
                 <label for="nbSecRep4">Nombre de secondes pour répondre à une question de valeur 4</label>
-                <input id='nbSecRep4' type='number' value={newEv.nbSecRep1} onChange={(e) => setNewEv({ ...newEv, nbSecRep4: e.target.value })} required/>
+                <input id='nbSecRep4' type='number' value={newEv.nbSecRep1} onChange={(e) => setNewEv({ ...newEv, nbSecRep4: +e.target.value })} required/>
                 <label for="nbSecRep5">Nombre de secondes pour répondre à une question de valeur 5</label>
-                <input id='nbSecRep5' type='number' value={newEv.nbSecRep1} onChange={(e) => setNewEv({ ...newEv, nbSecRep5: e.target.value })} required/>
+                <input id='nbSecRep5' type='number' value={newEv.nbSecRep1} onChange={(e) => setNewEv({ ...newEv, nbSecRep5: +e.target.value })} required/>
 
                 <label for="nbSecPub">Nombre de secondes d'affichage de la publicité : </label>
-                <input id="nbSecPub" type='number' value={newEv.nbSecPub} onChange={(e) => setNewEv({ ...newEv, nbSecPub: e.target.value })} required/>
+                <input id="nbSecPub" type='number' value={newEv.nbSecPub} onChange={(e) => setNewEv({ ...newEv, nbSecPub: +e.target.value })} required/>
 
                 <label for="nbQPub">Nombre de questions entre 2 publicités </label>
-                <input id='nbQPub' type='number' value={newEv.nbQPub} onChange={(e) => setNewEv({ ...newEv, nbQPub: e.target.value })} required />
+                <input id='nbQPub' type='number' value={newEv.nbQPub} onChange={(e) => setNewEv({ ...newEv, nbQPub: +e.target.value })} required />
 
                 <button type='submit'>Enregistrer ce nouvel évènement</button>
             </form>

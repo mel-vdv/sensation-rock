@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.css';
 import localisation from './images/localisation.png';
 import msg from './images/msg.png';
 import tel from './images/tel.png';
+import { useDispatch } from 'react-redux';
+import { modifListingNL } from '../../../lib/redux/actions';
 
 const Prefooter = () => {
+
+    const [adresse, setAdresse]= useState('');
+
+    //--------------------------------------------
+    const dispatch = useDispatch();
+    const enregAdress = ()=>{
+        alert('Vous vous êtes abonné avec succès');
+        dispatch(modifListingNL(adresse));  
+        setAdresse('');
+    }
+    //--------------------------------------------
   return (
     <div className='prefooter'>
         <div className='g'>
@@ -17,8 +30,8 @@ const Prefooter = () => {
             <div className='h'>
                 <div className='x'>S'inscrire à la newsletter</div>
                 <div className='submit'>
-                    <input type='text' value='nlfsxdlk'/>
-                    <button>Submit</button>
+                    <input type='text' value={adresse} onChange={(e)=>setAdresse(e.target.value)}/>
+                    <button onClick={enregAdress}>Submit</button>
                 </div>
             </div>
             <div className='b'>

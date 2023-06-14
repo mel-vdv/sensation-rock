@@ -1,4 +1,4 @@
-import { GET_EVENT_ERROR, GET_EVENT_PENDING, GET_EVENT_SUCCESS, MAJ_CONCOURS } from "../actions/types"
+import { GET_EVENT_ERROR, GET_EVENT_PENDING, GET_EVENT_SUCCESS} from "../actions/types"
 
 const initialState={
     isLoading : false,
