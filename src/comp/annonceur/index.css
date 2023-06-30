@@ -1,0 +1,44 @@
+.annonceur{
+    background-color: rgba(0,0,0,.05);
+    width: min(100vw,1300px);
+    min-height: 80vh;
+    margin: auto;
+    padding-top: 50px ;box-sizing: border-box;
+
+}
+.annonceur .demande{
+   display: flex; flex-direction: column; align-items: center;
+}
+.annonceur input[type='email'] ,.annonceur textarea, .annonceur button, .annonceur .message{
+    margin: 20px 0;
+    width: min(90vw, 500px);
+    height: 50px;
+    font-size: 22px;
+    border-radius: 10px;
+    padding: 0 10px;box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(75, 74, 74, 0.3);
+    border: 1px solid rgba(0,0,0,0);
+    background-color: white;
+} 
+
+.annonceur .cocher{
+    width: min(90vw, 500px);
+    display: flex; flex-direction: row; font-size: 22px;
+}
+input[type="checkbox"]{
+    margin-right: 15px; box-sizing: border-box;
+    scale: 1.8;
+}
+.annonceur div.message{
+    text-align: center;
+    height: fit-content;
+    padding: 10px; box-sizing: border-box;
+    color: rgb(7, 174, 7);font-weight: 600;margin: auto;
+    display: flex; align-items: center; justify-content: center;
+}
+#invis{
+    display: none;
+}
+label{
+    display: inline-block;
+}

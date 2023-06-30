@@ -1,9 +1,12 @@
 import {
     getConcours, getQuestions, postQuestion, getAllUsers, postConcours,
     deleteQuest, updateQuestion, updateConcours, deleteConcours, getUserId, postUser,
-     getEventId, getListeQ, getListeQPerso, getListeQSpe, updateScore, getScore, initScore, getPodium, postEmail,
+     getEventId, getListeQ, getListeQPerso, getListeQSpe, updateScore, getScore, initScore, getPodium,
       updateUser,
-      postAdresseNL
+      postAdresseNL,
+      updateParticipants,
+      postDemande,
+      postFormContact
 } from "../../service";
 import {
     GET_CONCOURS_FAILURE, GET_CONCOURS_PENDING, GET_CONCOURS_SUCCESS,
@@ -161,6 +164,14 @@ export const fetchScore = (idu, idev) => {
 export function modifScore(idu, obj) {
     return async function () {
         updateScore(idu, obj)
+            .then(() => console.log('modif score success'))
+            .catch(err => console.error(err.message));
+    }
+}
+export function modifParticipants(idev,idu,n) {
+    console.log('etape 1 actions', idev,idu,n);
+    return async function () {
+        updateParticipants(idev,idu,n)
             .then(() => console.log('modif score success'))
             .catch(err => console.error(err.message));
     }
@@ -447,12 +458,18 @@ export function visibleImgPub(ouinon) {
     }
 }
 //-------------------------------MESSAGES
-
-export function addEmail(newMail) {
+// page contact
+export function addFormContact(newForm) {
     return async function () {
-        postEmail(newMail)
+        postFormContact(newForm)
             .then(() => console.log('ajout email success'))
             .catch(err => console.error(err.message));
+    }
+}
+// page annonceur demande info
+export function addDemande(newMail) {
+    return async function () {
+        postDemande(newMail);
     }
 }
 

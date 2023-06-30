@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { modifScore, modifScoreImmediat, modifTimer, visiblePub } from '../../lib/redux/actions';
+import { modifParticipants, modifScore, modifScoreImmediat, modifTimer, visiblePub } from '../../lib/redux/actions';
 import { stopTimer } from '../../lib/redux/actions';
 import vrai from './images/vrai.png';
 import faux from './images/faux.png';
@@ -44,6 +44,7 @@ const Question = ({ liste }) => {
       nbSec: stateScore.item.nbSec + stateTimer.timer
     }
 
+    if(n>0){dispatch(modifParticipants(stateEvent.item._id , stateUser.item._id , n));}
     dispatch(stopTimer());
     dispatch(modifScoreImmediat(obj));
     dispatch(modifScore(stateUser.item['_id'], obj));

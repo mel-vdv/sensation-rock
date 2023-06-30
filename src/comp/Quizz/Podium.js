@@ -11,7 +11,7 @@ const Podium = () => {
     { !statePodium.isLoading &&  statePodium.items.length>0 &&<>
     <ul>
       { statePodium.items.map((e,i)=><li key={i}>
-       {i+1}/ {e.pseudo} : {e.nbPt} points, {e.nbQ} questions, {e.nbSec} secondes
+       {i+1}/ {e.pseudo} : {e.nbPt} points
       </li>)}
     </ul>
    

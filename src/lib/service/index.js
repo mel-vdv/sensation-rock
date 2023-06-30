@@ -112,7 +112,18 @@ export const updateScore = (idU,obj)=>{
     .then(() => console.log('ok,score modifié'))
     .catch(err => console.error(err.message)); 
 
+   
 }
+//UPDATE PARTICIPANTS DU CONCOURS : incrementer le score
+export const updateParticipants = (idev,idu,n)=>{
+    console.log('etape 2 service', idev,idu,n);
+    axios.put(`http://localhost:5000/api/concours/modif/participants/${idev}/${idu}`,{n:n}) 
+    .then(() => console.log('ok,concours>participants>nbpt modifié'))
+    .catch(err => console.error(err.message)); 
+
+   
+}
+
 //-----------------------   concours
 
 export const getConcours = () => {
@@ -278,9 +289,14 @@ export const updateReglages = (reglModif) => {
 
 }
 //---------------------------- envoi messages
-export const postEmail=(email)=>{
-    axios.post('http://localhost:5000/api/msg/add', email)
-    .then(() => console.log('ok, msg ajouté'))
+export const postFormContact=(formul)=>{
+    axios.post('http://localhost:5000/api/msg/contact', formul)
+    .then(() => console.log('ok, form contact ajouté et envoyé email'))
+    .catch(err => console.error(err.message));
+}
+export const postDemande=(email)=>{
+    axios.post('http://localhost:5000/api/msg/demande', {email : email})
+    .then(() => console.log('ok, demande infos annonceurs envoyée email'))
     .catch(err => console.error(err.message));
 }
 

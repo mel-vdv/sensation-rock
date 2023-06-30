@@ -1,6 +1,20 @@
 .container-compte{
-    background-color: pink;
-    height: 100vh;
-    width: 100vw;
+    background-color: rgba(0,0,0,.1);
+    min-height: 80vh;
+    width: min(1300px, 100vw);margin: auto;
 display: flex;flex-direction: column;align-items: center;
+}
+label{
+    width: min(500px, 90vw); 
+}
+.container-compte input,.container-compte textarea,.container-compte button{
+    height: 50px; 
+    width: min(500px, 90vw);
+    background-color: white;
+    padding: 0 10px; box-sizing: border-box;
+    margin: 10px 0;
+    font-size: 22px;
+    border: 1px solid grey;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    border-radius: 10px;
 }
