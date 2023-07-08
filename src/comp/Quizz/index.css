@@ -1,21 +1,21 @@
 .quizz{
-    position:absolute; top:0; left:0;
-    height: 100vh;width: 100vw;
+    top:0; left:0; position:absolute;
+    height: 100vh;width: 100vw; margin: auto;
 }
 .quizz .titre{
     height: 15%;width: 100%;  
     background-color: rgb(50,50,50);color:white;font-size: 30px; font-weight: bolder;text-transform: uppercase;
 }
-.quizz .infos{     
+.quizz .infos{ width: min(80%,1200px); margin: auto;    
     height: 10vh;background-color: white;
-    width: 100%; display: flex; flex-direction: row;align-items: center;justify-content: center;
+     display: flex; flex-direction: row;align-items: center;justify-content: center;
 }
 .quizz .infos .pseudo{font-size: 19px;
 color: rgb(50,50,50);
     width: 20%;height: 100%;display: flex; align-items: center; justify-content: center;
 }
-.quizz .infos .score-user{font-weight: bold;font-size: 5vw;
-width: 80%;
+.quizz .infos .score-user{font-weight: bold;font-size:20px;
+
 height:100%;
 display: flex;align-items: center; justify-content: space-around;
 }
@@ -25,7 +25,7 @@ display: flex;align-items: center; justify-content: space-around;
 }
 .quizz .question{
     display: flex; flex-direction: column; align-items: center; 
-    height: 65%; width: 100%;
+    height: 65%; width: min(1300px,100vw);margin: auto;
 }
 .quizz .pub, .quizz .podium{z-index: 5;
    background-color:white; position: absolute; top:0; left:0; width: 100vw;height: 100vh;
@@ -47,7 +47,7 @@ background-color:rgb(0,0,0,0.1);
 button.prop{
     margin: 10px;
     z-index: 10;
-    width: 80%; padding : 20px;
+    width: 80%;height: 60px; padding : 20px;box-sizing: border-box;
     color: rgb(30,30,30);background-color: white; box-shadow:  0 0 10px black;border-radius: 15px;
    font-size: 20px; text-align: center;
     border: none; 
@@ -56,8 +56,8 @@ button.prop{
     display: flex;align-items: center; justify-content: space-around;
     height: 10%; background-color:rgb(30,30,30); width: 100%;
 }
-.quizz div.bas button{
-    padding: 5px;border:none; background-color: white; border-radius: 10px;display: flex; align-items: center; justify-content: center;
+.quizz div.bas button{text-transform: uppercase;font-weight: 600;
+    padding: 10px 10px;border:none; background-color: white; border-radius: 6px;display: flex; align-items: center; justify-content: center;
 }
 img[alt='bonne réponse'], img[alt='mauvaise réponse']{
     height: 60px; width: auto;

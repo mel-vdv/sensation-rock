@@ -6,6 +6,8 @@ import cinema from'./images/cinema.png';
 import gastro from'./images/gastro.png';
 import sport from'./images/sport.png';
 import com from'./images/com.png';
+import jeux from './images/jeux.png';
+import divers from './images/divers.png';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { choisirTheme, fetchUserId } from '../../../lib/redux/actions';
@@ -54,6 +56,7 @@ const Categories = () => {
         <div>Théâtre</div>
         <div>Cinéma</div>
         <div>Restaurants</div>
+        <div>Jeux</div>
         <div>Sport</div>
         <div>Commerces locaux</div>
       </div>
@@ -75,6 +78,10 @@ const Categories = () => {
           <div>Gastronomie</div>
           <button onClick={()=>choisir('gastronomie')}>Participer</button>
         </div>
+        <div style={{backgroundImage:`url(${jeux})`}}>
+          <div>Jeux</div>
+          <button onClick={()=>choisir('jeux')}>Participer</button>
+        </div>
         <div style={{backgroundImage:`url(${sport})`}}>
           <div>Sport</div>
           <button onClick={()=>choisir('sport')}>Participer</button>
@@ -82,6 +89,10 @@ const Categories = () => {
         <div style={{backgroundImage:`url(${com})`}}>
           <div>Commerces locaux</div>
           <button onClick={()=>choisir('commerces locaux')}>Participer</button>
+        </div>
+        <div style={{backgroundImage:`url(${divers})`}}>
+          <div>Divers</div>
+          <button onClick={()=>choisir('divers')}>Participer</button>
         </div>
       </div>
     </div>

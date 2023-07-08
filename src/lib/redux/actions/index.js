@@ -1,18 +1,30 @@
 import {
     getConcours, getQuestions, postQuestion, getAllUsers, postConcours,
     deleteQuest, updateQuestion, updateConcours, deleteConcours, getUserId, postUser,
-     getEventId, getListeQ, getListeQPerso, getListeQSpe, updateScore, getScore, initScore, getPodium,
-      updateUser,
-      postAdresseNL,
-      updateParticipants,
-      postDemande,
-      postFormContact
+    getEventId, getListeQ, getListeQPerso, getListeQSpe, updateScore, getScore, initScore, getPodium,
+    updateUser,
+    postAdresseNL,
+    updateParticipants,
+    postDemande,
+    postFormContact,
+    postQuestionSpe,
+    deleteQuestSpe,
+    updateQuestionSpe,
+    deleteUser,
+    getUserExiste
 } from "../../service";
 import {
     GET_CONCOURS_FAILURE, GET_CONCOURS_PENDING, GET_CONCOURS_SUCCESS,
     GET_QUESTIONS_FAILURE, GET_QUESTIONS_PENDING, GET_QUESTIONS_SUCCESS,
     QUEL_CONCOURS,
-    GET_ALL_USERS_PENDING, GET_ALL_USERS_SUCCESS, GET_ALL_USERS_ERROR, VIS_ADDQ, VIS_MODIFQ, VIS_ADDEV, VIS_MODIFEV, GET_USER_PENDING, GET_USER_SUCCESS, GET_USER_ERROR, VIS_GETEV, VIS_GETQ, VIS_GETUSERS, GET_NEW_USER, GET_EVENT_PENDING, GET_EVENT_SUCCESS, GET_EVENT_ERROR, GET_LISTEQ_PENDING, GET_LISTEQ_SUCCESS, GET_LISTEQ_ERROR, GET_LISTEQ_PERSO_PENDING, GET_LISTEQ_PERSO_SUCCESS, GET_LISTEQ_PERSO_ERROR, GET_LISTEQ_SPE_PENDING, GET_LISTEQ_SPE_SUCCESS, GET_LISTEQ_SPE_ERROR, GET_SCORE_PENDING, GET_SCORE_SUCCESS, GET_SCORE_ERROR, MODIF_SCORE_IMMEDIAT, MODIF_TIMER, STOP_TIMER, VIS_PUB, VIS_PODIUM, GET_PODIUM_PENDING, GET_PODIUM_SUCCESS, GET_PODIUM_ERROR, DELETE_Q, MAJ_CONCOURS, MAJ_Q, VIS_IMAGE_PUB, CHOISIR_THEME, DECO_USER,
+    GET_ALL_USERS_PENDING, GET_ALL_USERS_SUCCESS, GET_ALL_USERS_ERROR,
+    VIS_ADDQ, VIS_MODIFQ, VIS_ADDEV, VIS_MODIFEV,
+    GET_USER_PENDING, GET_USER_SUCCESS, GET_USER_ERROR,
+    VIS_GETEV, VIS_GETQ, VIS_GETUSERS, GET_NEW_USER, GET_EVENT_PENDING, GET_EVENT_SUCCESS,
+    GET_EVENT_ERROR, GET_LISTEQ_PENDING, GET_LISTEQ_SUCCESS, GET_LISTEQ_ERROR, GET_LISTEQ_PERSO_PENDING, GET_LISTEQ_PERSO_SUCCESS,
+    GET_LISTEQ_PERSO_ERROR, GET_LISTEQ_SPE_PENDING, GET_LISTEQ_SPE_SUCCESS, GET_LISTEQ_SPE_ERROR, GET_SCORE_PENDING, GET_SCORE_SUCCESS,
+    GET_SCORE_ERROR, MODIF_SCORE_IMMEDIAT, MODIF_TIMER, STOP_TIMER, VIS_PUB, VIS_PODIUM, GET_PODIUM_PENDING, GET_PODIUM_SUCCESS, GET_PODIUM_ERROR,
+    DELETE_Q, MAJ_CONCOURS, MAJ_Q, VIS_IMAGE_PUB, CHOISIR_THEME, DECO_USER, VIS_GETQSPE, VIS_MODIFQSPE, VIS_ADDQSPE, DELETE_QSPE, MAJ_QSPE, ADD_QSPE, DELETE_USER, GET_USER_EXISTE,
 } from "./types";
 
 //////////////////////////////////////////////////////////////////////////////// USER commence un quizz : 
@@ -22,7 +34,7 @@ export function getUserIdPending() {
     }
 }
 export function getUserIdSuccess(data) {
-    localStorage.setItem('username',data.pseudo);
+    localStorage.setItem('username', data.pseudo);
     return {
         type: GET_USER_SUCCESS,
         payload: { data }
@@ -34,15 +46,37 @@ export function getUserIdError(error) {
         payload: { error }
     }
 }
+
+export function verifUserExiste(tabUsers) {
+    return {
+        type: GET_USER_EXISTE,
+        payload: { tabUsers }
+    }
+}
+export function fetchUserExiste(newUser) {
+    return async function (dispatch) {
+        getUserExiste(newUser.pseudo, newUser.email)
+            .then((tabUsers) => {
+                dispatch(verifUserExiste(tabUsers));
+                if (tabUsers.length < 1) {
+                    console.log('on envoie');
+                    dispatch(addNewUser(newUser));
+                    dispatch(getNewUser(newUser));
+                }
+
+            })
+            .catch(err => console.error(err.message))
+    }
+}
 export function getNewUser(user) {
     return {
         type: GET_NEW_USER,
         payload: { user }
     }
 }
-export function deconnex(){
-    return{
-        type : DECO_USER    
+export function deconnex() {
+    return {
+        type: DECO_USER
     }
 }
 export const fetchUserId = (emailUser) => {
@@ -65,7 +99,7 @@ export function addNewUser(newUser) {
 //////////////////////////////////////////////////////////////////////////////// abonnetment newsletter :
 
 export function modifListingNL(email) {
-    console.log('ici',email);
+    console.log('ici', email);
     return async function () {
         postAdresseNL(email)
             .then(() => console.log('ajout adresse NL success'))
@@ -97,10 +131,22 @@ export const fetchAllUsers = () => {
     }
 }
 export function modifUser(idu, obj) {
-    console.log('etape2 ,', idu,obj);
     return async function () {
         updateUser(idu, obj)
             .then(() => console.log('modif user success'))
+            .catch(err => console.error(err.message));
+    }
+}
+export function supprUserEtat(idu) {
+    return {
+        type: DELETE_USER, payload: { idu }
+    }
+}
+export function supprUser(idu) {
+
+    return async function () {
+        deleteUser(idu)
+            .then(() => console.log('suppr user success'))
             .catch(err => console.error(err.message));
     }
 }
@@ -168,10 +214,10 @@ export function modifScore(idu, obj) {
             .catch(err => console.error(err.message));
     }
 }
-export function modifParticipants(idev,idu,n) {
-    console.log('etape 1 actions', idev,idu,n);
+export function modifParticipants(idev, idu, n) {
+    console.log('etape 1 actions', idev, idu, n);
     return async function () {
-        updateParticipants(idev,idu,n)
+        updateParticipants(idev, idu, n)
             .then(() => console.log('modif score success'))
             .catch(err => console.error(err.message));
     }
@@ -232,11 +278,10 @@ export function modifConcours(evMod) {
             .catch(err => console.error(err.message));
     }
 }
-export function majConcours(ev)
-{
-    return{ type: MAJ_CONCOURS, payload:{ev}}
+export function majConcours(ev) {
+    return { type: MAJ_CONCOURS, payload: { ev } }
 }
-    export function supprConcours(idEv) {
+export function supprConcours(idEv) {
     return async function () {
         deleteConcours(idEv)
             .then(() => console.log('ok event suppr'))
@@ -303,10 +348,24 @@ export function addQuestion(newQuest) {
             .catch(err => console.error(err.message));
     }
 }
+export function addQuestionSpe(newQuest, idEv) {
+    return async function () {
+        postQuestionSpe(newQuest, idEv)
+            .then(() => console.log('ajout q spe success'))
+            .catch(err => console.error(err.message));
+    }
+}
 export function modifQuestion(qMod) {
     return async function () {
         updateQuestion(qMod)
-            .then(() => console.log('ajout success'))
+            .then(() => console.log('update success'))
+            .catch(err => console.error(err.message));
+    }
+}
+export function modifQuestionSpe(qMod, idEv) {
+    return async function () {
+        updateQuestionSpe(qMod, idEv)
+            .then(() => console.log('update success'))
             .catch(err => console.error(err.message));
     }
 }
@@ -315,15 +374,38 @@ export function supprQuestion(idQ) {
         deleteQuest(idQ);
     }
 }
+export function supprQuestionSpe(idQ, idEv) {
+
+    return async function () {
+        deleteQuestSpe(idQ, idEv);
+    }
+}
 export function majStateListeQ(idQ) {
     return {
         type: DELETE_Q,
         payload: { idQ }
     }
 }
-export function majQuestions(quest){
-    return{
-        type : MAJ_Q, payload: {quest}
+export function majStateListeQSpe(idQ) {
+    return {
+        type: DELETE_QSPE,
+        payload: { idQ }
+    }
+}
+export function ajoutQspe(quest) {
+    return {
+        type: ADD_QSPE, payload: { quest }
+    }
+}
+export function majQuestions(quest) {
+    return {
+        type: MAJ_Q, payload: { quest }
+    }
+}
+export function majQuestionsSpe(quest) {
+    return {
+        type: MAJ_QSPE,
+        payload: { quest }
     }
 }
 
@@ -406,6 +488,12 @@ export function visibleAddQ(ouinon) {
         payload: { ouinon }
     }
 }
+export function visibleAddQspe(ouinon) {
+    return {
+        type: VIS_ADDQSPE,
+        payload: { ouinon }
+    }
+}
 export function visibleAddEv(ouinon) {
     return {
         type: VIS_ADDEV,
@@ -415,6 +503,12 @@ export function visibleAddEv(ouinon) {
 export function visibleModifQ(ouinon) {
     return {
         type: VIS_MODIFQ,
+        payload: { ouinon }
+    }
+}
+export function visibleModifQspe(ouinon) {
+    return {
+        type: VIS_MODIFQSPE,
         payload: { ouinon }
     }
 }
@@ -433,6 +527,12 @@ export function visibleGetEv(ouinon) {
 export function visibleGetQ(ouinon) {
     return {
         type: VIS_GETQ,
+        payload: { ouinon }
+    }
+}
+export function visibleGetQspe(ouinon) {
+    return {
+        type: VIS_GETQSPE,
         payload: { ouinon }
     }
 }

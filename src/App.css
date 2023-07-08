@@ -22,3 +22,7 @@ td{
 button:focus{
   background-color: red;
 }
+button.fondJaune{
+  color: red;
+  background-color: yellow;
+}

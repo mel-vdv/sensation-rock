@@ -32,7 +32,7 @@ const [questModif, setQuestModif] = useState(null);
     <div className='getQ'>
     <h2>LES QUESTIONS</h2>
     <button onClick={() => visAddQu()}>Ajouter une nouvelle question</button>
-    {stateQuest.isLoading&& <div> is loading....</div>}
+    {stateQuest.isLoading && <div> is loading....</div>}
     {(!stateQuest.isLoading && !stateQuest.items) &&
     <div>is loading non : pas de items...</div>
     }

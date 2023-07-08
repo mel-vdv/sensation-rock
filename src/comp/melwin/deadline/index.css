@@ -1,7 +1,7 @@
 .container-deadline{
    padding-top: 40px;
     text-transform: uppercase;
-    width: min(100vw, 1100px); margin: auto;
+    width: min(100vw, 1600px); margin: auto;
 }
 .container-deadline div.dessus{
     height: 70px; color: rgb(100, 100, 100);

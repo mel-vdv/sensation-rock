@@ -1,6 +1,6 @@
 .container-footer{
     height: 60px;
-    width: min(1000px, 90vw);margin: auto;
+    width: min(1600px, 90vw);margin: auto;
     border-top: 1px rgb(222, 222, 222) solid;
     color:rgb(100,100,100);
     font-size: 12px;

@@ -1,0 +1,68 @@
+.inscription-container label{
+    display: none;
+}
+.inscription-container .titre{
+    text-align: center;
+    color:white;
+    font-size: 35px;font-weight: bolder; text-transform: uppercase; background-color: rgb(50,50,50);
+    height: 8vh;width: 100vw;
+}
+.inscription-container form{ 
+    min-height: 92vh;
+    background-color: rgba(0,0,0,.05);
+    width: min(100vw, 1300px);
+    margin: auto;
+    padding-top: 50px ;box-sizing: border-box;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;align-items: center;
+}
+.inscription-container input[type='text'],
+.inscription-container input[type='number'],
+.inscription-container input[type='email'],
+ .inscription-container button{
+    margin: 20px 0;
+    width: min(90vw,500px);
+    height: 50px;
+    font-size: 22px;
+    border-radius: 10px;
+    padding: 0 10px;box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(75, 74, 74, 0.3);
+    border: 1px solid rgba(0,0,0,0);
+    background-color: white;color: black;
+} 
+input[type='radio']{
+    font-size: 22px;
+    color: black;
+    accent-color: red;
+    scale: 2;
+    margin: 0 20px;
+}
+.inscription-container form div{
+    width: min(90vw, 500px);
+    display: flex;flex-wrap: wrap;justify-content: center;
+}
+.inscription-container button{
+    width: auto; padding: 0 15px;
+    margin:10px;display: block;
+}
+.inscription-container button[type='submit']{
+    margin-top: 40px;
+}
+
+.inscription-container button.no-select{
+    background-color:  white; color:black; font-weight: normal;
+}
+.inscription-container button:hover,.inscription-container button.select{
+    background-color: red; color: white; font-weight: bold;
+}
+@media screen and (max-width:1300px){
+    .inscription-container input{
+        margin: 5px 0;
+    }
+}
+.inscription-container p.alerte{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}

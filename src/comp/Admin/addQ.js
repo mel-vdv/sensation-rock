@@ -15,6 +15,7 @@ const AddQ = () => {
   //----------------------------------------------
   const ajouterQuestion = () => {
     dispatch(addQuestion(newQ));
+    
     alert('question ajoutée avec succès');
     setNewQ(initialQ);
   }

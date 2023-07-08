@@ -33,12 +33,14 @@ nav('/theme');
         <div className='rech'>
           <div className='defilement'>
             <button className='invis' onClick={()=>choisir('tous')}>Toutes les catégories</button>
-                <button className='invis'onClick={()=>choisir('cinema')} >Cinéma</button>
-                <button className='invis' onClick={()=>choisir('theatre')}>Théâtre</button>
+                <button className='invis'onClick={()=>choisir('cinéma')} >Cinéma</button>
+                <button className='invis' onClick={()=>choisir('théâtre')}>Théâtre</button>
                 <button className='invis' onClick={()=>choisir('musique')}> Musique</button>
-                <button className='invis' onClick={()=>choisir('gastro')}>Gastronomie</button>
+                <button className='invis' onClick={()=>choisir('gastronomie')}>Gastronomie</button>
                 <button className='invis' onClick={()=>choisir('sport')}>Sport</button>
+                <button className='invis' onClick={()=>choisir('jeux')}>Jeux</button>
                 <button className='invis' onClick={()=>choisir('com')}>Commerce local</button>
+                <button className='invis' onClick={()=>choisir('divers')}>Divers</button>
            
 
           </div>

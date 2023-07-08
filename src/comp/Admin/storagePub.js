@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import FbContext from '../../firebase/contexte';
-import { useDispatch} from 'react-redux';
-import { visibleImgPub } from '../../lib/redux/actions';
+import { useDispatch } from 'react-redux';
+import { majConcours, modifConcours, visibleImgPub } from '../../lib/redux/actions';
 
-const StoragePub = ({idEv, intitule,typeImg}) => {
+const StoragePub = ({ idEv, intitule, typeImg }) => {
 
-    const dispatch= useDispatch();
+    const dispatch = useDispatch();
 
     const firebase = useContext(FbContext);
 
@@ -13,15 +13,25 @@ const StoragePub = ({idEv, intitule,typeImg}) => {
         ev.preventDefault();
         const file = ev.target[0].files[0];
         const chemin = `/${typeImg}/${idEv}`;
-        firebase.onEnregistre(chemin,file);
-        dispatch(visibleImgPub(false));    
-        alert(`Nouvelle ${typeImg} enregistrée avec succès pour l'évènement ${intitule}`);     
-       }
+        firebase.onEnregistre(chemin, file);
+        dispatch(visibleImgPub(false));
+        let action = typeImg === "publicites" ? { pub: true, '_id': idEv } : { affiche: true, '_id': idEv  };
+        dispatch(modifConcours(action));
+       // dispatch(majConcours(action));
+        alert(`Nouvelle ${typeImg} enregistrée avec succès pour l'évènement ${intitule}`);
+    }
     return (
         <div>storagePub
             <form onSubmit={goStorage}>
+                {typeImg ==="publicites" && <p>Le format de votre publicités peut être mp4 (video) ou png/jpeg (image)</p>}
+                {typeImg==="affiches/petit" && <p>La taille de votre affiche doit respecter les proportions suivantes : largeur = hauteur</p>}
+                {typeImg==="affiches/moyen" && <p>La taille de votre affiche doit respecter les proportions suivantes : largeur = 2x hauteur</p>}
+                {typeImg==="affiches/grand" && <p>La taille de votre affiche doit respecter les proportions suivantes : largeur = 2.5x hauteur</p>}
+
                 <input type='file' />
-                <button type='submit'>enregistrer cette photo</button>
+                {typeImg==="publicites" && <button type='submit'>Enregistrer cette photo ou vidéo</button>}
+                {typeImg !=="publicites" && <button type='submit'>Enregistrer cette photo</button>}
+                
             </form>
         </div>
     )

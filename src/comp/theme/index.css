@@ -1,53 +1,66 @@
 .theme{
-    top:0; left:0; width: min(1300px,100vw);position:absolute;
+    background-color: rgb(50,50,50);
+    top:0; left:0;  min-height:100vh; position:absolute;
 }
-.theme div.titre{height: 80px; width: 100vw;
+.theme div.titre{
+    height: 80px; width: 100vw;
     text-transform: uppercase; font-size: 27px; font-weight: bold;
-background-color: rgb(50,50,50); color: white; 
+ color: white; 
 }
 .theme div.liste{
-    width: 100vw;height: fit-content;
-    display: flex; flex-direction: column;align-items: center;
+    width: min(1300px,100vw);margin: auto;height: 100%;
+    display: flex; align-items: flex-start; justify-content: flex-start;
+    flex-wrap: wrap;
 }
-.theme div.liste div.event{background-color: pink;
-    overflow: hidden; border-radius: 20px;box-shadow: 0 0 10px rgba(0,0,0,.5); box-sizing: border-box;
-    display: flex;justify-content: space-between;
-    margin-top: 20px; width: 90vw;height:fit-content;
+.theme div.liste div.event{
+    background-color: rgb(185, 56, 56);
+    overflow: hidden; border-radius: 20px;box-shadow: 0 0 10px rgba(255,255,255,.2); box-sizing: border-box;
+    display: flex;  flex-direction: column;  
+    margin: 20px; 
+    width:600px;
+    height:400px;
 }
-.theme .grand{
-    flex-direction: column; 
-    height: 55vw;
-    width: 90vw;
-}
-.theme .petit{
+
+.theme div.liste div.event.petit{
     flex-direction: row;
-    height: 45vw; width: 90vw;
 }
 
 .descr{
- font-weight: bold;
+ font-weight: bold;color: white; font-size: 30px;
 }
 .theme .grand .descr{
     display: flex; align-items: center; justify-content: space-between;
-    width:100%; height: 10vw;
+    width:100%; height: 25%;overflow: hidden;
 }
-.theme .petit .descr{
-    width: 45vw;height: 45vw;
+.theme .grand .illus{
+    width: 100%; height:75%;background-color: orange;
 }
-.theme .petit .illus{
-    height: 45vw; width: 45vw;background-color: blue;
+.theme div.liste div.event.petit .descr{
+    height:100%;width:50%;
 }
-.grand .illus{
-    width:90vw; height: 45vw;background-color: orange;
+.theme div.liste div.event.petit .descr button{
+    height: fit-content;
 }
-.illus img{ height: 100%; width: 100%;}
+.theme div.liste div.event.petit .illus{
+    height:100%; width: 50%;background-color: blue;
+}
+@media screen and (min-width:601px){
+    .theme div.liste div.event.petit{
+       height: 400px; 
+    }
+    .theme div.liste div.event.petit .illus{
+width:400px;
+    }
+}
+.illus img{ height:100% ; width:auto ;}
 .theme button.retour{
     position: fixed;top:0; left:0;
 }
 .theme .event button{
-    background-color: rgb(185, 56, 56);
-    color: white;
-    font-size: 15px;
+    height: 70%;
+    color: rgb(50,50,50);
+    background-color: white;
+    font-size: 20px;
     border-radius: 8px;
     border: none;
     padding: 5px 15px;
@@ -59,4 +72,27 @@ background-color: rgb(50,50,50); color: white;
 .theme .event .descr {
     box-sizing: border-box;
     padding: 0 5%;
+}
+@media screen and (max-width:600px){
+    .theme div.liste{
+    flex-direction: column;align-items: center;
+    }
+    .theme div.liste div.event{
+        width: 90vw;height: 45vw;
+        margin: 0;
+        margin-top: 20px;
+    }
+    .theme div.liste div.event.petit .descr{
+        flex-direction: column;text-align: center;
+        display: flex; align-items: center; justify-content: center;
+    }
+.theme div.liste div.event.grand{
+    height: 60vw;
+}
+    .descr{
+        font-size: 20px;
+    }
+    .theme .event button{
+font-size: 15px; padding: 5px 8px;box-sizing: border-box;
+    }
 }

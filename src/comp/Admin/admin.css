@@ -1,0 +1,21 @@
+th{
+    background-color: pink;
+}
+td>button{
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+button.jaune{
+    background-color: yellow !important;
+}
+span{
+    font-weight: bold;
+}
+td,th{
+max-width: 500px;
+}
+.getEv{
+  font-size: 22px;
+  
+}

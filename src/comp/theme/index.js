@@ -32,14 +32,9 @@ const Theme = () => {
                             <div key={i} className={e.taille > 1 ? 'event grand' : 'event petit'}>
                                 <div className="descr">
                                     <div>{e.intitulé}</div>
-                                
-                                    <button onClick={() => jouer(e['_id'])}>Voir détail</button>
-
-
-                                   
-                                    
-
+                                <button onClick={() => jouer(e['_id'])}>Voir détail</button>
                                 </div>
+
                                 <div className='illus'>
                                 {e.taille > 1 ?
                                         (<img src={`https://firebasestorage.googleapis.com/v0/b/igra-835e2.appspot.com/o/affiches%2Fmoyen%2F${e['_id']}?alt=media`} alt="illus de l'évènement" />)

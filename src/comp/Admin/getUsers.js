@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllUsers, visibleGetUsers } from '../../lib/redux/actions';
+import { fetchAllUsers,  supprUser,  supprUserEtat } from '../../lib/redux/actions';
 
 const GetUsers = () => {
     const dispatch = useDispatch();
@@ -10,6 +10,11 @@ const GetUsers = () => {
         dispatch(fetchAllUsers());
     },[])
     //------------------------------------
+    const supprimerUser= idu =>{
+      dispatch(supprUser(idu));
+      dispatch(supprUserEtat(idu));
+    }
+
     //------------------------------------
   return (
     <div className='getUsers'>
@@ -30,6 +35,7 @@ const GetUsers = () => {
                 <th>Sexe</th>
                 <th>Age</th>
                 <th>Réponse</th>
+                <th>Supprimer</th>
               </tr>
             </thead>
             <tbody>
@@ -44,6 +50,9 @@ const GetUsers = () => {
                   <td>{x.sexe}</td>
                   <td>{x.age}</td>
                   <td>{x.réponse1}</td>
+                  <td>
+                    <button onClick={()=>supprimerUser(x['_id'])}> supprimer l'utilisateur {x.pseudo} </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -12,6 +12,7 @@ import { scoreReducer } from './reducers/score';
 import { timerReducer } from './reducers/timer';
 import { podiumReducer } from './reducers/podium';
 import { themeReducer } from './reducers/theme';
+import { verifInscrReducer } from './reducers/verifInscr';
 ///--------------------------------------
 const rootReducer = combineReducers({
     concoursRed : concoursReducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
     listeQspeRed: listeQspeReducer,
     usersRed : usersReducer,
     userRed : userReducer,
+    verifInscrRed : verifInscrReducer,
     visibleRed : visibleReducer,
     scoreRed : scoreReducer,
     timerRed: timerReducer,

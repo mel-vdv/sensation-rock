@@ -6,7 +6,7 @@
 .haut{margin: auto;
     display: flex;
     height: 40px;
-    width:min(100vw, 1300px); 
+    width:min(100vw, 1600px); 
 }
 .haut div{ 
     font-size: min(3.5vw,20px);

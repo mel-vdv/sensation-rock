@@ -21,7 +21,10 @@ export const GET_LISTEQ_SUCCESS= "GET_LISTEQ_SUCCESS";
 export const GET_LISTEQ_ERROR = "GET_LISTEQ_ERROR";
 //-----------------------------------------------------------------
 export const DELETE_Q = "DELETE_Q";
+export const DELETE_QSPE = "DELETE_QSPE";
 export const MAJ_Q = "MAJ_Q";
+export const MAJ_QSPE = "MAJ_QSPE";
+export const ADD_QSPE = "ADD_QSPE";
 //-----------------------------------------------------------------
 export const GET_LISTEQ_PERSO_PENDING= "GET_LISTEQ_PERSO_PENDING";
 export const GET_LISTEQ_PERSO_SUCCESS= "GET_LISTEQ_PERSO_SUCCESS";
@@ -38,12 +41,14 @@ export const GET_QUESTIONS_FAILURE = "GET_QUESTIONS_FAILURE";
 export const GET_ALL_USERS_PENDING = "GET_ALL_USERS_PENDING";
 export const GET_ALL_USERS_SUCCESS = "GET_ALL_USERS_SUCCESS";
 export const GET_ALL_USERS_ERROR = "GET_ALL_USERS_ERROR";
+export const DELETE_USER = "DELETE_USER";
 //-----------------------------------------------------------------
 export const GET_USER_PENDING = "GET_USER_PENDING";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
 export const GET_USER_ERROR = "GET_USER_ERROR";
 export const GET_NEW_USER = "GET_NEW_USER";
 export const DECO_USER = "DECO_USER";
+export const GET_USER_EXISTE= "GET_USER_EXISTE";
 //-----------------------------------------------------------------
 export const GET_SCORE_PENDING= "GET_SCORE_PENDING";
 export const GET_SCORE_SUCCESS = "GET_SCORE_SUCCESS";
@@ -51,11 +56,14 @@ export const GET_SCORE_ERROR = "GET_SCORE_ERROR";
 export const MODIF_SCORE_IMMEDIAT = "MODIF_SCORE_IMMEDIAT";
 //-----------------------------------------------------------------
 export const VIS_ADDQ= "VIS_ADDQ";
+export const VIS_ADDQSPE= "VIS_ADDQSPE";
 export const VIS_MODIFQ= "VIS_MODIFQ";
+export const VIS_MODIFQSPE= "VIS_MODIFQSPE";
 export const VIS_ADDEV= "VIS_ADDEV";
 export const VIS_MODIFEV= "VIS_MODIFEV";
 export const VIS_GETUSERS= "VIS_GETUSERS";
 export const VIS_GETQ= "VIS_GETQ";
+export const VIS_GETQSPE= "VIS_GETQSPE";
 export const VIS_GETEV= "VIS_GETEV";
 export const VIS_PUB= "VIS_PUB";
 export const VIS_PODIUM= "VIS_PODIUM";

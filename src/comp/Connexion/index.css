@@ -1,4 +1,4 @@
-.contact{ 
+.connexion-container{ 
     min-height: 80vh;
     background-color: rgba(0,0,0,.05);
     width: min(100vw, 1300px);
@@ -9,7 +9,10 @@ form{
     display: flex;
     flex-direction: column;align-items: center;
 }
-.contact input,.contact textarea, .contact button, .contact .message{
+.connexion-container p{
+    text-align: center;
+}
+.connexion-container input, .connexion-container button{
     margin: 20px 0;
     width: min(90vw,500px);
     height: 50px;
@@ -20,23 +23,22 @@ form{
     border: 1px solid rgba(0,0,0,0);
     background-color: white;
 } 
+.connexion-container button{
+    width: min(300px, 90vw);
+    margin: auto;display: block;
+}
+.connexion-container button:hover,.connexion-container button:active{
+    background-color: red; color: white; font-weight: bold;
+}
 @media screen and (max-width:1300px){
-    .contact input,.contact textarea, .contact button, .contact .message{
+    .connexion-container{ 
+        min-height: 60vh;
+    }
+    .connexion-container input{
         margin: 5px 0;
     }
 }
-.contact textarea{
-    height: 250px;
-    padding-top:10px ;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.contact div.message{
-    text-align: center;
-    height: fit-content; padding: 10px; box-sizing: border-box;
-    color: rgb(7, 174, 7);font-weight: 600;
-    display: flex; align-items: center; justify-content: center;
-}
-.contact p.alerte{
+.connexion-container p.alerte{
     color: red;
     font-weight: bold;
 }
