@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import FbContext from '../../firebase/contexte';
 import { useDispatch } from 'react-redux';
-import { majConcours, modifConcours, visibleImgPub } from '../../lib/redux/actions';
+import { majConcours, modifConcours, visibleImgPub, visiblePub } from '../../lib/redux/actions';
 import './admin.css';
 const StoragePub = ({ idEv, intitule, typeImg }) => {
 
@@ -21,7 +21,11 @@ const StoragePub = ({ idEv, intitule, typeImg }) => {
         alert(`Nouvelle ${typeImg} enregistrée avec succès pour l'évènement ${intitule}`);
     }
     return (
-        <div>storagePub
+        <div>
+            <header>
+                <h2>Gestion des affiches</h2>
+            </header>
+            <button className='retour' onClick={()=>dispatch(visibleImgPub(false))}>Annuler et retour à la listes des concours</button>
             <form onSubmit={goStorage}>
                 {typeImg ==="publicites" && <p>Le format de votre publicités peut être mp4 (video) ou png/jpeg (image)</p>}
                 {typeImg==="affiches/petit" && <p>La taille de votre affiche doit respecter les proportions suivantes : largeur = hauteur</p>}

@@ -25,6 +25,9 @@ span{
 }
 .admin-home button.retour:hover{
     background-color: rgb(50,50,50);color:white;
+}
+.admin-home button.jaune{
+    background-color:yellow; color:red;
 }               
 .admin-home th{
     max-width: 500px;
@@ -80,7 +83,7 @@ overflow-y: scroll;
     font-weight: bold;
 }
 .incorrect{
-    color: brown;
+    color: red;
     font-weight: 500;
 }
 .admin-home input[type='radio']{
@@ -88,4 +91,10 @@ overflow-y: scroll;
     scale:1.8;
     margin-left: 15px;
     margin-right: 15px;
+}
+.complet{
+    background-color: green; color: white;
+}
+.incomplet{
+    background-color: red; color: white;
 }

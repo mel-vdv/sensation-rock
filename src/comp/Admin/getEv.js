@@ -63,6 +63,7 @@ const GetEv = () => {
           <table>
             <thead>
               <tr>
+                <th>Etat</th>
                 <th>Intitulé</th>
                 <th>Informations Evènement</th>
                 <th>Informations Concours</th>
@@ -74,6 +75,17 @@ const GetEv = () => {
             <tbody>
               {stateEvents.items.map((x, i) => (
                 <tr key={i}>
+                  <td>
+                    { ( !x['affiche-p'] && x.taille === 1 )||
+                     ( !x['affiche-m'] && x.taille === 2 )||
+                     ( (!x['affiche-g'] && x.taille === 3 ) || (!x['affiche-m'] && x.taille === 3) )
+
+                    ? <span className='incomplet'>INCOMPLET</span>  : <span className='complet'>COMPLET</span>
+                    }
+                    
+                     
+                    
+                  </td>
 
                   <td> <span>{x.intitulé}</span> </td>
 
@@ -204,7 +216,7 @@ const GetEv = () => {
                         Ajouter l'image de l'affiche grand format de l'évènement {x.intitulé}</button><br /></>}
 
                     {x.pub && <button onClick={() => openImagePub(x['_id'], x.intitulé, 'publicites')}>Modifier l'image de la publicité du quizz {x.intitulé}</button>}
-                    {!x.pub && <button onClick={() => openImagePub(x['_id'], x.intitulé, 'publicites')}>Ajouter l'image de la publicité du quizz {x.intitulé}</button>}
+                    {!x.pub && <button className='jaune' onClick={() => openImagePub(x['_id'], x.intitulé, 'publicites')}>Ajouter l'image de la publicité du quizz {x.intitulé}</button>}
 
                     <button onClick={() => gererQspe(x['_id'], x.intitulé)}>Gérer les questions spécifiques </button>
 
