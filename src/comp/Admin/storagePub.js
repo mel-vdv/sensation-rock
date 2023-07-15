@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import FbContext from '../../firebase/contexte';
 import { useDispatch } from 'react-redux';
 import { majConcours, modifConcours, visibleImgPub } from '../../lib/redux/actions';
-
+import './admin.css';
 const StoragePub = ({ idEv, intitule, typeImg }) => {
 
     const dispatch = useDispatch();

@@ -3,6 +3,7 @@ import { fetchListeQ, majStateListeQ, supprQuestion, visibleAddQ, visibleModifQ 
 import { useDispatch, useSelector } from 'react-redux';
 import ModifQ from './modifQ';
 import AddQ from './addQ';
+import './admin.css';
 
 const GetQ = () => {
   
@@ -31,7 +32,9 @@ const [questModif, setQuestModif] = useState(null);
   return (
     <div className='getQ'>
     <h2>LES QUESTIONS</h2>
+    {!stateVis.addQ && !stateVis.modifQ && 
     <button onClick={() => visAddQu()}>Ajouter une nouvelle question</button>
+    }
     {stateQuest.isLoading && <div> is loading....</div>}
     {(!stateQuest.isLoading && !stateQuest.items) &&
     <div>is loading non : pas de items...</div>
@@ -53,9 +56,9 @@ const [questModif, setQuestModif] = useState(null);
               <tr key={i}>
                 <td>{x.Question}</td>
                 <td>
-                  1 :{x['Proposition A']} <br />
-                  2 :{x['Proposition B']} <br />
-                  3 :{x['Proposition C']} <br />
+                  <div className={x['Réponse']==1? 'correct':'incorrect'}>1 : {x['Proposition A']}</div>
+                  <div className={x['Réponse']==2? 'correct':'incorrect'}>2 : {x['Proposition B']} </div>
+                  <div className={x['Réponse']==3? 'correct':'incorrect'}>3 : {x['Proposition C']}</div>
                 </td>
                 <td>{x['Réponse']}</td>
                 <td>{x.Catégorie}</td>

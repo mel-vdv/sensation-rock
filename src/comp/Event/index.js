@@ -31,7 +31,7 @@ const Event = () => {
   //-----------------------------------------------------------
   const commencer = () => {
     // On récupère...
-    //1. les questions
+    //1. les questions : 
     dispatch(fetchListeQ(stateEvent.item.nbQgen));
     dispatch(fetchListeQPerso(stateEvent.item.nbQperso, stateUser.item.réponse1));
     dispatch(fetchListeQSpe(stateEvent.item['_id'], stateEvent.item.nbQspe));

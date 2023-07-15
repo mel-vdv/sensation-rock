@@ -11,7 +11,9 @@ import {
     deleteQuestSpe,
     updateQuestionSpe,
     deleteUser,
-    getUserExiste
+    getUserEmailMdp,
+    getUserPseudoEmail,
+    postTabQuestionSpe
 } from "../../service";
 import {
     GET_CONCOURS_FAILURE, GET_CONCOURS_PENDING, GET_CONCOURS_SUCCESS,
@@ -24,7 +26,7 @@ import {
     GET_EVENT_ERROR, GET_LISTEQ_PENDING, GET_LISTEQ_SUCCESS, GET_LISTEQ_ERROR, GET_LISTEQ_PERSO_PENDING, GET_LISTEQ_PERSO_SUCCESS,
     GET_LISTEQ_PERSO_ERROR, GET_LISTEQ_SPE_PENDING, GET_LISTEQ_SPE_SUCCESS, GET_LISTEQ_SPE_ERROR, GET_SCORE_PENDING, GET_SCORE_SUCCESS,
     GET_SCORE_ERROR, MODIF_SCORE_IMMEDIAT, MODIF_TIMER, STOP_TIMER, VIS_PUB, VIS_PODIUM, GET_PODIUM_PENDING, GET_PODIUM_SUCCESS, GET_PODIUM_ERROR,
-    DELETE_Q, MAJ_CONCOURS, MAJ_Q, VIS_IMAGE_PUB, CHOISIR_THEME, DECO_USER, VIS_GETQSPE, VIS_MODIFQSPE, VIS_ADDQSPE, DELETE_QSPE, MAJ_QSPE, ADD_QSPE, DELETE_USER, GET_USER_EXISTE,
+    DELETE_Q, MAJ_CONCOURS, MAJ_Q, VIS_IMAGE_PUB, CHOISIR_THEME, DECO_USER, VIS_GETQSPE, VIS_MODIFQSPE, VIS_ADDQSPE, DELETE_QSPE, MAJ_QSPE, ADD_QSPE, DELETE_USER, GET_USER_EXISTE, VIS_EXCELQSPE,
 } from "./types";
 
 //////////////////////////////////////////////////////////////////////////////// USER commence un quizz : 
@@ -40,30 +42,32 @@ export function getUserIdSuccess(data) {
         payload: { data }
     }
 }
-export function getUserIdError(error) {
+export function getUserIdError(err) {
     return {
         type: GET_USER_ERROR,
-        payload: { error }
+        payload: {err}
     }
 }
-
-export function verifUserExiste(tabUsers) {
+export function getUserExiste(tabUsers){
     return {
         type: GET_USER_EXISTE,
-        payload: { tabUsers }
+        payload: {tabUsers}
     }
 }
 export function fetchUserExiste(newUser) {
     return async function (dispatch) {
-        getUserExiste(newUser.pseudo, newUser.email)
+        getUserPseudoEmail(newUser.pseudo, newUser.email)
             .then((tabUsers) => {
-                dispatch(verifUserExiste(tabUsers));
                 if (tabUsers.length < 1) {
-                    console.log('on envoie');
+                    console.log('existe pas ')
                     dispatch(addNewUser(newUser));
                     dispatch(getNewUser(newUser));
                 }
-
+                else{
+                    console.log('existe deja');
+                      dispatch(getUserExiste(tabUsers));
+                }
+              
             })
             .catch(err => console.error(err.message))
     }
@@ -71,12 +75,23 @@ export function fetchUserExiste(newUser) {
 export function getNewUser(user) {
     return {
         type: GET_NEW_USER,
-        payload: { user }
+        payload: {user}
     }
 }
 export function deconnex() {
     return {
         type: DECO_USER
+    }
+}
+export const fetchUserEmailMdp= (email, mdp)=>{
+    console.log('2', email, mdp);
+    return async function (dispatch) {
+        dispatch(getUserIdPending);
+        getUserEmailMdp(email,mdp)
+            .then((data) =>
+                dispatch(getUserIdSuccess(data))
+            )
+            .catch((err) => dispatch(getUserIdError(err)))
     }
 }
 export const fetchUserId = (emailUser) => {
@@ -355,6 +370,14 @@ export function addQuestionSpe(newQuest, idEv) {
             .catch(err => console.error(err.message));
     }
 }
+export function addCollTabQuestionsSpe(idEv, tab) {
+    console.log('action : ', JSON.stringify(tab));
+    return async function () {
+        postTabQuestionSpe(idEv, tab)
+            .then(() => console.log('ajout collection q spe success'))
+            .catch(err => console.error(err.message));
+    }
+}
 export function modifQuestion(qMod) {
     return async function () {
         updateQuestion(qMod)
@@ -491,6 +514,12 @@ export function visibleAddQ(ouinon) {
 export function visibleAddQspe(ouinon) {
     return {
         type: VIS_ADDQSPE,
+        payload: { ouinon }
+    }
+}
+export function visibleExcelQspe(ouinon) {
+    return {
+        type: VIS_EXCELQSPE,
         payload: { ouinon }
     }
 }

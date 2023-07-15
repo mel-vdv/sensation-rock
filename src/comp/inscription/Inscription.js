@@ -1,31 +1,31 @@
 import React, { useEffect, useId, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addNewUser, fetchUserExiste, getNewUser } from '../../lib/redux/actions';
+import { fetchUserExiste } from '../../lib/redux/actions';
 import './index.css';
 
 const Inscription = () => {
     const nav = useNavigate();
     const initialstate = {
-        nom: '', prénom: '', pseudo: '', email: '', sexe: '', cp: 0, tel: '', age: 0, réponse1: [], concours: []
+        nom: '', prénom: '', pseudo: '', email: '', sexe: '', cp: undefined, tel: '', age: undefined, réponse1: [], concours: [], mdp: ""
     }
     const dispatch = useDispatch();
     const [newUser, setNewUser] = useState(initialstate);
     const stateVerifInscr = useSelector(state => ({ ...state.verifInscrRed }));
+    const stateUser = useSelector(state => ({ ...state.userRed }));
     //------------------------------
     const nomId = useId();
     //----------------------------
     const inscrire = (e) => {
         e.preventDefault();
         dispatch(fetchUserExiste(newUser));
-     
     }
     //-------------------
-    useEffect(()=>{
-   if(stateVerifInscr.verif && stateVerifInscr.items.length<1){
+    useEffect(() => {
+        if (!!stateUser.item) {
             nav('/');
         }
-    }, [stateVerifInscr])
+    }, [stateUser])
 
     //----------------------------
     const select = (genre) => {
@@ -42,10 +42,10 @@ const Inscription = () => {
     return (
         <div className='inscription-container'>
             <div className='titre'>MELWIN </div>
-            {stateVerifInscr.items.length > 0 &&(stateVerifInscr.items[0].pseudo === newUser.pseudo||stateVerifInscr.items[1].pseudo === newUser.pseudo) 
-             && <p className='alerte'>{stateVerifInscr.items[0].pseudo} est déjà utilisé par un autre utilisateur</p>}
-            {stateVerifInscr.items.length > 0 && (stateVerifInscr.items[0].email === newUser.email ||stateVerifInscr.items[1].email === newUser.email ) 
-            && <p className='alerte'>Le compte {stateVerifInscr.items[0].email} existe déjà</p>}
+            {stateVerifInscr.items.length > 0 && (stateVerifInscr.items[0].pseudo === newUser.pseudo || stateVerifInscr.items[1].pseudo === newUser.pseudo)
+                && <p className='alerte'>{stateVerifInscr.items[0].pseudo} est déjà utilisé par un autre utilisateur</p>}
+            {stateVerifInscr.items.length > 0 && (stateVerifInscr.items[0].email === newUser.email || stateVerifInscr.items[1].email === newUser.email)
+                && <p className='alerte'>Le compte {stateVerifInscr.items[0].email} existe déjà</p>}
 
             <form onSubmit={inscrire}>
                 <label htmlFor={nomId}> Nom :</label>
@@ -57,13 +57,19 @@ const Inscription = () => {
                 <label htmlFor='pseudo'>Pseudo : </label>
                 <input id='pseudo' placeholder='Pseudo' type='text' value={newUser.pseudo} onChange={(e) => setNewUser({ ...newUser, pseudo: e.target.value })} required />
 
+                <label htmlFor='mdp'>Mot de passe : </label>
+                <input type="password" placeholder='Mot de passe' value={newUser.mdp} onChange={(e) => setNewUser({ ...newUser, mdp: e.target.value })} required />
+
                 <label htmlFor='email'>Email : </label>
                 <input id='email' placeholder='Email' type='email' value={newUser.email} onChange={(e) => setNewUser({ ...newUser, email: e.target.value })} required />
 
-                <div>Sexe :
-                    <input type='radio' name='sexe' value='homme' checked={newUser.sexe === 'homme'} onChange={() => setNewUser({ ...newUser, sexe: 'homme' })} />Homme
-                    <input type='radio' name='sexe' value='femme' checked={newUser.sexe === 'femme'} onChange={() => setNewUser({ ...newUser, sexe: 'femme' })} />Femme
-                    <input type='radio' name='sexe' value='autre' checked={newUser.sexe === 'autre'} onChange={() => setNewUser({ ...newUser, sexe: 'autre' })} />Autre
+                <div id='sexe'>
+                    <div><input type='radio' name='sexe' value='homme' checked={newUser.sexe === 'homme'} onChange={() => setNewUser({ ...newUser, sexe: 'homme' })} />Homme
+                    </div>
+                    <div><input type='radio' name='sexe' value='femme' checked={newUser.sexe === 'femme'} onChange={() => setNewUser({ ...newUser, sexe: 'femme' })} />Femme
+                    </div>
+                    <div><input type='radio' name='sexe' value='autre' checked={newUser.sexe === 'autre'} onChange={() => setNewUser({ ...newUser, sexe: 'autre' })} />Autre
+                    </div>
                 </div>
 
                 <label htmlFor='tel'>Téléphone : </label>

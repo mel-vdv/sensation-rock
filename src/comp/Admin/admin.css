@@ -1,21 +1,85 @@
-th{
-    background-color: pink;
-}
-td>button{
-    font-size: 22px;
-    font-weight: bold;
-    margin-top: 15px;
-}
-button.jaune{
-    background-color: yellow !important;
+h1,h2,h3{
+    text-decoration: underline;text-align: center;
 }
 span{
     font-weight: bold;
 }
-td,th{
-max-width: 500px;
+.admin-home{
+    width: 100vw;
+    background-color: rgba(0,0,0,.1);
+    min-height: 100vh;
+    display: flex;  flex-direction: column; align-items: center;
 }
-.getEv{
-  font-size: 22px;
-  
+.admin-home button, .admin-home td{
+    font-size: 22px; background-color: white; padding: 5px 10px;margin: 10px;
+    max-width: 500px;
 }
+.admin-home button{
+   font-weight: 600;
+}
+.admin-home input[type='submit'], .admin-home button[type='submit']{
+    padding: 10px 20px;
+}
+.admin-home input[type='submit']:hover, .admin-home button:hover, .admin-home:focus{
+    background-color: red;color: white; 
+}
+.admin-home button.retour:hover{
+    background-color: rgb(50,50,50);color:white;
+}               
+.admin-home th{
+    max-width: 500px;
+    font-size: 25px;
+    color: white;
+    background-color: rgb(50,50,50);
+    padding: 5px 10px;
+
+} 
+.admin-home form>div {
+    font-size: 25px;box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    width: 1000px; margin: 10px;  display: flex;
+}
+.admin-home form>div label{
+    background-color:rgb(50,50,50, 0.5); color: white;
+    padding: 10px;
+    width: 50%;
+}
+.admin-home form>div label.grand{
+    height: 100px;
+}
+.admin-home form>div textarea{
+    height: 200px; width:50%;font-size: 25px;
+}
+.admin-home form>div input[type='text'],
+.admin-home form>div input[type='email'],
+.admin-home form>div input[type='number'],
+.admin-home form>div input[type='date']
+{
+    word-wrap: break-word;
+    background-color:white;color:black;
+    width: 50%;
+    font-size: 25px;
+    padding-left: 20px;
+    font-weight: bold;
+}
+.admin-home form>div input[type='text'],
+.admin-home form>div textarea
+{
+overflow-y: scroll;
+}
+.admin-home div.rubrique{
+    background-color: rgb(50,50,50);
+    font-size: 28px; text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    color: white; font-weight: bolder;
+}
+.correct{
+    color: rgb(20, 181, 20);
+    font-weight: bold;
+}
+.incorrect{
+    color: brown;
+    font-weight: 500;
+}
+

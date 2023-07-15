@@ -14,7 +14,7 @@ export const userReducer = (state= initialState, action)=>{
             ...state, isLoading:false, item: action.payload.data[0]
         }
         case GET_USER_ERROR : return{
-            ...state, isLoading:false, error: action.payload.error
+            ...state, isLoading:false, error: action.payload.err
         }
         case GET_NEW_USER: return{
             ...state, isLoading:false, item: action.payload.user

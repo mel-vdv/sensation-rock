@@ -11,9 +11,9 @@ export const getConcours = ()=>{
 */
 import axios from "axios";
 //----------------------------- user ID (après connexion);
-export const getUserId = (emailU) => {
+export const getUserId = (email) => {
     return new Promise((resolve, reject) => {
-        axios.get('http://localhost:5000/api/user/' + emailU)
+        axios.post('http://localhost:5000/api/user', {email : email})
             .then((resp, er) => {
                 if (er || !resp) {
                     return reject(er);
@@ -21,10 +21,40 @@ export const getUserId = (emailU) => {
                 else {
                     resolve(resp.data);
                 }
-            })
-            .catch(err => console.error(err.message));
+            });
     })
 }
+//----------VERIFICATIONS
+//INSCR
+export const getUserPseudoEmail = (pseudo, email) => {
+    return new Promise((resolve, reject) => {
+        axios.post('http://localhost:5000/api/user/verifinscr', {email:email, pseudo: pseudo })
+            .then((resp, err) => {
+                if (err || !resp) {
+                    return reject(err);
+                }
+                else {
+                    resolve(resp.data);
+                }
+
+            })
+    })
+}
+//CO
+export const getUserEmailMdp = (email,mdp) => {
+    return new Promise((resolve, reject) => {
+        axios.post('http://localhost:5000/api/user/verifco', {mdp: mdp, email : email})
+            .then((resp, er) => {
+                if (er || !resp) {
+                    return reject(er);
+                }
+                else {
+                    resolve(resp.data);
+                }
+            });
+    })
+}
+//----------
 export const postUser = (data) => {
     console.log(data);
     axios.post('http://localhost:5000/api/users/add', data)
@@ -51,20 +81,6 @@ export const getAllUsers = () => {
             .catch(err => console.error(err.message));
     })
 
-}//------------
-export const getUserExiste = (pseudo, email) => {
-    return new Promise((resolve, reject) => {
-        axios.get(`http://localhost:5000/api/user/${pseudo}/${email}`)
-            .then((resp, err) => {
-                if (err || !resp) {
-                    return reject(err);
-                }
-                else {
-                    resolve(resp.data);
-                }
-
-            })
-    })
 }
 //-------------------
 export const updateUser = (idU, objet) => {
@@ -273,8 +289,14 @@ export const postQuestion = (data) => {
         .catch(err => console.error(err.message));
 }
 export const postQuestionSpe = (data, idEv) => {
-    axios.post(`/api/questionspe/add/${idEv}`, data)
+    axios.post(`http://localhost:5000/api/questionspe/add/${idEv}`, data)
         .then(() => console.log('ok, question spe ajoutée'))
+        .catch(err => console.error(err.message));
+}
+export const postTabQuestionSpe = (idEv,tab) => {
+    console.log('service : ', JSON.stringify(tab));
+    axios.post(`http://localhost:5000/api/add-coll-q-spe/${idEv}`, {tabQspe: tab})
+        .then(() => console.log('ok, coll questions spe créée'))
         .catch(err => console.error(err.message));
 }
 export const updateQuestion = (qMod) => {
@@ -283,7 +305,7 @@ export const updateQuestion = (qMod) => {
         .catch(err => console.error(err.message));
 }
 export const updateQuestionSpe = (qMod, idEv) => {
-    axios.put(`/api/questionspe/modif/${idEv}`, qMod)
+    axios.put(`http://localhost:5000/api/questionspe/modif/${idEv}`, qMod)
         .then(() => console.log('ok, questions spe modifiée'))
         .catch(err => console.error(err.message));
 }

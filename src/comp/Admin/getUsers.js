@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllUsers,  supprUser,  supprUserEtat } from '../../lib/redux/actions';
+import './admin.css';
 
 const GetUsers = () => {
     const dispatch = useDispatch();
@@ -41,15 +42,15 @@ const GetUsers = () => {
             <tbody>
               {stateUsers.items.map((x, i) => (
                 <tr key={i}>
-                  <td>{x.nom}</td>
+                  <td>{x.nom.toUpperCase()}</td>
                   <td>{x.prénom}</td>
-                  <td>{x.pseudo}</td>
+                  <td><span>{x.pseudo}</span></td>
                   <td>{x.email}</td>
                   <td>{x.tel}</td>
                   <td>{x.cp}</td>
                   <td>{x.sexe}</td>
                   <td>{x.age}</td>
-                  <td>{x.réponse1}</td>
+                  <td>{(x.réponse1).join(', ')}</td>
                   <td>
                     <button onClick={()=>supprimerUser(x['_id'])}> supprimer l'utilisateur {x.pseudo} </button>
                   </td>

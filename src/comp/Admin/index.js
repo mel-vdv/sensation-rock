@@ -4,8 +4,7 @@ import { visibleGetEv, visibleGetQ, visibleGetUsers } from '../../lib/redux/acti
 import GetUsers from './getUsers';
 import GetQ from './getQ';
 import GetEv from './getEv';
-
-import './../../css/Admin/index.css';
+import './admin.css';
 
 
 
@@ -24,9 +23,9 @@ const Admin = () => {
   }
 
   return (
-    <div className='home'>
+    <div className='admin-home'>
       <header>
-        <h1>admin</h1>
+        <h1>INTERFACE D'ADMINISTRATION</h1>
       </header>
       <nav>
         <button tabIndex={1} onClick={() => selectionner('users')}>GESTION DES UTILISATEURS</button>

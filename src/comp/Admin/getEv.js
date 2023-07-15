@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import AddEv from './addEv';
 import ModifEv from './modifEv';
-import { fetchConcours, fetchListeQSpe, supprConcours, visibleAddEv, visibleAddQspe, visibleGetQspe, visibleImgPub, visibleModifEv } from '../../lib/redux/actions';
+import { fetchConcours, fetchListeQSpe, supprConcours, visibleAddEv, visibleAddQspe, visibleExcelQspe, visibleGetQspe, visibleImgPub, visibleModifEv } from '../../lib/redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import StoragePub from './storagePub';
 import './admin.css';
 import GetQspe from './GetQspe';
+import ExcelQspe from './ExcelQspe';
 
 const GetEv = () => {
   const dispatch = useDispatch();
@@ -41,18 +42,25 @@ const GetEv = () => {
     dispatch(fetchListeQSpe(idEv));
     dispatch(visibleGetQspe(true));
   }
+
+const ajouterQspe = (idEv, nomEv)=>{
+setIdEv(idEv);  setNomEv(nomEv);
+dispatch(visibleExcelQspe(true));
+}
+
   //-------------------------------------------------------------------
   return (
     <div className='getEv'>
 
       <h2>LES EVENEMENTS</h2>
-
-      <button onClick={() => dispatch(visibleAddEv(true))}>Ajouter un nouveau concours</button>
+ {!stateVis.addEv && !stateVis.modifEv &&
+      <button onClick={() => dispatch(visibleAddEv(true))}>Ajouter un nouveau concours</button>}
 
       {(!stateEvents.isLoading && !!stateEvents.items 
         && !stateVis.modifEv && !stateVis.addEv 
         && !stateVis.imagePub  
         && !stateVis.getQspe
+        && !stateVis.excelQspe
         ) && <>
       
         <table>
@@ -86,6 +94,8 @@ const GetEv = () => {
                 <td>
                   <ul>
                     <li>Gain : <span>{x.gain}</span> </li>
+                    <li>Nombre de gagnants : <span>{x.nbGagnants}</span> </li>
+                    <li>Email de l'annonceur : <span>{x.emailAnn}</span> </li>
                     <li>Dates : <table>
                       <tr>
                         <td>Début : </td>
@@ -150,7 +160,9 @@ const GetEv = () => {
                   <ul>
                     <li>Nombre de questions entre 2 pub : <span>{x.nbSecPub}</span> </li>
                     <li>Nombre de secondes d'affichage de la pub : <span>{x.nbQPub}</span> </li>
-                    <li>Taille de l'affiche : <span>{x.taille}</span>  </li>
+                    <li>Taille de l'affiche : 
+                      <span> {x.taille==3? "grand": x.taille==2? "moyen" : "petit"} </span>
+                        </li>
                   </ul>
                 </td>
 
@@ -198,7 +210,9 @@ const GetEv = () => {
                   {x.pub && <button onClick={() => openImagePub(x['_id'], x.intitulé, 'publicites')}>Modifier l'image de la publicité du quizz {x.intitulé}</button>}
                   {!x.pub && <button onClick={() => openImagePub(x['_id'], x.intitulé, 'publicites')}>Ajouter l'image de la publicité du quizz {x.intitulé}</button>}
 
-                  <button onClick={() => gererQspe(x['_id'], x.intitulé)}>Gérer les questions spécifiques </button>
+                  <button onClick={() => gererQspe(x['_id'], x.intitulé)}>Modifier les questions spécifiques </button>
+
+                  <button onClick={() => ajouterQspe(x['_id'], x.intitulé)}>Ajouter collection les questions spécifiques </button>
 
                 </td>
               </tr>
@@ -211,6 +225,7 @@ const GetEv = () => {
 
       {(stateVis.modifEv && !!eventModif) && <ModifEv concours={eventModif} />}
       {stateVis.addEv && <AddEv />}
+      {stateVis.excelQspe && <ExcelQspe idEv={idEv} nomEv= {nomEv} />}
       {stateVis.getQspe && <GetQspe idEv={idEv} nomEv={nomEv} />}
       {(stateVis.imagePub && !!idEv && !!intitule && !!typeImg) && <StoragePub idEv={idEv} intitule={intitule} typeImg={typeImg} />}
     </div>

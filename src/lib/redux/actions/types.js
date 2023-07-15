@@ -59,6 +59,7 @@ export const VIS_ADDQ= "VIS_ADDQ";
 export const VIS_ADDQSPE= "VIS_ADDQSPE";
 export const VIS_MODIFQ= "VIS_MODIFQ";
 export const VIS_MODIFQSPE= "VIS_MODIFQSPE";
+export const VIS_EXCELQSPE= "VIS_EXCELQSPE";
 export const VIS_ADDEV= "VIS_ADDEV";
 export const VIS_MODIFEV= "VIS_MODIFEV";
 export const VIS_GETUSERS= "VIS_GETUSERS";

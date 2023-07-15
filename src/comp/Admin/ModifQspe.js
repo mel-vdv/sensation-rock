@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import {   majQuestionsSpe, modifQuestionSpe, visibleModifQspe } from '../../lib/redux/actions';
-
+import './admin.css';
 const ModifQspe = ({question,idEv, nomEv}) => {
 
 
@@ -22,7 +22,7 @@ const visMod = (ouinon)=>{
 //-------------------------
 
   return (
-    <div className='modifQ'>
+    <div className='modifQspe'>
 
 <h2>MODIFIER LA QUESTION</h2>
    <form onSubmit={()=>modifierQuestion()}>

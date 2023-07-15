@@ -3,7 +3,8 @@ import { DELETE_USER, GET_ALL_USERS_ERROR, GET_ALL_USERS_PENDING, GET_ALL_USERS_
 const initialState={
     isLoading : false,
     error: null,
-    items:[]
+    items:[],
+    existe: false
 }
 //---------------------------------------------
 export const usersReducer = (state=initialState,action)=>{

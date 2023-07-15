@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { majStateListeQSpe, supprQuestionSpe, visibleAddQspe, visibleGetQspe, visibleModifQspe } from '../../lib/redux/actions';
 import AddQspe from './AddQspe';
 import ModifQspe from './ModifQspe';
+import './admin.css';
 
 const GetQspe = ({ idEv, nomEv }) => {
     const dispatch = useDispatch();

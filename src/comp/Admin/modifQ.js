@@ -1,57 +1,79 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { majQuestions, modifQuestion, visibleModifQ } from '../../lib/redux/actions';
+import './admin.css';
 
-const ModifQ = ({question}) => {
+const ModifQ = ({ question }) => {
 
 
 
-const dispatch = useDispatch();
-const[qMod, setqMod]= useState(question);
-//-------------------------
-const modifierQuestion= ()=>{
+  const dispatch = useDispatch();
+  const [qMod, setqMod] = useState(question);
+  //-------------------------
+  const modifierQuestion = () => {
     dispatch(modifQuestion(qMod));
     dispatch(majQuestions(qMod));
     alert(`question ${qMod.Question} modifiée avec succès`);
     visMod(false);
-}
-//-------------------------
-const visMod = (ouinon)=>{
+  }
+  //-------------------------
+  const visMod = (ouinon) => {
     dispatch(visibleModifQ(ouinon));
-}
-//-------------------------
+  }
+  //-------------------------
 
   return (
     <div className='modifQ'>
 
-<h2>MODIFIER LA QUESTION</h2>
-   <form onSubmit={()=>modifierQuestion()}>
+      <h2>MODIFIER LA QUESTION</h2>
+      <form onSubmit={modifierQuestion}>
+        <div>
+          <label htmlFor='quest'>Intitulé de la question</label>
+          <input id='quest' type='text' onChange={(e) => setqMod({ ...qMod, Question: e.target.value })} value={qMod.Question} />
+        </div>
+        <div>
+          <label htmlFor='prop-a'>Proposition 1</label>
+          <input id='prop-a' type='text' onChange={(e) => setqMod({ ...qMod, 'Proposition A': e.target.value })} value={qMod['Proposition A']} />
+        </div>
+        <div>
+          <label htmlFor='prop-b'>Proposition 2</label>
+          <input id='prop-b' type='text' onChange={(e) => setqMod({ ...qMod, 'Proposition B': e.target.value })} value={qMod['Proposition B']} />
+        </div>
+        <div>
+          <label htmlFor='prop-c'>Proposition 3</label>
+          <input id='prop-c' type='text' onChange={(e) => setqMod({ ...qMod, 'Proposition C': e.target.value })} value={qMod['Proposition C']} />
+        </div>
+        <div>
+          <label htmlFor='valeur'>Valeur de la question :</label>
+          <input id='valeur' type='number' onChange={(e) => setqMod({ ...qMod, Valeur: e.target.value })} value={qMod.Valeur} min={1} max={5} />
+        </div>
+        <div>
+          <label htmlFor='rep'>Numéro de la réponse</label>
+          <input id='rep' type='number' onChange={(e) => setqMod({ ...qMod, Réponse: e.target.value })} value={qMod.Réponse} min={1} max={3} />
+        </div>
+        <div>
+          <label htmlFor='categ'>Catégorie de la question</label>
+          <div id='categ'onChange={(e) => setqMod({ ...qMod, Catégorie: e.target.value })} required>
+            <input type='radio' value='Rock' name='categ' checked={qMod.Catégorie==='Rock'}/> Rock
+            <input type='radio' value='Pop' name='categ' checked={qMod.Catégorie==='Pop'}/> Pop
+            <input type='radio' value='Pop Rock' name='categ' checked={qMod.Catégorie==='Pop Rock'}/> Pop Rock
+            <input type='radio' value='Rap' name='categ' checked={qMod.Catégorie==='Rap'}/> Rap
+            <input type='radio' value='Folk' name='categ' checked={qMod.Catégorie==='Folk'}/> Folk
+            <input type='radio' value='Reggae' name='categ' checked={qMod.Catégorie==='Reggae'}/> Reggae
+            <input type='radio' value='Electro' name='categ' checked={qMod.Catégorie==='Electro'}/> Electro
+            <input type='radio' value='Jazz' name='categ' checked={qMod.Catégorie==='Jazz'}/> Jazz
+            <input type='radio' value='Variété' name='categ' checked={qMod.Catégorie==='Variété'}/> Variété
+            <input type='radio' value='RNB' name='categ' checked={qMod.Catégorie==='RNB'}/> RNB
+            <input type='radio' value='Musique Classique' name='categ' checked={qMod.Catégorie==='Musique Classique'}/> Musique Classique
+          </div>
+        </div>
 
 
-            <label htmlFor='quest'>Intitulé de la question</label>
-            <input id='quest' type='text' onChange={(e)=>setqMod({...qMod, Question : e.target.value})} value={qMod.Question}/>
 
-            <label htmlFor='prop-a'>Proposition 1</label>
-            <input id='prop-a' type='text' onChange={(e)=>setqMod({...qMod, 'Proposition A' : e.target.value})} value={qMod['Proposition A']}/>
+        <button type='submit'>Valider les modifications</button>
+      </form>
 
-            <label htmlFor='prop-b'>Proposition 2</label>
-            <input id='prop-b' type='text' onChange={(e)=>setqMod({...qMod, 'Proposition B' : e.target.value})} value={qMod['Proposition B']}/>
-
-            <label htmlFor='prop-c'>Proposition 3</label>
-            <input id='prop-c' type='text' onChange={(e)=>setqMod({...qMod, 'Proposition C' : e.target.value})} value={qMod['Proposition C']}/>
-
-            <label htmlFor='valeur'>Valeur de la question :</label>
-            <input id='valeur' type='text' onChange={(e)=>setqMod({...qMod, Valeur : e.target.value})} value={qMod.Valeur}/>
-
-            <label htmlFor='rep'>Numéro de la réponse</label>
-            <input id='rep' type='text' onChange={(e)=>setqMod({...qMod, Réponse : e.target.value})} value={qMod.Réponse}/>
-
-            <label htmlFor='categ'>Catégorie</label>
-            <input id='categ' type='text' onChange={(e)=>setqMod({...qMod, Catégorie : e.target.value})} value={qMod.Catégorie}/>
-            <button type='submit'>Valider les modifications</button>
-        </form>
-
-        <button onClick={()=>visMod(false)}>Retour à la liste de questions</button>
+      <button onClick={() => visMod(false)}>Retour à la liste de questions</button>
     </div>
   )
 }

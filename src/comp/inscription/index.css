@@ -18,6 +18,7 @@
     flex-direction: column;align-items: center;
 }
 .inscription-container input[type='text'],
+.inscription-container input[type='password'],
 .inscription-container input[type='number'],
 .inscription-container input[type='email'],
  .inscription-container button{
@@ -31,17 +32,21 @@
     border: 1px solid rgba(0,0,0,0);
     background-color: white;color: black;
 } 
-input[type='radio']{
+.inscription-container form div#sexe div input[type='radio']{
     font-size: 22px;
     color: black;
     accent-color: red;
-    scale: 2;
-    margin: 0 20px;
+    scale: 1.5;
+    margin-right:10px;
 }
-.inscription-container form div{
+.inscription-container form>div, div#sexe{
     width: min(90vw, 500px);
     display: flex;flex-wrap: wrap;justify-content: center;
 }
+.inscription-container form div#sexe div{
+  margin: 10px;
+}
+
 .inscription-container button{
     width: auto; padding: 0 15px;
     margin:10px;display: block;

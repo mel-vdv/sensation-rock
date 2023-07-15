@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { addQuestionSpe, ajoutQspe, visibleAddQspe} from '../../lib/redux/actions';
+import './admin.css';
 
 const AddQspe = ({nomEv,idEv}) => {
 
