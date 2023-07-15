@@ -40,6 +40,11 @@ dispatch(visibleExcelQspe(false));
 
     return (
         <div className='excel'>
+            <header>
+                <h3>IMPORTER UN FICHIER EXCEL CONTENANT LA LISTE DE QUESTIONS SPECIFIQUES</h3>
+            </header>
+
+            <button className='retour' onClick={()=>dispatch(visibleExcelQspe(false))}>Annuler et retourner à la liste de questions spécifiques</button>
 
             <form>
                 <input
@@ -54,7 +59,7 @@ dispatch(visibleExcelQspe(false));
                         handleOnSubmit(e);
                     }}
                 >
-                    IMPORT CSV
+                    IMPORTER CE FICHIER EXCEL.CSV
                 </button>
             </form>
 

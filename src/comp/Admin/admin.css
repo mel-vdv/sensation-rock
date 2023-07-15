@@ -52,7 +52,8 @@ span{
 .admin-home form>div input[type='text'],
 .admin-home form>div input[type='email'],
 .admin-home form>div input[type='number'],
-.admin-home form>div input[type='date']
+.admin-home form>div input[type='date'],
+.admin-home form input[type='file']
 {
     word-wrap: break-word;
     background-color:white;color:black;
@@ -82,4 +83,9 @@ overflow-y: scroll;
     color: brown;
     font-weight: 500;
 }
-
+.admin-home input[type='radio']{
+    accent-color: red;
+    scale:1.8;
+    margin-left: 15px;
+    margin-right: 15px;
+}

@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { majStateListeQSpe, supprQuestionSpe, visibleAddQspe, visibleGetQspe, visibleModifQspe } from '../../lib/redux/actions';
+import { majStateListeQSpe, supprQuestionSpe, visibleAddQspe, visibleExcelQspe, visibleGetQspe, visibleModifQspe } from '../../lib/redux/actions';
 import AddQspe from './AddQspe';
 import ModifQspe from './ModifQspe';
 import './admin.css';
+import ExcelQspe from './ExcelQspe';
 
 const GetQspe = ({ idEv, nomEv }) => {
     const dispatch = useDispatch();
@@ -27,19 +28,22 @@ const GetQspe = ({ idEv, nomEv }) => {
     //----------------------------------------------------------
     return (
         <div className='getQspe'>
-            <h2>LES QUESTIONS SPECIFIQUES de l'évènement {nomEv}</h2>
-            <button onClick={() => dispatch(visibleGetQspe(false))}>Retour à la liste des évènements</button>
-            <button onClick={() => visAddQuSpe()} >Ajouter une nouvelle question spécifique</button>
+            <header><h2>LES QUESTIONS SPECIFIQUES de l'évènement {nomEv}</h2></header>
+            
+            {!stateVis.addQspe && !stateVis.modifQspe && !stateVis.excelQspe &&
+            <button className='retour' onClick={() => dispatch(visibleGetQspe(false))}>Retour à la liste des évènements</button>}
 
             {stateQuestSpe.isLoading && <div>is loading...</div>}
 
             {!stateQuestSpe.isLoading && !stateQuestSpe.items &&
-                !stateVis.addQspe && !stateVis.modifQspe &&
+                !stateVis.addQspe && !stateVis.modifQspe && !stateVis.excelQspe &&
                 <div>aucune question</div>
             }
 
-            {!stateQuestSpe.isLoading && !!stateQuestSpe.items && !stateVis.addQspe && !stateVis.modifQspe &&
-
+            {!stateQuestSpe.isLoading && !!stateQuestSpe.items && !stateVis.addQspe && !stateVis.modifQspe && !stateVis.excelQspe &&
+    <>
+    <button onClick={() => visAddQuSpe()} >Ajout manuel d'une nouvelle question spécifique</button>
+    <button onClick={() => dispatch(visibleExcelQspe(true))} >Import d'un fichier excel contenant une liste de questions spécifiques</button>
                 <table>
                     <thead>
                         <tr>
@@ -71,9 +75,11 @@ const GetQspe = ({ idEv, nomEv }) => {
                         ))}
                     </tbody>
                 </table>
+                </>
             }
             {stateVis.addQspe && <AddQspe nomEv={nomEv} idEv={idEv}/>}
             {stateVis.modifQspe && <ModifQspe question = {questModif} idEv={idEv} nomEv={nomEv}/>}
+            {stateVis.excelQspe && <ExcelQspe idEv={idEv} nomEv={nomEv} />}
 
         </div>
     )

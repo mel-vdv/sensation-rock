@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { visibleGetEv, visibleGetQ, visibleGetUsers } from '../../lib/redux/actions';
+import { visibleAddEv, visibleAddQ, visibleAddQspe, visibleExcelQspe, visibleGetEv, visibleGetQ, visibleGetQspe, visibleGetUsers, visibleModifEv, visibleModifQ, visibleModifQspe } from '../../lib/redux/actions';
 import GetUsers from './getUsers';
 import GetQ from './getQ';
 import GetEv from './getEv';
@@ -15,9 +15,17 @@ const Admin = () => {
 
   const selectionner = (rubr) => {
     switch (rubr) {
-      case 'users': dispatch(visibleGetUsers(true)); dispatch(visibleGetQ(false)); dispatch(visibleGetEv(false)); break;
-      case 'q': dispatch(visibleGetUsers(false)); dispatch(visibleGetQ(true)); dispatch(visibleGetEv(false)); break;
-      case 'ev': dispatch(visibleGetUsers(false)); dispatch(visibleGetQ(false)); dispatch(visibleGetEv(true)); break;
+      case 'users':
+         dispatch(visibleGetUsers(true)); dispatch(visibleGetQ(false)); dispatch(visibleGetEv(false));
+         break;
+      case 'q': 
+      dispatch(visibleGetUsers(false)); dispatch(visibleGetQ(true)); dispatch(visibleGetEv(false)); 
+      dispatch(visibleGetQ(true));dispatch(visibleAddQ(false)); dispatch(visibleModifQ(false));
+      break;
+      case 'ev': dispatch(visibleGetUsers(false)); dispatch(visibleGetQ(false)); dispatch(visibleGetEv(true));
+      dispatch(visibleGetEv(true));dispatch(visibleAddEv(false)); dispatch(visibleModifEv(false));
+      dispatch(visibleGetQspe(false)); dispatch(visibleAddQspe(false)); dispatch(visibleModifQspe(false)); dispatch(visibleExcelQspe(false));
+       break;
       default: console.log('oups');
     }
   }
