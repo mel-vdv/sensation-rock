@@ -14,6 +14,7 @@ import axios from "axios";
 export const getUserId = (email) => {
     return new Promise((resolve, reject) => {
         axios.post('http://localhost:5000/api/user', {email : email})
+        // !!!!!!!   axios.post('api/user', {email : email})
             .then((resp, er) => {
                 if (er || !resp) {
                     return reject(er);
@@ -63,7 +64,7 @@ export const postUser = (data) => {
 }
 //----------------------     emails
 export const postAdresseNL = (email) => {
-    axios.post("/api/newsletters/add", { email: email })
+    axios.post("api/newsletters/add", { email: email })
         .then(() => console.log('ok, new email ajouté'))
         .catch(err => console.error(err.message));
 }
@@ -154,7 +155,7 @@ export const updateScore = (idU, obj) => {
 //UPDATE PARTICIPANTS DU CONCOURS : incrementer le score
 export const updateParticipants = (idev, idu, n) => {
     console.log('etape 2 service', idev, idu, n);
-    axios.put(`/api/concours/modif/participants/${idev}/${idu}`, { n: n })
+    axios.put(`api/concours/modif/participants/${idev}/${idu}`, { n: n })
         .then(() => console.log('ok,concours>participants>nbpt modifié'))
         .catch(err => console.error(err.message));
 
@@ -289,13 +290,13 @@ export const postQuestion = (data) => {
         .catch(err => console.error(err.message));
 }
 export const postQuestionSpe = (data, idEv) => {
-    axios.post(`http://localhost:5000/api/questionspe/add/${idEv}`, data)
+    axios.post(`api/questionspe/add/${idEv}`, data)
         .then(() => console.log('ok, question spe ajoutée'))
         .catch(err => console.error(err.message));
 }
 export const postTabQuestionSpe = (idEv,tab) => {
     console.log('service : ', JSON.stringify(tab));
-    axios.post(`http://localhost:5000/api/add-coll-q-spe/${idEv}`, {tabQspe: tab})
+    axios.post(`api/add-coll-q-spe/${idEv}`, {tabQspe: tab})
         .then(() => console.log('ok, coll questions spe créée'))
         .catch(err => console.error(err.message));
 }
@@ -305,7 +306,7 @@ export const updateQuestion = (qMod) => {
         .catch(err => console.error(err.message));
 }
 export const updateQuestionSpe = (qMod, idEv) => {
-    axios.put(`http://localhost:5000/api/questionspe/modif/${idEv}`, qMod)
+    axios.put(`api/questionspe/modif/${idEv}`, qMod)
         .then(() => console.log('ok, questions spe modifiée'))
         .catch(err => console.error(err.message));
 }
@@ -357,6 +358,16 @@ export const postDemande = (email) => {
     axios.post('http://localhost:5000/api/msg/demande', { email: email })
         .then(() => console.log('ok, demande infos annonceurs envoyée email'))
         .catch(err => console.error(err.message));
+}
+export const postMailInscr = (user) => {
+    axios.post('http://localhost:5000/api/msg/inscr', {user: user})
+        .then(() => console.log('ok, mails inscr'))
+        .catch(err => console.error(err.message));
+}
+export const postMailFin = (gagnants,gain,annonceur,ev)=>{
+    axios.post('http://localhost:5000/api/msg/fin', {gagnants:gagnants,gain:gain,annonceur:annonceur,ev:ev})
+    .then(() => console.log('ok, mails fin'))
+    .catch(err => console.error(err.message));
 }
 
 

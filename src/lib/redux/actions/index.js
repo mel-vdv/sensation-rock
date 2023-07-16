@@ -13,7 +13,9 @@ import {
     deleteUser,
     getUserEmailMdp,
     getUserPseudoEmail,
-    postTabQuestionSpe
+    postTabQuestionSpe,
+    postMailInscr,
+    postMailFin
 } from "../../service";
 import {
     GET_CONCOURS_FAILURE, GET_CONCOURS_PENDING, GET_CONCOURS_SUCCESS,
@@ -26,7 +28,7 @@ import {
     GET_EVENT_ERROR, GET_LISTEQ_PENDING, GET_LISTEQ_SUCCESS, GET_LISTEQ_ERROR, GET_LISTEQ_PERSO_PENDING, GET_LISTEQ_PERSO_SUCCESS,
     GET_LISTEQ_PERSO_ERROR, GET_LISTEQ_SPE_PENDING, GET_LISTEQ_SPE_SUCCESS, GET_LISTEQ_SPE_ERROR, GET_SCORE_PENDING, GET_SCORE_SUCCESS,
     GET_SCORE_ERROR, MODIF_SCORE_IMMEDIAT, MODIF_TIMER, STOP_TIMER, VIS_PUB, VIS_PODIUM, GET_PODIUM_PENDING, GET_PODIUM_SUCCESS, GET_PODIUM_ERROR,
-    DELETE_Q, MAJ_CONCOURS, MAJ_Q, VIS_IMAGE_PUB, CHOISIR_THEME, DECO_USER, VIS_GETQSPE, VIS_MODIFQSPE, VIS_ADDQSPE, DELETE_QSPE, MAJ_QSPE, ADD_QSPE, DELETE_USER, GET_USER_EXISTE, VIS_EXCELQSPE,
+    DELETE_Q, MAJ_CONCOURS, MAJ_Q, VIS_IMAGE_PUB, CHOISIR_THEME, DECO_USER, VIS_GETQSPE, VIS_MODIFQSPE, VIS_ADDQSPE, DELETE_QSPE, MAJ_QSPE, ADD_QSPE, DELETE_USER, GET_USER_EXISTE, VIS_EXCELQSPE, VIS_GAGNANTS,
 } from "./types";
 
 //////////////////////////////////////////////////////////////////////////////// USER commence un quizz : 
@@ -511,6 +513,12 @@ export function visibleAddQ(ouinon) {
         payload: { ouinon }
     }
 }
+export function visibleGagnants(ouinon) {
+    return {
+        type: VIS_GAGNANTS,
+        payload: { ouinon }
+    }
+}
 export function visibleAddQspe(ouinon) {
     return {
         type: VIS_ADDQSPE,
@@ -591,17 +599,35 @@ export function visibleImgPub(ouinon) {
 export function addFormContact(newForm) {
     return async function () {
         postFormContact(newForm)
-            .then(() => console.log('ajout email success'))
+            .then(() => console.log('email contact success'))
             .catch(err => console.error(err.message));
     }
 }
 // page annonceur demande info
 export function addDemande(newMail) {
     return async function () {
-        postDemande(newMail);
+        postDemande(newMail)
+        .then(() => console.log('email annonceur success'))
+        .catch(err => console.error(err.message));
     }
 }
+// un nouveau membre inscrit : 
+export function envoiMailInscr(user){
+    return async function(){
+        postMailInscr(user)
+        .then(() => console.log('email inscr success'))
+        .catch(err => console.error(err.message));
+    }
+}
+//un concours fini :
 
+export function envoiMailFin(gagnants,gain,annonceur,ev){
+    return async function(){
+        postMailFin(gagnants,gain,annonceur,ev)
+        .then(() => console.log('email inscr success'))
+        .catch(err => console.error(err.message));
+    }
+}
 
 
 

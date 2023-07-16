@@ -1,7 +1,7 @@
 import React, { useEffect, useId, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchUserExiste } from '../../lib/redux/actions';
+import { envoiMailInscr, fetchUserExiste } from '../../lib/redux/actions';
 import './index.css';
 
 const Inscription = () => {
@@ -23,7 +23,9 @@ const Inscription = () => {
     //-------------------
     useEffect(() => {
         if (!!stateUser.item) {
+            dispatch(envoiMailInscr(stateUser.item));
             nav('/');
+
         }
     }, [stateUser])
 
@@ -42,11 +44,18 @@ const Inscription = () => {
     return (
         <div className='inscription-container'>
             <div className='titre'>MELWIN </div>
-            {stateVerifInscr.items.length > 0 && (stateVerifInscr.items[0].pseudo === newUser.pseudo || stateVerifInscr.items[1].pseudo === newUser.pseudo)
+            {(
+            (stateVerifInscr.items.length ===1 && stateVerifInscr.items[0].pseudo === newUser.pseudo)||
+            (stateVerifInscr.items.length ===2 && (stateVerifInscr.items[0].pseudo === newUser.pseudo || stateVerifInscr.items[1].pseudo === newUser.pseudo))
+            )
                 && <p className='alerte'>{stateVerifInscr.items[0].pseudo} est déjà utilisé par un autre utilisateur</p>}
-            {stateVerifInscr.items.length > 0 && (stateVerifInscr.items[0].email === newUser.email || stateVerifInscr.items[1].email === newUser.email)
-                && <p className='alerte'>Le compte {stateVerifInscr.items[0].email} existe déjà</p>}
+               {(
+            (stateVerifInscr.items.length ===1 && stateVerifInscr.items[0].email === newUser.email)||
+            (stateVerifInscr.items.length ===2 && (stateVerifInscr.items[0].email === newUser.email || stateVerifInscr.items[1].email === newUser.email))
+            )
+                && <p className='alerte'>L'adresse {stateVerifInscr.items[0].email} est déjà utilisé par un autre utilisateur</p>}
 
+  
             <form onSubmit={inscrire}>
                 <label htmlFor={nomId}> Nom :</label>
                 <input id={nomId} placeholder='Nom' type='text' value={newUser.nom} onChange={(e) => setNewUser({ ...newUser, nom: e.target.value })} required />

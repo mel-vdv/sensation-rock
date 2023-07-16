@@ -6,6 +6,7 @@ import tel from './images/tel.png';
 import { useDispatch } from 'react-redux';
 import { modifListingNL } from '../../../lib/redux/actions';
 
+
 const Prefooter = () => {
 
     const [adresse, setAdresse]= useState('');
@@ -21,7 +22,7 @@ const Prefooter = () => {
   return (
     <div className='prefooter'>
         <div className='g'>
-            <div className='melw'>MELWIN</div>
+            <div className='melwin'>MELWIN</div>
             <div>
                 Melwin est un site proposant de nombreux quizz musicaux afin de gagner des lots offerts par nos partenaires.
             </div>

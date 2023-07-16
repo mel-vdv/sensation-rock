@@ -50,27 +50,30 @@ const AddQ = () => {
           <input type='text' id="prop-c" onChange={(e) => setNewQ({ ...newQ, 'Proposition C': e.target.value })} value={newQ['Proposition C']} required />
         </div>
         <div>
-          <label htmlFor='valeur'>Valeur de la question</label>
+          <label htmlFor='valeur'>Valeur de la question (de 1 à 5 )</label>
           <input type='number' id='valeur' onChange={(e) => setNewQ({ ...newQ, Valeur: e.target.value })} value={newQ.Valeur} required  min={1} max={5}/>
         </div>
         <div>
-          <label htmlFor="rep" >Numéro de la réponse</label>
+          <label htmlFor="rep" >Numéro de la réponse (1, 2 ou 3)</label>
           <input type='number' id='rep' onChange={(e) => setNewQ({ ...newQ, Réponse: e.target.value })} value={newQ.Réponse} required  min={1} max={3}/>
         </div>
         <div>
           <label htmlFor='categ'>Catégorie de la question</label>
-          <div id='categ'onChange={(e) => setNewQ({ ...newQ, Catégorie: e.target.value })} required>
-            <input type='radio' value='Rock' name='categ' checked={newQ.Catégorie==='Rock'}/> Rock
-            <input type='radio' value='Pop' name='categ' checked={newQ.Catégorie==='Pop'}/> Pop
-            <input type='radio' value='Pop Rock' name='categ' checked={newQ.Catégorie==='Pop Rock'}/> Pop Rock
-            <input type='radio' value='Rap' name='categ' checked={newQ.Catégorie==='Rap'}/> Rap
-            <input type='radio' value='Folk' name='categ' checked={newQ.Catégorie==='Folk'}/> Folk
-            <input type='radio' value='Reggae' name='categ' checked={newQ.Catégorie==='Reggae'}/> Reggae
-            <input type='radio' value='Electro' name='categ' checked={newQ.Catégorie==='Electro'}/> Electro
-            <input type='radio' value='Jazz' name='categ' checked={newQ.Catégorie==='Jazz'}/> Jazz
-            <input type='radio' value='Variété' name='categ' checked={newQ.Catégorie==='Variété'}/> Variété
-            <input type='radio' value='RNB' name='categ' checked={newQ.Catégorie==='RNB'}/> RNB
-            <input type='radio' value='Musique Classique' name='categ' checked={newQ.Catégorie==='Musique Classique'}/> Musique Classique
+          <div id='categ'onChange={(e) => setNewQ({ ...newQ, Catégorie: e.target.value })} required 
+          role='radiogroup'
+           aria-label='catégorie'
+           tabIndex={0}>
+            <input type='radio' value='Rock' name='categ'aria-checked={newQ.Catégorie==='Rock'} aria-label='rock' /> Rock
+            <input  type='radio' value='Pop' name='categ' aria-checked={newQ.Catégorie==='Pop'} aria-label='pop'/> Pop
+            <input  type='radio' value='Pop Rock' name='categ' checked={newQ.Catégorie==='Pop Rock'} aria-label='pop rock'/> Pop Rock
+            <input  type='radio' value='Rap' name='categ' checked={newQ.Catégorie==='Rap'} aria-label='rap'/> Rap
+            <input  type='radio' value='Folk' name='categ' checked={newQ.Catégorie==='Folk'} aria-label='folk'/> Folk
+            <input  type='radio' value='Reggae' name='categ' checked={newQ.Catégorie==='Reggae'} aria-label='reggae'/> Reggae
+            <input  type='radio' value='Electro' name='categ' checked={newQ.Catégorie==='Electro'} aria-label='électro'/> Electro
+            <input  type='radio' value='Jazz' name='categ' checked={newQ.Catégorie==='Jazz'} aria-label='jazz'/> Jazz
+            <input  type='radio' value='Variété' name='categ' checked={newQ.Catégorie==='Variété'} aria-label="variété"/> Variété
+            <input  type='radio' value='RNB' name='categ' checked={newQ.Catégorie==='RNB'} aria-label='rnb'/> RNB
+            <input  type='radio' value='Musique Classique' name='categ' checked={newQ.Catégorie==='Musique Classique'} aria-label='musique classique'/> Musique Classique
           </div>
           
         </div>

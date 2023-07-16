@@ -9,6 +9,7 @@ import Footer from './footer'
 import Prefooter from './prefooter'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchConcours} from '../../lib/redux/actions'
+import './index.css';
 
 const Home = () => {
 

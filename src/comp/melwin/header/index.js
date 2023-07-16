@@ -50,7 +50,8 @@ nav('/theme');
           <div className='loupe'><img alt='bouton rechercher catégories' src={loupe} /></div>
         </div>
         <div className='reseaux'>
-          <div> <img alt='facebook' src={fb} /></div>
+          <div> <img 
+          /*onClick={window.open("https://www.facebook.com/melwinofficiel","_blank")} */alt='facebook' src={fb} /></div>
           <div><img alt='twitter' src={twitter} /></div>
           <div><img alt='instagram' src={insta} /></div>
         </div>

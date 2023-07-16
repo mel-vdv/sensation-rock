@@ -53,18 +53,18 @@ const ModifQ = ({ question }) => {
         </div>
         <div>
           <label htmlFor='categ'>Catégorie de la question</label>
-          <div id='categ'onChange={(e) => setqMod({ ...qMod, Catégorie: e.target.value })} required>
-            <input type='radio' value='Rock' name='categ' checked={qMod.Catégorie==='Rock'}/> Rock
-            <input type='radio' value='Pop' name='categ' checked={qMod.Catégorie==='Pop'}/> Pop
-            <input type='radio' value='Pop Rock' name='categ' checked={qMod.Catégorie==='Pop Rock'}/> Pop Rock
-            <input type='radio' value='Rap' name='categ' checked={qMod.Catégorie==='Rap'}/> Rap
-            <input type='radio' value='Folk' name='categ' checked={qMod.Catégorie==='Folk'}/> Folk
-            <input type='radio' value='Reggae' name='categ' checked={qMod.Catégorie==='Reggae'}/> Reggae
-            <input type='radio' value='Electro' name='categ' checked={qMod.Catégorie==='Electro'}/> Electro
-            <input type='radio' value='Jazz' name='categ' checked={qMod.Catégorie==='Jazz'}/> Jazz
-            <input type='radio' value='Variété' name='categ' checked={qMod.Catégorie==='Variété'}/> Variété
-            <input type='radio' value='RNB' name='categ' checked={qMod.Catégorie==='RNB'}/> RNB
-            <input type='radio' value='Musique Classique' name='categ' checked={qMod.Catégorie==='Musique Classique'}/> Musique Classique
+          <div id='categ'onChange={(e) => setqMod({ ...qMod, Catégorie: e.target.value })} required role='radiogroup' aria-label='catégorie'>
+            <input type='radio' value='Rock' name='categ' checked={qMod.Catégorie==='Rock'} aria-label='rock'/> Rock
+            <input type='radio' value='Pop' name='categ' checked={qMod.Catégorie==='Pop'} aria-label='pop'/> Pop
+            <input type='radio' value='Pop Rock' name='categ' checked={qMod.Catégorie==='Pop Rock'} aria-label='pop rock'/> Pop Rock
+            <input type='radio' value='Rap' name='categ' checked={qMod.Catégorie==='Rap'} aria-label='rap'/> Rap
+            <input type='radio' value='Folk' name='categ' checked={qMod.Catégorie==='Folk'} aria-label='folk'/> Folk
+            <input type='radio' value='Reggae' name='categ' checked={qMod.Catégorie==='Reggae'} aria-label='reggae'/> Reggae
+            <input type='radio' value='Electro' name='categ' checked={qMod.Catégorie==='Electro'} aria-label='electro'/> Electro
+            <input type='radio' value='Jazz' name='categ' checked={qMod.Catégorie==='Jazz'} aria-label='jazz'/> Jazz
+            <input type='radio' value='Variété' name='categ' checked={qMod.Catégorie==='Variété'} aria-label='variété'/> Variété
+            <input type='radio' value='RNB' name='categ' checked={qMod.Catégorie==='RNB'} aria-label='rnb'/> RNB
+            <input type='radio' value='Musique Classique' name='categ' checked={qMod.Catégorie==='Musique Classique'} aria-label='musique classique'/> Musique Classique
           </div>
         </div>
 

@@ -1,4 +1,4 @@
-import { VIS_ADDEV, VIS_ADDQ, VIS_ADDQSPE, VIS_EXCELQSPE, VIS_GETEV, VIS_GETQ, VIS_GETQSPE, VIS_GETUSERS, VIS_IMAGE_PUB, VIS_MODIFEV, VIS_MODIFQ, VIS_MODIFQSPE, VIS_PODIUM, VIS_PUB } from "../actions/types"
+import { VIS_ADDEV, VIS_ADDQ, VIS_ADDQSPE, VIS_EXCELQSPE, VIS_GAGNANTS, VIS_GETEV, VIS_GETQ, VIS_GETQSPE, VIS_GETUSERS, VIS_IMAGE_PUB, VIS_MODIFEV, VIS_MODIFQ, VIS_MODIFQSPE, VIS_PODIUM, VIS_PUB } from "../actions/types"
 
 const initialState = {
     addQ: false,
@@ -14,7 +14,8 @@ const initialState = {
     getEv:false,
     pub: false,
     podium: false,
-    imagePub:false
+    imagePub:false,
+    gagnants: false
 }
 //---------------------
 export const visibleReducer = (state = initialState, action) => {
@@ -60,6 +61,9 @@ export const visibleReducer = (state = initialState, action) => {
         }
         case VIS_IMAGE_PUB: return {
             ...state, imagePub : action.payload.ouinon
+        }
+        case VIS_GAGNANTS : return{
+            ...state, gagnants: action.payload.ouinon
         }
         
         default: return state;

@@ -69,6 +69,7 @@ export const VIS_GETEV= "VIS_GETEV";
 export const VIS_PUB= "VIS_PUB";
 export const VIS_PODIUM= "VIS_PODIUM";
 export const VIS_IMAGE_PUB = "VIS_IMAGE_PUB";
+export const VIS_GAGNANTS= "VIS_GAGNANTS";
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 export const CHOISIR_THEME = "CHOISIR_THEME";

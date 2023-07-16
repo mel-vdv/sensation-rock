@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import AddEv from './addEv';
 import ModifEv from './modifEv';
-import { fetchConcours, fetchListeQSpe, supprConcours, visibleAddEv, visibleAddQspe, visibleExcelQspe, visibleGetQspe, visibleImgPub, visibleModifEv } from '../../lib/redux/actions';
+import { envoiMailFin, fetchConcours, fetchListeQSpe, supprConcours, visibleAddEv, visibleGagnants, visibleGetQspe, visibleImgPub, visibleModifEv } from '../../lib/redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import StoragePub from './storagePub';
 import './admin.css';
 import GetQspe from './GetQspe';
+import Gagnants from './Gagnants';
 
 const GetEv = () => {
   const dispatch = useDispatch();
@@ -35,11 +36,32 @@ const GetEv = () => {
     setIdEv(idEv); setIntitule(intitule); setTypeImg(typeImg);
     dispatch(visibleImgPub(true));
   }
+const voirImage = (idEv,typeImg)=>{
+  let url =`https://firebasestorage.googleapis.com/v0/b/igra-835e2.appspot.com/o/${typeImg}%2F${idEv}?alt=media`
+  window.open(url,"_blank");
+
+}
+const testerDate = (fin)=>{
+  return Date.parse(fin)<Date.now() ? false: true ;
+}
 
   const gererQspe = (idEv, nomEv) => {
     setIdEv(idEv); setNomEv(nomEv);
     dispatch(fetchListeQSpe(idEv));
     dispatch(visibleGetQspe(true));
+  }
+  const cloturerEv = (idEv)=>{
+    // etape 1 : bdd clos: true
+
+    // etape 2 : envoi de 3 emails :
+    let gain='lot';
+    let ev='evenement x';
+    let annonceur= "melvdv@yahoo.fr";
+    let gagnants = [
+      {nom:'vdv', prénom:'jo', pseudo:'jojo', email:'melvdv@yahoo.fr', tel:'0633732820'},
+      {nom:'verdy', prénom:'maxime', pseudo:'max', email:'mellyvdv@gmail.com', tel:'0633732820'}
+    ];
+    dispatch(envoiMailFin(gagnants,gain,annonceur,ev));
   }
   //-------------------------------------------------------------------
   return (
@@ -50,7 +72,9 @@ const GetEv = () => {
         !stateVis.modifEv &&
         !stateVis.imagePub
         && !stateVis.getQspe
-        && !stateVis.excelQspe &&
+        && !stateVis.excelQspe
+        && !stateVis.gagnants
+         &&
         <button onClick={() => dispatch(visibleAddEv(true))}>Ajouter un nouveau concours</button>}
 
       {(!stateEvents.isLoading && !!stateEvents.items
@@ -58,6 +82,7 @@ const GetEv = () => {
         && !stateVis.imagePub
         && !stateVis.getQspe
         && !stateVis.excelQspe
+        && !stateVis.gagnants
       ) && <>
 
           <table>
@@ -76,14 +101,24 @@ const GetEv = () => {
               {stateEvents.items.map((x, i) => (
                 <tr key={i}>
                   <td>
-                    { ( !x['affiche-p'] && x.taille === 1 )||
+                    { (( !x['affiche-p'] && x.taille === 1 )||
                      ( !x['affiche-m'] && x.taille === 2 )||
-                     ( (!x['affiche-g'] && x.taille === 3 ) || (!x['affiche-m'] && x.taille === 3) )
+                     ( (!x['affiche-g'] && x.taille === 3 ) || (!x['affiche-m'] && x.taille === 3) ||
+                     !x.pub
+                     ))
+                     && !x.cloturé
 
-                    ? <span className='incomplet'>INCOMPLET</span>  : <span className='complet'>COMPLET</span>
+                    ? <span className='incomplet'>A COMPLETER</span>  : <span className='complet'>CONFORME</span>
                     }
-                    
-                     
+                    <br/>
+                    <br/>
+                    {
+                      testerDate(x.fin) || x.cloturé
+                      ?
+                      <span className='en-cours'> EN COURS </span>
+                      :
+                      <span className='terminé'> FINI </span>
+                    }
                     
                   </td>
 
@@ -167,11 +202,16 @@ const GetEv = () => {
 
                   <td>
                     <ul>
+                      {x.pub &&<li><button onClick={()=>voirImage(x['_id'], "publicites")}>Voir la publicité</button></li>}
                       <li>Nombre de questions entre 2 pub : <span>{x.nbSecPub}</span> </li>
                       <li>Nombre de secondes d'affichage de la pub : <span>{x.nbQPub}</span> </li>
                       <li>Taille de l'affiche :
                         <span> {x.taille === 3 ? "Affichage Premium banderolle du site" : x.taille === 2 ? "Affichage visibilité ++" : "Affichage basique"} </span>
                       </li>
+                      {x.taille <2 && x['affiche-p'] &&<li><button onClick={()=>voirImage(x['_id'], "affiches%2Fpetit")}>Voir l'affiche (largeur = hauteur)</button></li> }
+                      {x.taille>1 &&  x['affiche-m'] &&<li><button  onClick={()=>voirImage(x['_id'], "affiches%2Fmoyen")}>Voir l'affiche (largeur = 2 x hauteur)</button></li>}
+                      {x.taille >2 && x['affiche-g'] &&<li><button onClick={()=>voirImage(x['_id'], "affiches%2Fgrand")}>Voir l'affiche (largeur = 2,5 x hauteur)</button></li>}
+                      
                     </ul>
                   </td>
 
@@ -220,6 +260,10 @@ const GetEv = () => {
 
                     <button onClick={() => gererQspe(x['_id'], x.intitulé)}>Gérer les questions spécifiques </button>
 
+                    {!testerDate(x.fin) && <button onClick={()=>dispatch(visibleGagnants(true))}>Voir les gagnants</button>}
+
+                    <button onClick={()=>cloturerEv(x['_id'])}>Clôturer le concours {x.intitulé} </button>
+
 
                   </td>
                 </tr>
@@ -234,6 +278,7 @@ const GetEv = () => {
       {stateVis.addEv && <AddEv />}
       {stateVis.getQspe && <GetQspe idEv={idEv} nomEv={nomEv} />}
       {(stateVis.imagePub && !!idEv && !!intitule && !!typeImg) && <StoragePub idEv={idEv} intitule={intitule} typeImg={typeImg} />}
+      {stateVis.gagnants && <Gagnants/>}
     </div>
   )
 }

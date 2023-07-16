@@ -1,3 +1,4 @@
+
 .container-header{z-index: 3;
     background-color: white;
     position: sticky; top:0; left:0;
@@ -17,7 +18,7 @@ text-transform: uppercase;
 }
 .bas{
     margin: auto;
-    width:min(100vw, 1040px); 
+    width:min(100vw, 1500px); 
     height:80px;
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -26,8 +27,9 @@ text-transform: uppercase;
 .bas div{height:80px;width: 100%;
     display:flex; align-items: center; justify-content: center;text-align: center;
 }
-.melwin{
-    color: red; font-size: 40px; font-weight: bolder;
+.container-header .melwin{
+    font-family: 'melwin';
+    color: red; font-size: 50px; text-align: center;
     grid-row: 1;grid-column: 1;
 }
 .rech{

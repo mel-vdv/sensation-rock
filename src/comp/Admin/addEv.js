@@ -40,6 +40,7 @@ const AddEv = () => {
         'affiche-g': false,
         'affiche-m': false,
         'affiche-p': false,
+        cloturé:false
 
 
 
@@ -93,7 +94,7 @@ setNewEv({...newEv, nbQtot:bibi })
                     <textarea id='descr' value={newEv.description} onChange={(e) => setNewEv({ ...newEv, description: e.target.value })} required></textarea></div>
                 <div>
                     <label for="prix"> Prix </label>
-                    <input id='prix' type='number' value={+newEv.prix} onChange={(e) => setNewEv({ ...newEv, prix: +e.target.value })} required />
+                    <input id='prix' type='number' value={+newEv.prix} onChange={(e) => setNewEv({ ...newEv, prix: +e.target.value })} required min={0}/>
                 </div>
                 <div>
                     <label for="lieu">Lieu</label>
@@ -108,7 +109,7 @@ setNewEv({...newEv, nbQtot:bibi })
                     <input id='gain' type='text' onChange={(e) => setNewEv({ ...newEv, gain: e.target.value })} value={newEv.gain} required /></div>
                 <div>
                     <label for="nbGagnants">Nombre de gagnants</label>
-                    <input id='nbGagnants' type='number' onChange={(e) => setNewEv({ ...newEv, nbGagnants: +e.target.value })} value={+newEv.nbGagnants} required /></div>
+                    <input id='nbGagnants' type='number' onChange={(e) => setNewEv({ ...newEv, nbGagnants: +e.target.value })} min={1} value={+newEv.nbGagnants} required /></div>
                 <div>
                     <label for="emailAnn">Email de l'annonceur</label>
                     <input id='emailAnn' type='email' value={newEv.emailAnn} onChange={(e) => setNewEv({ ...newEv, emailAnn: e.target.value })} required />
@@ -123,15 +124,15 @@ setNewEv({...newEv, nbQtot:bibi })
                 <div className='rubrique'>Les questions</div>
                 <div>
                     <label for="nbQspe">Nombre de questions spécifiques</label>
-                    <input id='nbQspe' type='number' value={+newEv.nbQspe} onChange={(e) => setNewEv({ ...newEv, nbQspe: +e.target.value }) } required />
+                    <input id='nbQspe' type='number' value={+newEv.nbQspe} onChange={(e) => setNewEv({ ...newEv, nbQspe: +e.target.value }) } required min={3} />
                 </div>
                 <div>
                     <label for="nbQperso" >Nombre de Questions liées aux goûts personnels du joueur </label>
-                    <input id='nbQperso' type='number' value={+newEv.nbQperso} onChange={(e) =>setNewEv({ ...newEv, nbQperso: +e.target.value })} required />
+                    <input id='nbQperso' type='number' value={+newEv.nbQperso} onChange={(e) =>setNewEv({ ...newEv, nbQperso: +e.target.value })} required min={0} />
                 </div>
                 <div>
                     <label for="nbQgen">Nombre de questions générales </label>
-                    <input id='nbQgen' type='number' value={+newEv.nbQgen} onChange={(e) => setNewEv({ ...newEv, nbQgen: +e.target.value })} required />
+                    <input id='nbQgen' type='number' value={+newEv.nbQgen} onChange={(e) => setNewEv({ ...newEv, nbQgen: +e.target.value })} required min={0}/>
                 </div>
                 <div>
                     <label for="nbQtot">Nombre total de question </label>
@@ -164,7 +165,7 @@ setNewEv({...newEv, nbQtot:bibi })
                 </div>
                 <div>
                     <label for="nbQPub">Nombre de questions entre 2 publicités </label>
-                    <input id='nbQPub' type='number' value={+newEv.nbQPub} onChange={(e) => setNewEv({ ...newEv, nbQPub: +e.target.value })} required />
+                    <input id='nbQPub' type='number' value={+newEv.nbQPub} onChange={(e) => setNewEv({ ...newEv, nbQPub: +e.target.value })} required min={3} />
                 </div>
 
                 <div>
