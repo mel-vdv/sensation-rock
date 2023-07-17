@@ -201,7 +201,7 @@ export const postConcours = (data) => {
         .catch(err => console.error(err.message));
 }
 export const updateConcours = (evMod) => {
-    console.log('3', evMod['_id']);
+    console.log('service');
     axios.put('http://localhost:5000/api/concours/modif', evMod)
         .then(() => console.log('ok, event modifié'))
         .catch(err => console.error(err.message));

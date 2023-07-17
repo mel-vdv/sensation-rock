@@ -28,7 +28,7 @@ import {
     GET_EVENT_ERROR, GET_LISTEQ_PENDING, GET_LISTEQ_SUCCESS, GET_LISTEQ_ERROR, GET_LISTEQ_PERSO_PENDING, GET_LISTEQ_PERSO_SUCCESS,
     GET_LISTEQ_PERSO_ERROR, GET_LISTEQ_SPE_PENDING, GET_LISTEQ_SPE_SUCCESS, GET_LISTEQ_SPE_ERROR, GET_SCORE_PENDING, GET_SCORE_SUCCESS,
     GET_SCORE_ERROR, MODIF_SCORE_IMMEDIAT, MODIF_TIMER, STOP_TIMER, VIS_PUB, VIS_PODIUM, GET_PODIUM_PENDING, GET_PODIUM_SUCCESS, GET_PODIUM_ERROR,
-    DELETE_Q, MAJ_CONCOURS, MAJ_Q, VIS_IMAGE_PUB, CHOISIR_THEME, DECO_USER, VIS_GETQSPE, VIS_MODIFQSPE, VIS_ADDQSPE, DELETE_QSPE, MAJ_QSPE, ADD_QSPE, DELETE_USER, GET_USER_EXISTE, VIS_EXCELQSPE, VIS_GAGNANTS,
+    DELETE_Q, MAJ_CONCOURS, MAJ_Q, VIS_IMAGE_PUB, CHOISIR_THEME, DECO_USER, VIS_GETQSPE, VIS_MODIFQSPE, VIS_ADDQSPE, DELETE_QSPE, MAJ_QSPE, ADD_QSPE, DELETE_USER, GET_USER_EXISTE, VIS_EXCELQSPE, VIS_GAGNANTS, MAJ_CONCOURS2,
 } from "./types";
 
 //////////////////////////////////////////////////////////////////////////////// USER commence un quizz : 
@@ -289,6 +289,7 @@ export function addConcours(newEv) {
     }
 }
 export function modifConcours(evMod) {
+    console.log('action');
     return async function () {
         updateConcours(evMod)
             .then(() => console.log('modif event success'))
@@ -297,6 +298,9 @@ export function modifConcours(evMod) {
 }
 export function majConcours(ev) {
     return { type: MAJ_CONCOURS, payload: { ev } }
+}
+export function majConcours2(ev) {
+    return { type: MAJ_CONCOURS2, payload: { ev } }
 }
 export function supprConcours(idEv) {
     return async function () {

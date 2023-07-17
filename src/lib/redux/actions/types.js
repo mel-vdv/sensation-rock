@@ -5,6 +5,7 @@ export const GET_CONCOURS_FAILURE= "GET_CONCOURS_FAILURE";
 export const QUEL_CONCOURS = "QUEL_CONCOURS";
 //-----------------------------------------------------------------
 export const MAJ_CONCOURS = "MAJ_CONCOURS";
+export const MAJ_CONCOURS2 = "MAJ_CONCOURS2";
 //-----------------------------------------------------------------
 export const GET_SCORE = "GET_SCORE";
 //-----------------------------------------------------------------

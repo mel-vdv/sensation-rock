@@ -92,16 +92,7 @@ overflow-y: scroll;
     margin-left: 15px;
     margin-right: 15px;
 }
-.complet,.en-cours{
-    background-color: green; color: white;
-}
-.incomplet{
-    background-color: red; color: white;
-}
-.terminé{
-    background-color: blue; color: white;
-}
+
+.complet{background-color: green; color: white;}
 .clos{color: white; background-color: black;}
-.a-cloturer{
-color: black; background-color: yellow;
-}
+.a-cloturer,.incomplet{color: black; background-color: yellow;}
